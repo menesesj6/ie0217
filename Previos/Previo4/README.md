@@ -1,0 +1,40 @@
+# Previo 4
+## Instrucciones de compilación y ejecución
+
+Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux. Se debe tener en cuenta que aquello escrito entre los caracteres _<>_ depende del usuario, pues corresponde archivo fuente que desea compilar. Se debe destacar que el nombre del archivo en _<>_ debe ser exclusivamente el nombre, sin la extensión _.cpp_. A continuación se exponen las formas de compilar y ejecutar por medio de un Makefile al igual que de forma manual por medio de la terminal.
+
+### Makefile
+**Caso de un archivo .cpp fuente.**
+ ```
+ $ make Ejemplos FILE1=<nombre_archivo_fuente>
+ ```
+ **Ejemplo de header files**
+ ```
+ $ make Headers
+ ```
+ **Ejercicio de header files**
+ ```
+ $ make HeadersExcercise
+ ```
+### Forma general
+ A continuación se muestran los dos comandos necesarios para esta tarea si se deseara hacer manualmente. En este caso, el usuario puede escoger cómo se llamará su archivo ejecutable.
+
+**Caso de un archivo .cpp fuente.**
+ ```
+ $ g++ <archivo_fuente>.cpp -o <archivo_ejecutable>.exe
+ $ ./<archivo_ejecutable>.exe
+ ```
+ **Ejemplo de header files.**
+ 
+ ```
+ $ cd SeparandoArchivos
+ $ g++ persona.cpp main.cpp -o <archivo_ejecutable>.exe
+ $ ./<archivo_ejecutable>.exe
+ ```
+  **Ejercicio de header files.**
+ 
+ ```
+ $ cd SeparandoArchivosEjercicio
+ $ g++ Student.cpp main.cpp -o <archivo_ejecutable>.exe
+ $ ./<archivo_ejecutable>.exe
+ ```
