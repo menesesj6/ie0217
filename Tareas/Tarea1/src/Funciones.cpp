@@ -8,21 +8,25 @@ void SetDifficulty(int* dif){
         cout << "2. Intermedio. Tendra 5 intentos. " << endl;
         cout << "3. Dificil. Tendra 3 intentos. " << endl;
         cout << "Ingrese el numero de su eleccion: ";
-        cin >> *dif;
-        // Acomodar el maximo de intentos dependiendo de dificultad seleccionada
-    }while(*dif != EASY & *dif != MEDIUM & *dif != HARD);
+        // Almacenamiento de la dificultad escogida
+        cin >> *dif; 
+    }while(*dif != EASY & *dif != MEDIUM & *dif != HARD); // Menu se sale cuando se escoge una dificultad
 }
 
 // Funcion de inicializacion del juego
 void Initialize(int currWords, int* dif, string dict[], Ahorcado* ahorcado){
+    // Mensaje inicial
     cout << "COMIENZA EL JUEGO!!" << endl;
 
-    int wordIndex = rand()%currWords - 1; // Generar indice aleatorio del diccionario
-    ahorcado->word = dict[wordIndex]; // Asignar palabra aleatoria a adivinar
+    // Generar indice aleatorio del diccionario
+    int wordIndex = rand()%currWords - 1; 
+    // Asignar palabra aleatoria a adivinar
+    ahorcado->word = dict[wordIndex];
 
     // Inicializar la palabra como guiones bajos
-    int length = ahorcado->word.length();
+    int length = ahorcado->word.length(); // Saber el largo
     for (int i = 0; i <= 2 * length - 2; i++){
+        // IMprimir guines bajos separados por espacios
         if(i % 2 == 0){
             ahorcado->wordStatus[i] = '_';
         } else{
@@ -31,7 +35,8 @@ void Initialize(int currWords, int* dif, string dict[], Ahorcado* ahorcado){
         
     };
 
-    // Sentencia switch para acomodar intentos maximos de juego
+    // Sentencia switch para acomodar intentos maximos y restantes de juego segun la dificultad
+    // TRabaja a nivel de punteros en el juego y la variable dif
     switch (*dif){
         case EASY:
             ahorcado->maxTries = 7;
@@ -50,11 +55,11 @@ void Initialize(int currWords, int* dif, string dict[], Ahorcado* ahorcado){
             ahorcado->remainingTries = ahorcado->remainingTries;
             break;
     }
-
-
+    // Impresion inicial de stats
     cout << "\nIntentos maximos: " << ahorcado->maxTries << endl;
     cout << "Intentos restantes: " << ahorcado->remainingTries << endl;
     cout << "Palabra: ";
+    // Imprimir guinoes bajos de la palabra
     for (int i = 0; i < 2*length-1; i++){
         cout << ahorcado->wordStatus[i];
     }
@@ -62,12 +67,11 @@ void Initialize(int currWords, int* dif, string dict[], Ahorcado* ahorcado){
 
 // Agregarle palabras al diccionario
 void AddWords(int* currWords, string dict[]){
-    int choice;
-    string newWord;
+    string newWord;// Palabra ingresada por el usuario
     cout << "Ingrese la palabra que desea agregar al diccionario: ";
-    cin >> newWord;
-    *(dict + *currWords) = newWord;
-    *currWords += 1;
+    cin >> newWord; // Guardarla
+    *(dict + *currWords) = newWord; // Ingresarla al diccionario por medio de punteros
+    *currWords += 1; // Aumentar el conteo de palabras en el diccionario
 }
 
 // Imprimir el diccionario
