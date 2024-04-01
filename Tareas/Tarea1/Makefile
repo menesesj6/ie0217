@@ -4,3 +4,5 @@ FILE1 = FILE
 ahorcado:
 	${CC} src/main.cpp src/Funciones.cpp -o ${EXC}
 	./${EXC}
+doxygen:
+	firefox html/index.html

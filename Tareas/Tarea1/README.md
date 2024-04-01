@@ -17,6 +17,11 @@ $ g++ main.cpp Header.cpp -o Ahorcado.exe
 $ ./Ahorcado.exe
 ``` 
 
+### Acceso a la documentacion Doxygen con FireFox
+```
+$ make doxygen
+``` 
+
 ## Parte teórica
 
 ### Preguntas
