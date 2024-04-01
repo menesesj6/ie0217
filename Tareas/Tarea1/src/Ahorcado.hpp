@@ -1,17 +1,24 @@
 /**
  * @file Ahorcado.hpp
  * @author Jorge A. Meneses Garro (j.menesesgarro@gmail.com.com)
- * @brief Definicion del struct del juego Ahorcado y enumeraciones para los menus
+ * @brief Creacion de struct del juego Ahorcado y los enums para los menus
  * @version 1.0
  * @date 2024-04-3
+ * @copyright Copyright (c) 2024
  */
 #ifndef AHORCADO_H
 #define AHORCADO_H
 
 /**
+ * @brief Macro que define la cantidad maxima de palabras en el diccionario
+ */
+#define MAX_DICTIONARY 30
+
+/**
  * @brief Macro que define el largo maximo del status de la palabra
  */
 #define MAX_LENGTH_WORD 30
+
 
 #include <iostream>
 #include <string>

@@ -4,6 +4,7 @@
  * @brief Header file con los prototipos de las funciones
  * @version 1.0
  * @date 2024-04-3
+ * @copyright Copyright (c) 2024
  */
 #ifndef FUNCIONES_H
 #define FUNCIONES_H
@@ -30,7 +31,28 @@ void SetDifficulty(int* dif);
  */
 void Initialize(int currWords, int* dif, string dict[], Ahorcado* ahorcado);
 
+/**
+ * @brief Usuario ingresa una letra y se actualiza el estado de la palabra
+ * Este tiene un bucle que esta activo si el return de Verification es true. Dentro de este bucle se solicita al 
+ * una letra e itera sobre la palabra a adivinar para ver si la letra ingresada esta. Si la letra ingresada esta, 
+ * se actualiza el estado de la palabra cambiando los guines bajos por la letra acertada. Tambien, se lleva conteo 
+ * en tiempo real de los intentos restantes. AL momento que el return de Verification sea false, el bucle se 
+ * detiene totalmente.
+ * @param ahorcado Instanciacion de la struct del juego
+ * @see Verification
+ */
 void Guessing(Ahorcado* ahorcado);
+
+/**
+ * @brief Se encarga de verificar el estado
+ * Compara constantemente el estado de la palabra con la palabra a adivinar para saber cuando llegan a ser iguales;
+ * o bien, cuando se agoten los intentos. Funciona como el argumento del ciclo while de Guessing(), pues indica si
+ * el juego ya esta en condiciones de terminar o no. Tambien, controla la ultima oportunidad del usuario cuando se 
+ * le agoten los intentos
+ * @param ahorcado Instanciacion de la struct del juego 
+ * @return true El juego continua (La palabra no es igual a la deseada y aun sobran intentos)
+ * @return false El juego termina, ya sea ganado palabra acertada normal o por ultima oportunidad) o perdido (no mas intentos)
+ */
 bool Verification(Ahorcado* ahorcado);
 
 /**

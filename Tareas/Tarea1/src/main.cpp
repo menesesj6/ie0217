@@ -1,27 +1,8 @@
-/**
- * @file main.cpp
- * @author Jorge A. Meneses Garro (j.menesesgarro@gmail.com.com)
- * @brief Archivo principal del juego, incluye funcion main
- * @version 1.0
- * @date 2024-04-3
- */
 #include <iostream>
 #include "Ahorcado.hpp"
 #include "Funciones.hpp"
-
-/**
- * @brief Macro que define el maximo de palabras del diccionario.
- */
-#define MAX_DICTIONARY 30
-
 using namespace std;
 
-/**
- * @brief Codigo fuente principal del juego 
- * En este programa principal se despliega el menu principal y se solicita al usuario que quiere hacer, 
- * dependiendo de esta eleccion se invoca alguna de las funciones importadas para realizar la accion elegida. 
- * @return int 0, codigo de error para terminar el main exitosamente
- */
 int main() {
     // Se instancia e; struct
     Ahorcado ahorcado;
@@ -29,10 +10,8 @@ int main() {
     int option; /**< Eleccion del menu principal*/
     int dif = EASY; /**< Dificultad, con un valor de 1 (FACIL) predeterminado*/
 
-    string dict[MAX_DICTIONARY] = {"curso", "nota", "codigo", "estructura", "intel", "programa", "linux"}; /**< Diccionario del juego*/
-    int currWords = 7; // Cantidad inicial de palabras en el diccionario
-
-    char guess; /**< Letra que adivina el usuario*/
+    string dict[MAX_DICTIONARY] = {"curso", "nota", "codigo", "estructura", "intel", "programa", "linux", "pollo"}; /**< Diccionario prefedinido del juego*/
+    int currWords = 8; // Cantidad inicial de palabras en el diccionario
 
     // Definir el menu principal
     do{
