@@ -1,29 +1,40 @@
+/**
+ * @file main.cpp
+ * @author Jorge A. Meneses Garro (j.menesesgarro@gmail.com.com)
+ * @brief Archivo principal del juego, incluye funcion main
+ * @version 1.0
+ * @date 2024-04-3
+ */
 #include <iostream>
-
 #include "Ahorcado.hpp"
 #include "Funciones.hpp"
 
-#define MAX_DICTIONARY 15
+/**
+ * @brief Macro que define el maximo de palabras del diccionario.
+ */
+#define MAX_DICTIONARY 30
 
 using namespace std;
 
-
+/**
+ * @brief Codigo fuente principal del juego 
+ * En este programa principal se despliega el menu principal y se solicita al usuario que quiere hacer, 
+ * dependiendo de esta eleccion se invoca alguna de las funciones importadas para realizar la accion elegida. 
+ * @return int 0, codigo de error para terminar el main exitosamente
+ */
 int main() {
-    // Se instancia le struct
+    // Se instancia e; struct
     Ahorcado ahorcado;
 
-    // Inicializar variables de seleccion del menu
-    int option;
-    int dif = EASY; // Facil predeterminado
+    int option; /**< Eleccion del menu principal*/
+    int dif = EASY; /**< Dificultad, con un valor de 1 (FACIL) predeterminado*/
 
-    // Definir diccionario predefinido con 7 palabras
-    string dict[MAX_DICTIONARY] = {"curso", "nota", "codigo", "estructura", "intel", "programa", "linux"};
+    string dict[MAX_DICTIONARY] = {"curso", "nota", "codigo", "estructura", "intel", "programa", "linux"}; /**< Diccionario del juego*/
     int currWords = 7; // Cantidad inicial de palabras en el diccionario
 
-    // Letra que adivinara el usuario
-    char guess;
+    char guess; /**< Letra que adivina el usuario*/
 
-    // Definir el menu
+    // Definir el menu principal
     do{
         cout << "\nMENU" << endl;
         cout << "1. Elegir dificultad del juego. " << endl;
@@ -40,19 +51,17 @@ int main() {
             // Configuracion de dificultad
             case DIFICULTAD:
                 SetDifficulty(&dif);
-                cout << "\n\n DIFICULTAD: \n" << dif << endl;
                 break;
 
             // Inicio del juego
             case INICIAR:
                 Initialize(currWords, &dif, dict, &ahorcado);
+                Guessing(&ahorcado);
                 break;
 
             // Agregar palabras al diccionario
             case AGREGAR:
                 AddWords(&currWords, dict);
-                cout << &dict[0] << endl;
-                cout << &dict[1] << endl;
                 break;
 
             // Ver diccionario

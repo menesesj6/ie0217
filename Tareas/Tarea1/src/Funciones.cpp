@@ -1,6 +1,12 @@
+/**
+ * @file Funciones.cpp
+ * @author Jorge A. Meneses Garro (j.menesesgarro@gmail.com.com)
+ * @brief Definicion de las funciones prototipadas en Funciones.hpp que dictan funcionamiento del juego
+ * @version 1.0
+ * @date 2024-04-3
+ */
 #include "Funciones.hpp"
 
-// Menu de dificultad
 void SetDifficulty(int* dif){
     do{
         cout << "\nMENU DE DIFICULTAD" << endl;
@@ -19,9 +25,21 @@ void Initialize(int currWords, int* dif, string dict[], Ahorcado* ahorcado){
     cout << "COMIENZA EL JUEGO!!" << endl;
 
     // Generar indice aleatorio del diccionario
-    int wordIndex = rand()%currWords - 1; 
+    /*Se usa el random_device de la libreria random
+
+    Este es un generador de numeros aleatorios real, sin necesidad de un seed, para evitar resultados
+    deterministicos, como los obtenidos al usar rand()%currWords
+
+    https://www.enseignement.polytechnique.fr/informatique/INF478/docs/Cpp/en/cpp/numeric/random/random_device/random_device.html
+    */
+    random_device rd;
+    uniform_int_distribution<int> dis(0, currWords-1);
+    int wordIndex = dis(rd);
+    
     // Asignar palabra aleatoria a adivinar
-    ahorcado->word = dict[wordIndex];
+    ahorcado->word = *(dict + wordIndex);
+
+    //cout << ahorcado->word << endl;
 
     // Inicializar la palabra como guiones bajos
     int length = ahorcado->word.length(); // Saber el largo
@@ -36,7 +54,7 @@ void Initialize(int currWords, int* dif, string dict[], Ahorcado* ahorcado){
     };
 
     // Sentencia switch para acomodar intentos maximos y restantes de juego segun la dificultad
-    // TRabaja a nivel de punteros en el juego y la variable dif
+    // Trabaja a nivel de punteros en el juego y la variable dif
     switch (*dif){
         case EASY:
             ahorcado->maxTries = 7;
@@ -57,11 +75,67 @@ void Initialize(int currWords, int* dif, string dict[], Ahorcado* ahorcado){
     }
     // Impresion inicial de stats
     cout << "\nIntentos maximos: " << ahorcado->maxTries << endl;
-    cout << "Intentos restantes: " << ahorcado->remainingTries << endl;
-    cout << "Palabra: ";
-    // Imprimir guinoes bajos de la palabra
-    for (int i = 0; i < 2*length-1; i++){
-        cout << ahorcado->wordStatus[i];
+}
+
+// Funcion de adivinar
+void Guessing(Ahorcado* ahorcado){
+    int length = ahorcado->word.length();
+    char guess;
+    bool found = false; // Si la letra esta en la palabra o no
+    // BUcle siempre que hayan mas de 0 intentos
+    while(Verification(ahorcado)){
+        cout << "Intentos restantes: " << ahorcado->remainingTries << endl;
+        cout << "Palabra: ";
+        // Imprimir guinoes bajos de la palabra
+        for (int i = 0; i < 2*length-1; i++){
+            cout << ahorcado->wordStatus[i];
+        }
+        // Pedir al usuario letra
+        cout << "\n\nIngrese una letra: "<< endl;
+        cin >> guess;
+        // Actualizar word Status
+        for(int i = 0; i < length; i++){
+            if(guess == ahorcado->word[i]){
+                ahorcado->wordStatus[2 * i] = guess;
+                found = true;
+            }
+        }
+        // Controla la cantidad de intentos restantes
+        if(found == false){
+            ahorcado->remainingTries -= 1;
+        }
+        found = false;
+    }
+}
+
+// Funcion de verificacion
+bool Verification(Ahorcado* ahorcado){
+    string lastTry;
+    int count = 0;
+    for(int i = 0; i < ahorcado->word.length(); i++){
+        if(ahorcado->word[i] == ahorcado->wordStatus[2 * i]){
+            count ++;
+        }
+    }
+    if (count==ahorcado->word.length()){
+        cout << "\n\nFELICIDADES!! GANASTE!!" << endl;
+        cout << "-------------------------------------"<< endl;
+        return false;
+    }else if(ahorcado->remainingTries == 0){
+        cout << "\nULTIMA OPORTIUNIDAD!!" << endl << "Ingrese la palabra completa: ";
+        cin >> lastTry;
+        if(lastTry == ahorcado->word){
+            cout << "\n\nFELICIDADES!! GANASTE!!" << endl;
+            cout << "-------------------------------------"<< endl;
+            return false;
+        }else{
+            cout << "\n\nGAME OVER" << endl << "La palabra correcta era: " << ahorcado->word << endl;
+            cout << "-------------------------------------"<< endl;
+            return false;
+        }
+
+    }else{
+        return true;
     }
 }
 
@@ -70,6 +144,11 @@ void AddWords(int* currWords, string dict[]){
     string newWord;// Palabra ingresada por el usuario
     cout << "Ingrese la palabra que desea agregar al diccionario: ";
     cin >> newWord; // Guardarla
+    // Pasar palabra a minusculas
+    for(int i=0; i < newWord.length(); i++){
+        newWord[i] = tolower(newWord[i]);
+    }
+    
     *(dict + *currWords) = newWord; // Ingresarla al diccionario por medio de punteros
     *currWords += 1; // Aumentar el conteo de palabras en el diccionario
 }

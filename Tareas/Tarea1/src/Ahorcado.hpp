@@ -8,11 +8,14 @@
 #ifndef AHORCADO_H
 #define AHORCADO_H
 
-
-#define MAX_LENGTH_WORD 25
+/**
+ * @brief Macro que define el largo maximo del status de la palabra
+ */
+#define MAX_LENGTH_WORD 30
 
 #include <iostream>
-#include <cstring>
+#include <string>
+#include <random>
 #include <cstdlib>
 
 using namespace std;
