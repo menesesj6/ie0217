@@ -12,7 +12,7 @@
 /**
  * @brief Macro que define la cantidad maxima de palabras en el diccionario
  */
-#define MAX_DICTIONARY 30
+#define MAX_DICTIONARY 50
 
 /**
  * @brief Macro que define el largo maximo del status de la palabra

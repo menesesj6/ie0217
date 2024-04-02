@@ -1,26 +1,23 @@
 # Tarea 1
 ## IE-0217: Estructuras Abstractas de Datos y Algoritmos para Ingeniería
 
-Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux. Se debe tener en cuenta que aquello escrito entre los caracteres _<>_ depende del usuario, pues corresponde archivo fuente que desea compilar. Se debe destacar que el nombre del archivo en _<>_ debe ser exclusivamente el nombre, sin la extensión _.cpp_. A continuación se exponen las formas de compilar y ejecutar por medio de un Makefile al igual que de forma manual por medio de la terminal.
+Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux.  A continuación se exponen las formas de compilar y ejecutar por medio de un Makefile al igual que de forma manual por medio de la terminal, desde el directorio de **Tarea1**. Cabe destacar que este instructivo está pensado para abrir la documentación de Doxygen en FireFox.
 
 ## Instrucciones de compilación y ejecución: Juego Ahorcado
 ### Makefile
 ```
-$ make ahorcado
+$ make ahorcado # Ejecucion del juego
+$ make doxygen # Despliegue documentacion Doxygen
 ``` 
 
 ### Forma general
 
 ```
-$ cd src
-$ g++ main.cpp Header.cpp -o Ahorcado.exe
+$ g++ src/main.cpp src/Header.cpp -o Ahorcado.exe
 $ ./Ahorcado.exe
+$ firefox html/index.html
 ``` 
 
-### Acceso a la documentacion Doxygen con FireFox
-```
-$ make doxygen
-``` 
 
 ## Parte teórica
 
@@ -50,9 +47,15 @@ $ make doxygen
 
 8. Como se mencionó en la pregunta anterior, el proceso de compilación tiene una etapa de _linking_, la cual es realizada por medio de un _linker_. Este es un programa encargado de unir todos los programas y bibliotecas necesarios para la correcta compilación de un archivo fuente y así poder crear el archivo ejecutable correctamente. Este es el que s eencarga de asociar todos los programas necesarios por medio de los #include o de las variables externas, por ejemplo, para que se tenga todo lo necesario.
 
-9. 
+9. El flujo descrito a continuación será basado en el flujo común de desarrollo, pero no necesariamente es la norma inquebrantable.
+    1. Primero, se debe traer el contenido del repositorio remoto al repositorio local. Se puede usar ***git fetch*** y después ***git rebase***, o bien, usar ***git pull***.
+    2. Luego, se crea un branch local para realizar los commits que se necesiten hacer. Para esto se usa ***git checkout***, creanod un nuevo branch y pasándose a este.
+    3. Se vuelve a sincronizar el repositorio local con el remoto, por seguridad.
+    4. Se empujan los commits al repositorio remoto, que serán alojados en un branch alternativo nuevo en el remoto, no se implementarán en _origin_ de golpe.
+    5. Empezar el proceso de _pull request_ para hacer un _merge_ del nuevo branch remoto con _origin_. Dentro de esto está toda la resolución de conflictos, propuestas, revisión, pruebas, etc.
+    6. Si el _pull request_ es aprobado, los cambios fueron adecuadamente implementados.
 
-10.
+10. Declarar una variable consiste en el proceso de generar una variable a nivel de codigo que cuenta con el tipo de datos de la variable, su nombre y, opcionalmente, su valor inicial. Sin embargo, cuando se le asigna un valor inicial, ese proceso es el conocido como inicializacion de una variable. 
 
 11. El concepto de sobrecarga de funciones en C++ es, en palabras sencillas, que varias funciones pueden tener el mismo nombre pero se diferencian por el tipo y la cantidad de parámetros que reciben. Por ejemplo, se puede tener dos funciones llamadas **sum**, que una puede recibir integers y otra recibir floats y al invocar las funciones, el compilador identifica cuál de las funciones es la que debe usar basado en el tipo de los parámetros que se le pasen. Esto puede servir en caso de que se deseen programar funciones que tengan la misma funcionalidad pero para tipos de datos distintos.
 

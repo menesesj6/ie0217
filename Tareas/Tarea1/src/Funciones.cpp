@@ -94,7 +94,7 @@ void Guessing(Ahorcado* ahorcado){
         guess = tolower(guess); // Pasarla a minuscula
         cout << "\n" << endl;
 
-        // Actualizar word Status
+        // Actualizar word Status y ver si la palabra si esta
         for(int i = 0; i < length; i++){
             if(guess == ahorcado->word[i]){
                 ahorcado->wordStatus[2 * i] = guess;
