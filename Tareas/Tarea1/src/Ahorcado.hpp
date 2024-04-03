@@ -9,26 +9,25 @@
 #ifndef AHORCADO_H
 #define AHORCADO_H
 
+#include <iostream>
+#include <string>
+#include <random>
+
 /**
  * @brief Macro que define la cantidad maxima de palabras en el diccionario
  */
-#define MAX_DICTIONARY 50
+#define MAX_DICTIONARY 75
 
 /**
  * @brief Macro que define el largo maximo del status de la palabra
  */
-#define MAX_LENGTH_WORD 30
-
-
-#include <iostream>
-#include <string>
-#include <random>
-#include <cstdlib>
+#define MAX_LENGTH_WORD 35
 
 using namespace std;
 
 /**
  * @brief Enumeracion con las opciones del menu principal
+ * 
  * Se asignan las opciones 1 a 5 asociados a las opciones del menu principal programado, para la facilidad de programacion
  */
 enum Options {
@@ -41,6 +40,7 @@ enum Options {
 
 /**
  * @brief Enumeracion con las opciones del menu de dificultades
+ * 
  * Se asignan las opciones 1 a 3 asociados a las opciones de dificultad del juego. Esto se asociara con la cantidad de intentos maximos que tendra el usuario 
  */
 enum Difficulties {
@@ -51,6 +51,7 @@ enum Difficulties {
 
 /**
  * @brief Struct del juego Ahorcado
+ * 
  * Una instanciacion de este struct abre un juego, para poder acceder a sus miembros mas sencillamente
  */
 struct Ahorcado{

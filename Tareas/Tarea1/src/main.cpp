@@ -4,14 +4,16 @@
 using namespace std;
 
 int main() {
-    // Se instancia e; struct
+    // Se instancia el struct
     Ahorcado ahorcado;
 
-    int option; /**< Eleccion del menu principal*/
-    int dif = EASY; /**< Dificultad, con un valor de 1 (FACIL) predeterminado*/
+    int option; // Eleccion del menu principal
+    int dif = EASY; // Dificultad, con un valor de 1 (FACIL) predeterminado
 
-    string dict[MAX_DICTIONARY] = {"curso", "nota", "codigo", "estructura", "intel", "programa", "linux", "pollo"}; /**< Diccionario prefedinido del juego*/
-    int currWords = 8; // Cantidad inicial de palabras en el diccionario
+    string dict[MAX_DICTIONARY] = {"curso", "nota", "codigo", "estructura", "intel", "programa", "linux", "pollo",
+                                    "palindromo", "iguana", "cama", "escritorio", "caleidoscopio", "ornitorrinco", 
+                                    "computadora", "sistema"}; /**< Diccionario prefedinido del juego*/
+    int currWords = 16; // Cantidad inicial de palabras en el diccionario
 
     // Definir el menu principal
     do{

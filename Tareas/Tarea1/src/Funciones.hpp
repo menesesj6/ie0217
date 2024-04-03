@@ -72,6 +72,8 @@ void AddWords(int* currWords, string dict[]);
 /**
  * @brief Imprime el diccionario del juego
  * 
+ * Itera a lo largo de todo el diccionario del juego e imprime cada una de las palabras de las que se podria obtener la
+ * eleccion aleatoria para el juego
  * @param currWords Cantidad actual de palabras en el diccionario
  * @param dict Diccionario de palabras del juego
  */
