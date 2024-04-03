@@ -67,15 +67,19 @@ $ firefox html/index.html
 
 15. La ventaja de dividir un proyecto en archivos _.hpp_, _.cpp_ y _main.cpp_ va muy orientado hacia el orden y la organización del mismo. Esto ya que en el header (.hpp) se encontrarán las declaraciones de las funciones, structs, entre otros, que se usarán; todo dentro de una definición condicional, que asegura que sólo se definirá su contenido una vez en toda la ejecución. Esto funcionará como los prototipos al incluirlo en el main.cpp y el que se incluirá en los .cpp para que se definan las funciones correctamente. Todo esto para que el main.cpp, que es el archivo fuente principal e incluye el funcionamiento básico, pueda operar de manera correcta sin indeficniciones de funciones ni variables. Sin embargo, el funcionamiento robusto del proyecto se alberga en los .cpp, pues es donde se definen las funciones en torno a las cuales funcionará el proyecto.
 
-16.
-17.
+16. Depende del tipo de variable creada. Las variables locales, son almacenadas en la seccion _Stack_ de la memoria, mientras que en el _Heap_ es tood el espacio para el uso de memoria dinamica. La diferencia entre estos dos es que el _Stack_ se limpia solo cuando el scope de la variable acaba; mientras que _Heap_ no libera el espacio una vez terminado el scope de la variable (llevando a _memory leaks_). Sin embargo, las variables globales son almacenadas en otra seccion de la memoria conocida como _Data_, que es una seccion de memoria estatica del programa en si, por lo que es accesible simepre qu eel programa este corriendo: a diferencia de las locales en el _Stack_, que solo existe en su scope respectivo.
+
+17. 1. Pasar por valor: Esto equivale a pasarle una copia de la variable  ala funcion. ES util si solo se necesita el valor para realizar alguna accion, pero si se desea realizarle algun cambio al valor de esta variable fuera del scope, no se pdora, se le aplica el cambio a la copia pero no a la variable "original".
+ 2. Pasar por referencia: Al hacer esto, se esta permitiendo a la funcion trabajar con la variable original, no con una copia; pues se esta trabajando directamente con la variable en la memoria.
+ 3. Pasar por puntero: Aca se esta pasando directamente una variable que contiene la direccion en memoria de la variable de la que se trata la operacion. POr medio del operador * se puede acceder al valor de la variable original y, por ende, hacer cambios fuera del scope de la funcion.
 
 18. Al usar un puntero para apuntar a un array, ese puntero guardará la dirección de memoria del primer elemento de dicho arreglo. Es decir, si se tiene un arreglo Array y se apunta a este por pArray, el valor de pArray será el número hexadecimal (posición en memoria) de Array[0]. Para acceder a los otros elementos, se puede usar aritmética de punteros, pues como se tiene un solo tipo de datos en un array, la cantida dde bytes ocupados por cada elemento son iguales, entonces se puede agarrar pArray e irle sumando para acceder a los otros valores del array.
-19.
 
-20.
+19. Un puntero doble es una variable que contiene la direccion de memoria de otra variable tipo puntero. Es decir, si se toma var guardada en 0xAAAA y un puntero pvar, su contenido seria 0xAAAA; mientras que si pvar esta almacenada en 0xABCD y se abre un doble puntero ppvar, su valor seria el 0xABCD. EStos funcionan para le trabajo con arreglos multidimensionales y/o bases de datos.
+
+20. Es usada en los _header files_ para inicializar structs, enums o prototipos de funciones. Lo que quiere decir esto es que solo se definira una unica vez, entonces la primera vez qu eel compilador se encuentre con esta sentencia, definira lo que este dentro, pero si se la vuelve a encontrar mas adelante en la compilacion, no redefinira lo qu eeste adentro, ya que significa _if not defined_, hacienod alusion a que solo se defina su contenido cuando sea algo totalmente nuevo para el programa.
+
 21. El puntero _this_ sirve para referenciar un miembro de un objeto instanciado de una clase. Se usa dentro de los métodos de una msima clase para que cada objeto acceda a sus propios miembros.<sup>1</sup> Por ejemplo, si se tiene una clase Perro y se tiene un método donde se necesita hacer referencia a la característica de su color de pelaje, se puede usar este puntero como ***this->color*** para acceder a esa característica in tener que referenciar directamente al mismo objeto.
-
 
 22. Las diferencias entre listas y arrays va principalmente en torno a su tamano, tipos y la indexacion. Primero, los arrays deben ser inicializados con un tamano fijo, mientras que las listas son dinamicas en su ajuste de tamano. Luego, los tipos de datos de un array deben ser todos iguales, mientras que en una lista puede tener varios tipos de datos. Tambien, se tiene que los elementos de los arrays son accesibles por medio de indices (array[i], por ejemplo); mientras que los elementos de las listas son unicamente accesibles por iteraciones.
 
