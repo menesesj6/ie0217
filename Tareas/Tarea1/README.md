@@ -21,6 +21,14 @@ $ firefox html/index.html
 
 ## Parte teórica
 
+### Investigación Doxygen
+
+Doxygen es un programa que se encarga de generar la documentación para un proyecto de software. Como funciona es que se debe comentar con un formato especial los archivos de código fuente. Al hacer esto e ingresar el directorio de código fuente en Doxywizard (Doxygen GUI), este programa genera una documentación en dos formatos, HTML y Látex. Estas documentaciones traen una especificación de funciones, clases, macros, variables importantes y demás con descripciones largas y cortas; al igual para los archivos. 
+
+### Investigación formato Markdown (.md)
+
+El Markdown es un estilo de escritura que funciona para darle formato al texto simple. Por medio de reglas de sintaxis especificas es posible darle formato a cualquier texto, que puede ser escrito en prosa. Por lo general, este formato es usado para los README en los repertorios de Git, donde se incluyen aclaraciones del repertorio, informacion ectra e instrucciones de funcionamiento. 
+
 ### Preguntas
 
 1. La diferencia entre C y C++ gira en torno al hecho que C++ es un lenguaje orientado a objetos, mientras que C no lo es. Esto quiere decir que en C++ se pueden crear clases e instanciarla como objetos, al igual que en otros lenguajes como Python.
@@ -79,19 +87,8 @@ $ firefox html/index.html
 
 20. Es usada en los _header files_ para inicializar structs, enums o prototipos de funciones. Lo que quiere decir esto es que solo se definira una unica vez, entonces la primera vez qu eel compilador se encuentre con esta sentencia, definira lo que este dentro, pero si se la vuelve a encontrar mas adelante en la compilacion, no redefinira lo qu eeste adentro, ya que significa _if not defined_, hacienod alusion a que solo se defina su contenido cuando sea algo totalmente nuevo para el programa.
 
-21. El puntero _this_ sirve para referenciar un miembro de un objeto instanciado de una clase. Se usa dentro de los métodos de una msima clase para que cada objeto acceda a sus propios miembros.<sup>1</sup> Por ejemplo, si se tiene una clase Perro y se tiene un método donde se necesita hacer referencia a la característica de su color de pelaje, se puede usar este puntero como ***this->color*** para acceder a esa característica in tener que referenciar directamente al mismo objeto.
+21. El puntero _this_ sirve para referenciar un miembro de un objeto instanciado de una clase. Se usa dentro de los métodos de una msima clase para que cada objeto acceda a sus propios miembros. Por ejemplo, si se tiene una clase Perro y se tiene un método donde se necesita hacer referencia a la característica de su color de pelaje, se puede usar este puntero como ***this->color*** para acceder a esa característica in tener que referenciar directamente al mismo objeto.
 
 22. Las diferencias entre listas y arrays va principalmente en torno a su tamano, tipos y la indexacion. Primero, los arrays deben ser inicializados con un tamano fijo, mientras que las listas son dinamicas en su ajuste de tamano. Luego, los tipos de datos de un array deben ser todos iguales, mientras que en una lista puede tener varios tipos de datos. Tambien, se tiene que los elementos de los arrays son accesibles por medio de indices (array[i], por ejemplo); mientras que los elementos de las listas son unicamente accesibles por iteraciones.
 
 23. Los _memory leaks_ son problemas que ocurren a la hora de trabajar con lenguajes de programación con manejo manual de la memoria, como lo son C y C++ cuando se trabaja con memoria dinámica. Esto ocurre cuando no se desocupa de manera correcta la memoria empleada que ya no se necesita, por lo que un programa empieza a abarcar más memoria de la que en serio necesita, ocupando grandes cantidades de RAM, ocasionando una caída de rendimiento y, eventualmente, el cierre total del progrm o el agotameinto de los recursos.
-
-### Investigación Doxygen
-
-
-
-### Investigación formato Markdown (.md)
-
-El Markdown es un estilo de escritura que funciona para darle formato al texto simple. Por medio de reglas de sintaxis especificas es posible darle formato a cualquier texto, que puede ser escrito en prosa. Por lo general, este formato es usado para los README en los repertorios de Git, donde se incluyen aclaraciones del repertorio, informacion ectra e instrucciones de funcionamiento. 
-
-## Referencias
-<sup>1</sup> Microsoft, 15/12/2023. https://learn.microsoft.com/es-es/cpp/cpp/this-pointer?view=msvc-170
