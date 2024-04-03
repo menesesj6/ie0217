@@ -69,13 +69,16 @@ $ firefox html/index.html
 
 16.
 17.
-18.
+
+18. Al usar un puntero para apuntar a un array, ese puntero guardará la dirección de memoria del primer elemento de dicho arreglo. Es decir, si se tiene un arreglo Array y se apunta a este por pArray, el valor de pArray será el número hexadecimal (posición en memoria) de Array[0]. Para acceder a los otros elementos, se puede usar aritmética de punteros, pues como se tiene un solo tipo de datos en un array, la cantida dde bytes ocupados por cada elemento son iguales, entonces se puede agarrar pArray e irle sumando para acceder a los otros valores del array.
 19.
+
 20.
 21. El puntero _this_ sirve para referenciar un miembro de un objeto instanciado de una clase. Se usa dentro de los métodos de una msima clase para que cada objeto acceda a sus propios miembros.<sup>1</sup> Por ejemplo, si se tiene una clase Perro y se tiene un método donde se necesita hacer referencia a la característica de su color de pelaje, se puede usar este puntero como ***this->color*** para acceder a esa característica in tener que referenciar directamente al mismo objeto.
 
 
-22.
+22. Las diferencias entre listas y arrays va principalmente en torno a su tamano, tipos y la indexacion. Primero, los arrays deben ser inicializados con un tamano fijo, mientras que las listas son dinamicas en su ajuste de tamano. Luego, los tipos de datos de un array deben ser todos iguales, mientras que en una lista puede tener varios tipos de datos. Tambien, se tiene que los elementos de los arrays son accesibles por medio de indices (array[i], por ejemplo); mientras que los elementos de las listas son unicamente accesibles por iteraciones.
+
 23. Los _memory leaks_ son problemas que ocurren a la hora de trabajar con lenguajes de programación con manejo manual de la memoria, como lo son C y C++ cuando se trabaja con memoria dinámica. Esto ocurre cuando no se desocupa de manera correcta la memoria empleada que ya no se necesita, por lo que un programa empieza a abarcar más memoria de la que en serio necesita, ocupando grandes cantidades de RAM, ocasionando una caída de rendimiento y, eventualmente, el cierre total del progrm o el agotameinto de los recursos.
 
 ### Investigación Doxygen
@@ -83,6 +86,8 @@ $ firefox html/index.html
 
 
 ### Investigación formato Markdown (.md)
+
+El Markdown es un estilo de escritura que funciona para darle formato al texto simple. Por medio de reglas de sintaxis especificas es posible darle formato a cualquier texto, que puede ser escrito en prosa. Por lo general, este formato es usado para los README en los repertorios de Git, donde se incluyen aclaraciones del repertorio, informacion ectra e instrucciones de funcionamiento. 
 
 ## Referencias
 <sup>1</sup> Microsoft, 15/12/2023. https://learn.microsoft.com/es-es/cpp/cpp/this-pointer?view=msvc-170
