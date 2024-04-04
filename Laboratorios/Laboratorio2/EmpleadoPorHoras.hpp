@@ -3,7 +3,7 @@
 
 #include "Empleado.hpp"
 
-// NUeva clase por herencia
+// NUeva clase por herencia publica
 class EmpleadoPorHoras : public Empleado {
     private: // Accesible solo por esta clase o funciones amigas
         int horasTrabajadas;

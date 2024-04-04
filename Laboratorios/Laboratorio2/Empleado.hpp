@@ -3,10 +3,10 @@
 
 #include <string>
 
-// Crear clase
+// Crear clase base
 class Empleado{
     protected: // Accesibles por esta clase y derivadas
-    
+
         std::string nombre;
         int edad;
         double salario;
