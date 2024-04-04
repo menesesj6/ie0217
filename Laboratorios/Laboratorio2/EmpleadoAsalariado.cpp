@@ -1,6 +1,6 @@
 #include "EmpleadoAsalariado.hpp"
 
-// Constructor
+// Constructor por parametros
 EmpleadoAsalariado::EmpleadoAsalariado(std::string _nombre, int _edad, double _salario) :
         Empleado (_nombre, _edad, _salario) {}
 

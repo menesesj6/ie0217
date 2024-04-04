@@ -16,5 +16,4 @@ class EmpleadoPorHoras : public Empleado {
 
 };
 
-
 #endif //EMPLEADOPORHORAS_HPP
