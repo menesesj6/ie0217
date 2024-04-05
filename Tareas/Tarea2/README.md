@@ -74,7 +74,15 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 
 16. La composición es cuando un objeto es construido por la unión de otros objetos. Esto se logra al definir un miembro de una clase como un dato o método del tipo de otra clase; de esta forma, una clase se compone de instanciaciones de otra clase. 
 
-17. 
-18. 
-19. 
-20.  
+17. La sobreescritura de métodos en C++ es cuando se trabaja con clases por herencia y en la clase se define un método que ya estaba definido en la clase base. Esto lleva a que si se invoca ese método, depende de cuál tipo de clase fue instanciado para invocarlo, pero si se llama desde la clase derivada, predomina el deifnido en la clase derivada. Esto es usado para alcanzar el polimorfismo, normalmente aplicado por medio de métodos virtuales en la clase base.
+
+18. Atributo vs Método:
+    - **Atributo:** Es una de las "variables" que se definen dentro de la clase, y contienen toda la información del objeto que se instanciará.
+    - **Método:** Son las funciones definidas dentro de la clase y son usados para realizar una acción respecto a la infromación almacenada en los atributos del objeto.
+    - **Diferencia:** Atributo es una variable de cualquier tipo y el método es una función de cualquier tipo.
+
+19. Constructor y destructor. ¿Qué son?
+    - **Constructor:** Este es el encargado de inicializar la instanciación cuando se invoque un objeto del tipo de la clase. 
+    - **Destructor:** Es el opuesto del constructor, se encarga de eliminar la instanciación de dicha clase una vez que se acabe el _scope_ donde fue llamado.
+
+20. La sobrecarga de operadores en el POO hace referencia a cambiarle la funcionalidad a un operador dentro de la definición de una clase. Esto para que al aplicar ese operador a datos del tipo de la clase, se comporte de una forma específica. Por ejemplo, si se tiene una clase Fracción, se tiene sobrecarga el operador + y - para que cuando se sumen o resten dos objetos tipo Fracción, funcione como una suma de fracción correcta.
