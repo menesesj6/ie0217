@@ -58,11 +58,22 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 
 11. Los punteros en la POO son útiles para el acceso a los miembros (atributos o métodos) de una instanciación de una clase. Por ejemplo, emplear el puntero _this_ para la definición de los métodos miembro de la clase, para manioular directamente los atributos en memoria y qu ese cambie la instanciación. De la misma forma, si se deseara pasar un objeto como parámetro a una función para modificar sus atributos, s epuede pasar un puntero del tipo de la clase y de esta forma se usa el operador **->** para acceder, modificar y demás sus miembros.
 
-12. 
-13. 
-14. 
-15. 
-16. 
+12. El prototipo de una función es la declaración de la misma antes de definirla, donde se define su nombre, tipo y sus parámetros con sus tipos respectivos. De esta forma, el compilador ya sabe que esta función existe, aunque esta se defina despues de la función main. Esto es útil para lso _header files_ del programa, pues en el header se declaran los prototipos y en el archivo fuente, se deifnen.
+
+13. Tipos de miembros de clase:
+    - **Propiedades o campos:** Son las variables, representan la información que compone  aun objeto, tienen procedimientos de _get_ y de _set_, por lo general
+    - **Métodos:** Acciones qu eel objeto puede realizar.
+    - **Constructores:** Inicializan la instanciación de la clase. Es lo primero que se ejecuta al momento que se crea un objeto.
+    - **Destructores:** Destruyen el objeto una vez qu eel scope donde se deifnió termina.
+    - **Eventos:** Cuando algo ocurre, se le informa de esto a otras clases y objetos por meido de la habilitación de una clase u objeto. Lo qu einicia el evento es llamado publicador y quienes lo reciben son suscriptores.
+    - **Clases anidadas:** Una clase definida dentro de otra clase
+
+14. Los _memory leaks_ son problemas que ocurren a la hora de trabajar con lenguajes de programación con manejo manual de la memoria, como lo son C y C++ cuando se trabaja con memoria dinámica. Esto ocurre cuando no se desocupa de manera correcta la memoria empleada que ya no se necesita, por lo que un programa empieza a abarcar más memoria de la que en serio necesita, ocupando grandes cantidades de RAM, ocasionando una caída de rendimiento y, eventualmente, el cierre total del progrm o el agotameinto de los recursos.
+
+15. Las herencias en C++ es cuando se toma una clase base y se crea otra clase, tomando como punto de inicio la primera base. Es decir, si se tiene una claseA y una claseB que hereda de A, claseB tendrá todo lo de A más lo que uno le añada, ya sea métodos o atributos. La gran ventaja de la herencia es que permite "reciclar código" y así no tener que definir varias veces lógicas iguales o comportamientos similares. Los tipos de herencia son Jerárquica, Multinivel y Múltiple. La primera es cuando una sola clase base le hereda a varias clases derivadas. Luego, la multinivel es cuando se lleva una escaler de herencias, como que se tenga claseA como la base y claseB hereda de claseA y claseC hereda de claseB. Por último, la múltiple es cuando una sola clase derivada hereda de varias clases madre.
+
+16. La composición es cuando un objeto es construido por la unión de otros objetos. Esto se logra al definir un miembro de una clase como un dato o método del tipo de otra clase; de esta forma, una clase se compone de instanciaciones de otra clase. 
+
 17. 
 18. 
 19. 
