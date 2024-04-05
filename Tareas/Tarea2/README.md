@@ -42,12 +42,22 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 
 5. El encapsulamiento en C++ va de la mano con el ocultamiento de miembros de una clase. Esto se logra al limitar el scope de los atributos de una clase a privados o protegidos, cosa que los deja inaccesibles para funciones y clases fuera de la misma de la que son parte. Es así como se logra el encapsulamiento de la información para evitar el acceso externo. 
 
-6. 
-7. 
-8. 
-9. 
-10. 
-11. 
+6. Propósitos del constructor y el destructor:
+    - **Constructor:** Este es el encargado de inicializar la instanciación cuando se invoque un objeto del tipo de la clase. Se encarga de todo lo ocurrido a la hora de crear un objteto, como asignar los atributos, sea a mano o por parámetros, imprimir un mensaje que confirme la instanciación, etc.
+    - **Destructor:** Es el opuesto del constructor, se encarga de eliminar la instanciación de dicha clase una vez que se acabe el _scope_ donde fue llamado.
+
+7. Las clases abstractas son aquellas que no pueden ser instanciadas en un objeto, ya que contienen una función virtual pura y poseen solo generalidades para ser aplicados en clases derivadas de esta. Sirven para hacer un "molde" muy general y que clases más concretas hagan provecho d eus herencia y sobreescriban sus funciones virtuales.
+
+8. Los constructores de copia es un constructor que permite inicializar un objeto con los valores de otro objeto del mismo tipo. El compilador tiene constructores de copia incluidos pero para inicializaciones sencillas, si se ocupa algo más complejo, sí se debe definir la funcion a mano en la clase.
+
+9. Diferencia entre tipos de polimorfismo:
+    - **Estático:** Este funciona con _early binding_, lo que significa qu ela memoria reservada para el polimorfismo es asignada durante la compilación; y es dado más que nada por la sobrecarga de los métodos, sobrecarga de operadores, etc.
+    - **Dinámico:** Este funciona con _late binding_, lo que significa que la memoria que se le asignará al polimorfismo es asignada durante el tiempo de ejecución, de manera dinámica; y esto es dado por las funciones virtuales en la clase base, que son sobreescritos en sus clases derivadas respectivas.
+
+10. Las clase sanidadas son clases que se definen y funcionan dentro del scope de otra clase. Esta clase no cuenta con características especiales de acceso, pues sigue las mismas reglas de acceso.
+
+11. Los punteros en la POO son útiles para el acceso a los miembros (atributos o métodos) de una instanciación de una clase. Por ejemplo, emplear el puntero _this_ para la definición de los métodos miembro de la clase, para manioular directamente los atributos en memoria y qu ese cambie la instanciación. De la misma forma, si se deseara pasar un objeto como parámetro a una función para modificar sus atributos, s epuede pasar un puntero del tipo de la clase y de esta forma se usa el operador **->** para acceder, modificar y demás sus miembros.
+
 12. 
 13. 
 14. 
