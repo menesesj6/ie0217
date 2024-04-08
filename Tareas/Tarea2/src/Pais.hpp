@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include "Menu.hpp"
 using namespace std;
 
 #define MAX_PAISES 54
@@ -13,15 +14,18 @@ class Pais{
         // Atributos de un pais que se heredaran
         bool tech5g;
         bool aeropuerto;
-        int id;
         int habitantes;
+        double pib, continentePais;
+        // Si tiene o no centro de investigacion
+        bool invcenter;
+        //Constructor
+        Pais(bool _tech5g, bool _aeropuerto, bool _invcenter, int _habitantes, int continentePais);
         // Metodo de calculo del PIB
-        int calculatePIB();
+        double calculatePIB();
     protected:
         int id; // ID del pais
-    private:
         // Sobrecarga del ==
-        Pais operator== (Pais p1);
+        bool operator== (const Pais otro);
 };
 
 #endif

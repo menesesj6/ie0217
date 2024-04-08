@@ -1,4 +1,7 @@
 #include "PaisEnDesarrollo.hpp"
 
-PaisEnDesarrollo::PaisEnDesarrollo(){
+PaisEnDesarrollo::PaisEnDesarrollo(): Pais(tech5g, aeropuerto, invcenter, habitantes, continentePais){
+};
+
+PaisEnDesarrollo::~PaisEnDesarrollo(){
 };

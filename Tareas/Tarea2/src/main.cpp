@@ -1,10 +1,13 @@
 #include "Planeta.hpp"
-#include "Menu.hpp"
+#include"Funciones.hpp"
+
 using namespace std;
 
 int main(){
-    Planeta Tierra;
-    int option;
+    // COntinente y planeta bases
+    Continente America("America"), Asia("Asia"), Africa("Africa"), Europa("Europa"), Oceania("Oceania");
+    Planeta Tierra("Tierra", &America, &Asia, &Africa, &Europa, &Oceania);
+    int option; // Eleccion del menu
     do{
         cout << "\nMENU: Administracion Mundial" << endl;
         cout << "1. Desplegar la informacion del planeta. " << endl;
@@ -20,6 +23,7 @@ int main(){
         switch(option){
             // Configuracion de dificultad
             case INFO:
+                displayInfo(&Tierra);
                 break;
 
             // Inicio del juego
@@ -28,6 +32,7 @@ int main(){
 
             // Agregar palabras al diccionario
             case AGREGAR:
+                addCountry();
                 break;
 
             // Ver diccionario
@@ -35,7 +40,7 @@ int main(){
                 break;
 
             // Salir del juego
-            case SALIR;
+            case SALIR:
                 break;
 
             // Caso default, eleccion invalida

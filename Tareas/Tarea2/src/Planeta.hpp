@@ -6,11 +6,16 @@
 class Planeta{
     public:
         // Atributos
-        string name;
-        Continente continentesLista[5];
+        Continente* c1;
+        Continente* c2;
+        Continente* c3;
+        Continente* c4;
+        Continente* c5;
+        string planetName;
+        Continente* listaContinentes[5] = {c1, c2, c3, c4, c5};
         // Constructor y destructor
-        Planeta();
-        ~Planeta();
+        Planeta(string _planetName, Continente* _c1, Continente* _c2, Continente* _c3, Continente* _c4, Continente* _c5);
+        virtual ~Planeta();
 };
 
 #endif

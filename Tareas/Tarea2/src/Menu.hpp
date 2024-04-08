@@ -3,5 +3,13 @@ enum Opciones {
     COMPARAR,
     AGREGAR,
     QUITAR,
-    SALIR,
+    SALIR
+};
+
+enum Continentes{
+    AMERICA = 1,
+    ASIA,
+    AFRICA,
+    EUROPA,
+    OCEANIA
 };
