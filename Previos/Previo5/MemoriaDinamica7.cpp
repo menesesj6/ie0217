@@ -38,7 +38,7 @@ int main() {
         cout << new_ptr[i] << endl;
     }
 
-    // LIberar la memoria abarcada
+    // Liberar la memoria abarcada
     free(new_ptr);
 
     return 0;
