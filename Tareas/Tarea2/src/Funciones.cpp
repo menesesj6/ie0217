@@ -71,8 +71,7 @@ void addPEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra){
 
 Pais addCountry(Planeta* tierra){
     string pais;
-    int type = 0; 
-    int aux, habs, cont;
+    int aux = 0, habs = 0, cont = 0;
     bool _aeropuerto = false;
     bool _tech5g = false;
     bool center = false;
@@ -112,6 +111,7 @@ Pais addCountry(Planeta* tierra){
     // Centro de investigacion
     cout << "\nTiene centro de investigacion y desarrollo?\n0. NO\n1. Si \n Seleccion: ";
     cin >> aux;
+    if (aux == 1) {center = true;}
     
     Pais p(pais, _tech5g, _aeropuerto, center, habs, cont);
     return p;
@@ -162,17 +162,19 @@ void generateIDS(Planeta* tierra){
 
 void compareCountries(Planeta* tierra){
     string p1, p2;
-    PaisPrimerMundo* ptr1;
-    PaisPrimerMundo* ptr2;
+    Pais* ptr1;
+    Pais* ptr2;
     bool result;
     cout << "Ingrese los nombres de los paises que desea comparar." << endl;
     cout << "Pais 1: " << endl;
     cin.ignore();
     getline(cin, p1);
     cout << "\nPais 2: " << endl;
-    cin.ignore();
     getline(cin, p2);
 
+    cout << "\n" << p1 << " == " << p2 << "?   ";
+
+    // Revisar PPM
     for (int i = 0; i < tierra->ppmtot; i++){
         if(tierra->listaPPMTotal[i]->nameCountry == p1){
             ptr1 = tierra->listaPPMTotal[i];
@@ -180,7 +182,21 @@ void compareCountries(Planeta* tierra){
             ptr2 = tierra->listaPPMTotal[i];
         }
     }
-    if(*ptr1 == *ptr2){
-        cout << ptr1->nameCountry << " y " << ptr2->nameCountry << " son del mismo tipo!";
+
+    // Revisar PED
+    for (int i = 0; i < tierra->pedtot; i++){
+        if(tierra->listaPEDTotal[i]->nameCountry == p1){
+            ptr1 = tierra->listaPEDTotal[i];
+        }else if(tierra->listaPEDTotal[i]->nameCountry == p2){
+            ptr2 = tierra->listaPEDTotal[i];
+        }
     }
+
+    
+    if(ptr1 == ptr2){
+        cout << "Si, son del mismo tipo!" << endl;
+    }else{
+        cout << "No, no son el mismo tipo!" << endl;
+    }
+    
 }

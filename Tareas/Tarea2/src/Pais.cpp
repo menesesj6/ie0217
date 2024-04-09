@@ -14,34 +14,9 @@ double Pais::calculatePIB(){
     return rand() % RAND_MAX + 3.17e7;
 }
 
-bool Pais::operator== (const Pais &otro){
-    int primos1 = 0, primos2 = 0;
-    bool isPrime = false;
-    bool otroIsPrime = false;
-    for(int i = 1;i <= this->id; ++i){
-	    if (this->id % i == 0 )
-	        ++primos1; 
-	}
-
-    for(int i = 1;i <= otro.id; ++i){
-	    if (otro.id % i == 0 )
-	        ++primos2; 
-	}
-
-    if (primos1 == 2){
-        isPrime = true;
-    }
-
-    if (primos2 == 2){
-        otroIsPrime = true;
-    }
-    
-    if(isPrime && otroIsPrime) {
-        cout << this->nameCountry << " y " << otro.nameCountry << " son del mismo tipo!" << endl;
-        return true;}
-    else {
-        cout << this->nameCountry << " y " << otro.nameCountry << " no son del mismo tipo!" << endl;
-        return false;}
+bool Pais::operator== (const Pais* otro){
+    int thisID = this->id;
+    int otroID = otro->id;
 }
 
 void Pais::setID(int _id){

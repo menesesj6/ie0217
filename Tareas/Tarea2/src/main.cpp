@@ -9,7 +9,8 @@ int main(){
     Planeta Tierra("Tierra", &America, &Asia, &Africa, &Europa, &Oceania);
     int option; // Eleccion del menu
 
-   generateIDS(&Tierra);
+    // Generar IDS posibles
+    generateIDS(&Tierra);
 
     // Paises iniciales
     PaisPrimerMundo USA("Estados Unidos", true, true, true, 333300000, AMERICA);
@@ -67,12 +68,12 @@ int main(){
 
         if(option == AGREGAR){
             Pais p = addCountry(&Tierra);
-            if(p.tech5g == false && p.invcenter == false){
-                PaisEnDesarrollo p1(p.nameCountry, p.tech5g, p.aeropuerto, p.invcenter, p.habitantes, p.continentePais);
-                addPEDCountries(&p1, Tierra.listaContinentes[p.continentePais - 1], &Tierra);
-            }else{
-                PaisPrimerMundo p2(p.nameCountry, p.tech5g, p.aeropuerto, p.invcenter, p.habitantes, p.continentePais);
-                addPPMCountries(&p2, Tierra.listaContinentes[p.continentePais - 1], &Tierra);
+            if(p.tech5g || p.invcenter){
+                PaisPrimerMundo p1(p.nameCountry, p.tech5g, p.aeropuerto, p.invcenter, p.habitantes, p.continentePais);
+                addPPMCountries(&p1, Tierra.listaContinentes[p.continentePais - 1], &Tierra);
+            }else if (!p.tech5g && !p.invcenter){
+                PaisEnDesarrollo p2(p.nameCountry, p.tech5g, p.aeropuerto, p.invcenter, p.habitantes, p.continentePais);
+                addPEDCountries(&p2, Tierra.listaContinentes[p.continentePais - 1], &Tierra);
             };
         }
     }while(option != SALIR);
