@@ -10,13 +10,17 @@ using namespace std;
 #define TOTAL_PAISES 195
 
 class Pais{
+    protected:
+        int id; // ID del pais
+        // Sobrecarga del ==
+        bool operator== (Pais otro);
     public:
         // Atributos de un pais que se heredaran
         string nameCountry;
         bool tech5g;
         bool aeropuerto;
-        int habitantes;
-        double pib, continentePais;
+        int habitantes, continentePais;
+        double pib;
         // Si tiene o no centro de investigacion
         bool invcenter;
         //Constructor
@@ -24,10 +28,6 @@ class Pais{
             bool _invcenter, int _habitantes, int continentePais);
         // Metodo de calculo del PIB
         double calculatePIB();
-    protected:
-        int id; // ID del pais
-        // Sobrecarga del ==
-        bool operator== (const Pais otro);
 };
 
 #endif

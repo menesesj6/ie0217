@@ -21,8 +21,14 @@ void displayInfo(Planeta *tierra){
         }
     }
 
+    cout << "\nPAISES DE PRIMER MUNDO" << endl;
     for (int i = 0; i < tierra->ppmtot; i++){
         tierra->listaPPMTotal[i]->displayPPM();
+    }
+
+    cout << "\nPAISES EN DESARROLLO" << endl;
+    for (int i = 0; i < tierra->pedtot; i++){
+        tierra->listaPEDTotal[i]->displayPED();
     }
     cout << "\n-------------------" << endl;
 }

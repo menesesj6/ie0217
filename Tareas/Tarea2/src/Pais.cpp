@@ -10,8 +10,7 @@ Pais::Pais(string _nameCountry, bool _tech5g, bool _aeropuerto, bool _invcenter,
 }
 
 double Pais::calculatePIB(){
-    pib = rand() % RAND_MAX + 3.17e7;
-    return pib;
+    return rand() % RAND_MAX + 3.17e7;
 }
 
 bool Pais::operator== (Pais p1){

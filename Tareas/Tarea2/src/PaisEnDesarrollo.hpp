@@ -10,6 +10,7 @@ class PaisEnDesarrollo : public Pais{
         PaisEnDesarrollo(string _nameCountry, bool _tech5g, bool _aeropuerto, 
                         bool _invcenter, int _habitantes, int continentePais);
         virtual ~PaisEnDesarrollo();
+        void displayPED() const;
 };
 
 #endif
