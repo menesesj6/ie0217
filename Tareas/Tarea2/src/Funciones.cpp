@@ -20,8 +20,26 @@ void displayInfo(Planeta *tierra){
             count++;
         }
     }
+
+    for (int i = 0; i < tierra->ppmtot; i++){
+        tierra->listaPPMTotal[i]->displayPPM();
+    }
     cout << "\n-------------------" << endl;
 }
+
+void basePPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra){
+    if(ppm->aeropuerto){cont->avion = true;}
+    cont->ppm++;
+    tierra->listaPPMTotal[tierra->ppmtot] = ppm;
+    tierra->ppmtot++;
+};
+
+void basePEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra){
+    if(ped->aeropuerto){cont->avion = true;}
+    cont->ped++;
+    tierra->listaPEDTotal[tierra->pedtot] = ped;
+    tierra->pedtot++;
+};
 
 void addCountry(Planeta* tierra){
     string pais;
@@ -66,7 +84,7 @@ void addCountry(Planeta* tierra){
     cin >> aux;
     if (aux == 1) {!center;}
 
-    Pais p(pais, _tech5g, _aeropuerto, center, habs, cont);
+
 } 
 
 void quitCountry(){
@@ -77,16 +95,3 @@ int generatePrimeNumbers(){
     return 0;
 }
 
-void basePPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra){
-    if(ppm->aeropuerto){cont->avion = true;}
-    cont->ppm++;
-    tierra->listaPPMTotal[tierra->ppmtot] = ppm;
-    tierra->ppmtot++;
-};
-
-void basePEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra){
-    if(ped->aeropuerto){cont->avion = true;}
-    cont->ped++;
-    tierra->listaPEDTotal[tierra->pedtot] = ped;
-    tierra->pedtot++;
-};

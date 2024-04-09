@@ -10,12 +10,16 @@ int main(){
     int option; // Eleccion del menu
 
     // Paises iniciales
-   
    PaisPrimerMundo USA("Estados Unidos", true, true, true, 333300000, AMERICA);
-   PaisEnDesarrollo Cuba("Cuba", false, false, false, 11000000, AMERICA);
+   PaisPrimerMundo China("China", true, true, true, 1412000000, ASIA);
+   PaisEnDesarrollo Cuba("Cuba", false, true, false, 11000000, AMERICA);
+   PaisEnDesarrollo Uganda("Uganda", false, false, false, 47000000, AFRICA);
     
-    basePEDCountries(&Cuba, &America, &Tierra);
     basePPMCountries(&USA, &America, &Tierra);
+    basePPMCountries(&China, &Asia, &Tierra);
+    basePEDCountries(&Cuba, &America, &Tierra);
+    basePEDCountries(&Uganda, &Africa, &Tierra);
+    
     do{
         cout << "\nMENU: Administracion Mundial" << endl;
         cout << "1. Desplegar la informacion del planeta. " << endl;
@@ -49,6 +53,7 @@ int main(){
 
             // Salir del juego
             case SALIR:
+                cout << "Saliendo del sistema..." << endl;
                 break;
 
             // Caso default, eleccion invalida

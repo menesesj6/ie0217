@@ -20,7 +20,8 @@ class Pais{
         // Si tiene o no centro de investigacion
         bool invcenter;
         //Constructor
-        Pais(string _nameCountry, bool _tech5g, bool _aeropuerto, bool _invcenter, int _habitantes, int continentePais);
+        Pais(string _nameCountry, bool _tech5g, bool _aeropuerto, 
+            bool _invcenter, int _habitantes, int continentePais);
         // Metodo de calculo del PIB
         double calculatePIB();
     protected:

@@ -8,12 +8,14 @@ class PaisPrimerMundo : public Pais{
         string typePPM = "Primer mundo";
         int workers;
         // Constructor y destructor
-        PaisPrimerMundo(string _nameCountry, bool _tech5g, bool _aeropuerto, bool _invcenter, int _habitantes, int continentePais);
+        PaisPrimerMundo(string _nameCountry, bool _tech5g, bool _aeropuerto, bool _invcenter, 
+                        int _habitantes, int continentePais);
         virtual ~PaisPrimerMundo();
-        void displayPaisPPM();
-    protected:
+        void displayPPM() const;
+    private:
         // Metodo de calculo de trabajadores
-        int getWorkers();
+        void getWorkers();
+
 
 };
 
