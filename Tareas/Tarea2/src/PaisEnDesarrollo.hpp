@@ -8,7 +8,7 @@ class PaisEnDesarrollo : public Pais{
         string typeED = "En desarrollo";
         // COnstructor y destructor
         PaisEnDesarrollo(string _nameCountry, bool _tech5g, bool _aeropuerto, 
-                        bool _invcenter, int _habitantes, int continentePais);
+                        bool _invcenter, int _habitantes, int _continentePais);
         virtual ~PaisEnDesarrollo();
         void displayPED() const;
 };

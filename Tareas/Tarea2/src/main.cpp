@@ -10,15 +10,15 @@ int main(){
     int option; // Eleccion del menu
 
     // Paises iniciales
-   PaisPrimerMundo USA("Estados Unidos", true, true, true, 333300000, AMERICA);
-   PaisPrimerMundo China("China", true, true, true, 1412000000, ASIA);
-   PaisEnDesarrollo Cuba("Cuba", false, true, false, 11000000, AMERICA);
-   PaisEnDesarrollo Uganda("Uganda", false, false, false, 47000000, AFRICA);
+    PaisPrimerMundo USA("Estados Unidos", true, true, true, 333300000, AMERICA);
+    PaisPrimerMundo China("China", true, true, true, 1412000000, ASIA);
+    PaisEnDesarrollo Cuba("Cuba", false, true, false, 11000000, AMERICA);
+    PaisEnDesarrollo Uganda("Uganda", false, false, false, 47000000, AFRICA);
     
-    basePPMCountries(&USA, &America, &Tierra);
-    basePPMCountries(&China, &Asia, &Tierra);
-    basePEDCountries(&Cuba, &America, &Tierra);
-    basePEDCountries(&Uganda, &Africa, &Tierra);
+    addPPMCountries(&USA, &America, &Tierra);
+    addPPMCountries(&China, &Asia, &Tierra);
+    addPEDCountries(&Cuba, &America, &Tierra);
+    addPEDCountries(&Uganda, &Africa, &Tierra);
     
     do{
         cout << "\nMENU: Administracion Mundial" << endl;
@@ -49,6 +49,7 @@ int main(){
 
             // Ver diccionario
             case QUITAR:
+                quitCountry(&Tierra);
                 break;
 
             // Salir del juego

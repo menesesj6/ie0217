@@ -4,7 +4,6 @@
 
 void displayInfo(Planeta *tierra);
 void addCountry(Planeta *tierra);
-void basePPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra);
-void basePEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra);
-void quitCountry();
-int generatePrimeNumbers();
+void addPPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra);
+void addPEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra);
+void quitCountry(Planeta* tierra);

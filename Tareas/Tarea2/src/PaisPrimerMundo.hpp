@@ -9,7 +9,7 @@ class PaisPrimerMundo : public Pais{
         int workers;
         // Constructor y destructor
         PaisPrimerMundo(string _nameCountry, bool _tech5g, bool _aeropuerto, bool _invcenter, 
-                        int _habitantes, int continentePais);
+                        int _habitantes, int _continentePais);
         virtual ~PaisPrimerMundo();
         void displayPPM() const;
     private:

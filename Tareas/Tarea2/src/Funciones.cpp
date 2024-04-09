@@ -13,6 +13,26 @@ void displayInfo(Planeta *tierra){
     }
 
     // COntinentes con avion
+
+    //Se vuelven a poner todos sin avion
+    for(int i = 0; i < 5; i++){
+        tierra->listaContinentes[i]->avion = false;
+    }
+
+    // Se revisa si los PPM aportan avion
+    for(int i = 0; i < tierra->ppmtot; i++){
+        if(tierra->listaPPMTotal[i]->aeropuerto){
+            tierra->listaContinentes[tierra->listaPPMTotal[i]->continentePais - 1]->avion = true;
+        }
+    }
+
+    // Se revisa si los PED aportan avion
+    for(int i = 0; i < tierra->pedtot; i++){
+        if(tierra->listaPEDTotal[i]->aeropuerto){
+            tierra->listaContinentes[tierra->listaPEDTotal[i]->continentePais - 1]->avion = true;
+        }
+    }
+
     cout << "\nContinentes por los que pasa el avion:" << endl;
     for (int i = 0; i < 5; i++){
         if(tierra->listaContinentes[i]->avion){
@@ -33,14 +53,14 @@ void displayInfo(Planeta *tierra){
     cout << "\n-------------------" << endl;
 }
 
-void basePPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra){
+void addPPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra){
     if(ppm->aeropuerto){cont->avion = true;}
     cont->ppm++;
     tierra->listaPPMTotal[tierra->ppmtot] = ppm;
     tierra->ppmtot++;
 };
 
-void basePEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra){
+void addPEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra){
     if(ped->aeropuerto){cont->avion = true;}
     cont->ped++;
     tierra->listaPEDTotal[tierra->pedtot] = ped;
@@ -49,6 +69,7 @@ void basePEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra){
 
 void addCountry(Planeta* tierra){
     string pais;
+    int type = 0; 
     int aux, habs, cont;
     bool _aeropuerto = false;
     bool _tech5g = false;
@@ -59,7 +80,8 @@ void addCountry(Planeta* tierra){
 
     // Pedir nombre
     cout << "\nNombre del pais: ";
-    cin >> pais;
+    cin.ignore();
+    getline(cin, pais);
 
     // Pedir continente
     cout << "\nContinentes: " << endl;
@@ -78,26 +100,57 @@ void addCountry(Planeta* tierra){
     // Tecnologia 5G
     cout << "\nTiene tecnologia 5G?\n0. NO\n1. Si \n Seleccion: ";
     cin >> aux;
-    if (aux == 1) {!_tech5g;}
+    if (aux == 1) {_tech5g = true;}
 
     // Aeropuerto
     cout << "\nTiene aeropuerto?\n0. NO\n1. Si \n Seleccion: ";
     cin >> aux;
-    if (aux == 1) {!_aeropuerto;}
+    if (aux == 1) {_aeropuerto = true;}
 
     // Centro de investigacion
     cout << "\nTiene centro de investigacion y desarrollo?\n0. NO\n1. Si \n Seleccion: ";
     cin >> aux;
-    if (aux == 1) {!center;}
 
-
+    if(_tech5g){type = 1;}
+    else if(center){type = 1;}
+    
+    cout << type << endl;
+    if(type = 1){
+        PaisPrimerMundo p1(pais, _tech5g, _aeropuerto, center, habs, cont);
+        cout << "\nSe ha creado " << p1.nameCountry << " con exito!" << endl;
+        p1.displayPPM();
+        tierra->ppmtot++;
+        
+    }else{
+        PaisEnDesarrollo p2(pais, _tech5g, _aeropuerto, center, habs, cont);
+        cout << "\nSe ha creado " << p2.nameCountry << " con exito!" << endl;
+        p2.displayPED();
+    }
 } 
 
-void quitCountry(){
-    
+void quitCountry(Planeta* tierra){
+    string paisEliminar;
+    cout << "Cual pais desea eliminar?" << endl;
+    cin.ignore();
+    getline(cin, paisEliminar);
+    for(int i = 0; i < tierra->ppmtot; i++){
+        if(tierra->listaPPMTotal[i]->nameCountry == paisEliminar){
+            tierra->listaContinentes[(tierra->listaPPMTotal[i]->continentePais) - 1]->ppm--;
+            tierra->listaPPMTotal[i]->~PaisPrimerMundo();
+            cout << tierra->listaPPMTotal[i]->nameCountry << "ha sido eliminado." << endl;
+            tierra->ppmtot--;
+            break;
+        }
+    }
+    for(int i = 0; i < tierra->pedtot; i++){
+        if(tierra->listaPEDTotal[i]->nameCountry == paisEliminar){
+            tierra->listaContinentes[(tierra->listaPEDTotal[i]->continentePais) - 1]->ped--;
+            tierra->listaPEDTotal[i]->~PaisEnDesarrollo();
+            cout << tierra->listaPEDTotal[i]->nameCountry << "ha sido eliminado." << endl;
+            tierra->pedtot--;
+            break;
+        }
+    }
 }
 
-int generatePrimeNumbers(){
-    return 0;
-}
 
