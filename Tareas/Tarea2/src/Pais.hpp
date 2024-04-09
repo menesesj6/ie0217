@@ -6,14 +6,11 @@
 #include "Menu.hpp"
 using namespace std;
 
-#define MAX_PAISES 54
 #define TOTAL_PAISES 195
 
 class Pais{
     protected:
         int id; // ID del pais
-        // Sobrecarga del ==
-        bool operator== (Pais otro);
     public:
         // Atributos de un pais que se heredaran
         string nameCountry;
@@ -28,6 +25,9 @@ class Pais{
             bool _invcenter, int _habitantes, int _continentePais);
         // Metodo de calculo del PIB
         double calculatePIB();
+        void setID(int _id);
+        // Sobrecarga del ==
+        bool operator== (const Pais &otro);
 };
 
 #endif

@@ -9,6 +9,8 @@ int main(){
     Planeta Tierra("Tierra", &America, &Asia, &Africa, &Europa, &Oceania);
     int option; // Eleccion del menu
 
+   generateIDS(&Tierra);
+
     // Paises iniciales
     PaisPrimerMundo USA("Estados Unidos", true, true, true, 333300000, AMERICA);
     PaisPrimerMundo China("China", true, true, true, 1412000000, ASIA);
@@ -19,7 +21,7 @@ int main(){
     addPPMCountries(&China, &Asia, &Tierra);
     addPEDCountries(&Cuba, &America, &Tierra);
     addPEDCountries(&Uganda, &Africa, &Tierra);
-    
+
     do{
         cout << "\nMENU: Administracion Mundial" << endl;
         cout << "1. Desplegar la informacion del planeta. " << endl;
@@ -40,11 +42,11 @@ int main(){
 
             // Inicio del juego
             case COMPARAR:
+                compareCountries(&Tierra);
                 break;
 
             // Agregar palabras al diccionario
             case AGREGAR:
-                addCountry(&Tierra);
                 break;
 
             // Ver diccionario
@@ -61,6 +63,17 @@ int main(){
             default:
                 cout << "Ingrese uno de los numeros disponibles." << endl;
                 break;
+        }
+
+        if(option == AGREGAR){
+            Pais p = addCountry(&Tierra);
+            if(p.tech5g == false && p.invcenter == false){
+                PaisEnDesarrollo p1(p.nameCountry, p.tech5g, p.aeropuerto, p.invcenter, p.habitantes, p.continentePais);
+                addPEDCountries(&p1, Tierra.listaContinentes[p.continentePais - 1], &Tierra);
+            }else{
+                PaisPrimerMundo p2(p.nameCountry, p.tech5g, p.aeropuerto, p.invcenter, p.habitantes, p.continentePais);
+                addPPMCountries(&p2, Tierra.listaContinentes[p.continentePais - 1], &Tierra);
+            };
         }
     }while(option != SALIR);
 

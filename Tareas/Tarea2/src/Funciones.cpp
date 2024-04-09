@@ -56,18 +56,20 @@ void displayInfo(Planeta *tierra){
 void addPPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra){
     if(ppm->aeropuerto){cont->avion = true;}
     cont->ppm++;
+    ppm->setID(tierra->primeIDS[tierra->ppmtot]);
     tierra->listaPPMTotal[tierra->ppmtot] = ppm;
     tierra->ppmtot++;
 };
 
 void addPEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra){
     if(ped->aeropuerto){cont->avion = true;}
+    ped->setID(tierra->nonprimeIDS[tierra->pedtot]);
     cont->ped++;
     tierra->listaPEDTotal[tierra->pedtot] = ped;
     tierra->pedtot++;
 };
 
-void addCountry(Planeta* tierra){
+Pais addCountry(Planeta* tierra){
     string pais;
     int type = 0; 
     int aux, habs, cont;
@@ -110,47 +112,75 @@ void addCountry(Planeta* tierra){
     // Centro de investigacion
     cout << "\nTiene centro de investigacion y desarrollo?\n0. NO\n1. Si \n Seleccion: ";
     cin >> aux;
-
-    if(_tech5g){type = 1;}
-    else if(center){type = 1;}
     
-    cout << type << endl;
-    if(type = 1){
-        PaisPrimerMundo p1(pais, _tech5g, _aeropuerto, center, habs, cont);
-        cout << "\nSe ha creado " << p1.nameCountry << " con exito!" << endl;
-        p1.displayPPM();
-        tierra->ppmtot++;
-        
-    }else{
-        PaisEnDesarrollo p2(pais, _tech5g, _aeropuerto, center, habs, cont);
-        cout << "\nSe ha creado " << p2.nameCountry << " con exito!" << endl;
-        p2.displayPED();
-    }
+    Pais p(pais, _tech5g, _aeropuerto, center, habs, cont);
+    return p;
 } 
 
 void quitCountry(Planeta* tierra){
-    string paisEliminar;
-    cout << "Cual pais desea eliminar?" << endl;
-    cin.ignore();
-    getline(cin, paisEliminar);
-    for(int i = 0; i < tierra->ppmtot; i++){
-        if(tierra->listaPPMTotal[i]->nameCountry == paisEliminar){
-            tierra->listaContinentes[(tierra->listaPPMTotal[i]->continentePais) - 1]->ppm--;
-            tierra->listaPPMTotal[i]->~PaisPrimerMundo();
-            cout << tierra->listaPPMTotal[i]->nameCountry << "ha sido eliminado." << endl;
-            tierra->ppmtot--;
-            break;
-        }
-    }
-    for(int i = 0; i < tierra->pedtot; i++){
-        if(tierra->listaPEDTotal[i]->nameCountry == paisEliminar){
-            tierra->listaContinentes[(tierra->listaPEDTotal[i]->continentePais) - 1]->ped--;
-            tierra->listaPEDTotal[i]->~PaisEnDesarrollo();
-            cout << tierra->listaPEDTotal[i]->nameCountry << "ha sido eliminado." << endl;
-            tierra->pedtot--;
-            break;
-        }
+    char choice;
+    cout << "Se eliminara el ultimo pais. Desea eliminar Pais de primer mundo o en desarrollo?" << endl;
+    cout << "D. En Desarrollo" << endl;
+    cout << "P. Primer Mundo" << endl;
+    cout << "Seleccion: ";
+    cin >> choice;
+    
+    if(choice == 'P'){
+        tierra->listaPPMTotal[0]->~PaisPrimerMundo();
+        tierra->listaContinentes[tierra->listaPPMTotal[0]->continentePais - 1]->ppm--;
+        tierra->ppmtot--;
+    }else if(choice == 'D'){
+        tierra->listaPEDTotal[0]->~PaisEnDesarrollo();
+        tierra->listaContinentes[tierra->listaPEDTotal[0]->continentePais - 1]->ped--;
+        tierra->pedtot--;
     }
 }
 
+void generateIDS(Planeta* tierra){
+    int _id = 0;
+    int primecount = 0, nonprimecount = 0;
+    while (_id < 500){
+        int primos = 0;
+        if (_id > 1){
+	
+	        for(int i = 1;i <= _id; ++i){
+	        	if (_id % i == 0 )
+	        		++primos; 
+	        }
 
+	        if (primos == 2){
+                tierra->primeIDS[primecount] = _id;
+                primecount++;
+            }else if (primos != 2){
+                tierra->nonprimeIDS[nonprimecount] = _id;
+                nonprimecount++;
+            }
+        }
+        _id++;
+    }
+}
+
+void compareCountries(Planeta* tierra){
+    string p1, p2;
+    PaisPrimerMundo* ptr1;
+    PaisPrimerMundo* ptr2;
+    bool result;
+    cout << "Ingrese los nombres de los paises que desea comparar." << endl;
+    cout << "Pais 1: " << endl;
+    cin.ignore();
+    getline(cin, p1);
+    cout << "\nPais 2: " << endl;
+    cin.ignore();
+    getline(cin, p2);
+
+    for (int i = 0; i < tierra->ppmtot; i++){
+        if(tierra->listaPPMTotal[i]->nameCountry == p1){
+            ptr1 = tierra->listaPPMTotal[i];
+        }else if(tierra->listaPPMTotal[i]->nameCountry == p2){
+            ptr2 = tierra->listaPPMTotal[i];
+        }
+    }
+    if(*ptr1 == *ptr2){
+        cout << ptr1->nameCountry << " y " << ptr2->nameCountry << " son del mismo tipo!";
+    }
+}

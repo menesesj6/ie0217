@@ -5,6 +5,9 @@
 
 class PaisEnDesarrollo : public Pais{
     public:
+        int nonprimeIDS[TOTAL_PAISES];
+        int ind = 0;
+        int assign = 0;
         string typeED = "En desarrollo";
         // COnstructor y destructor
         PaisEnDesarrollo(string _nameCountry, bool _tech5g, bool _aeropuerto, 
