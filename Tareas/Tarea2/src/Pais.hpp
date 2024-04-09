@@ -12,6 +12,7 @@ using namespace std;
 class Pais{
     public:
         // Atributos de un pais que se heredaran
+        string nameCountry;
         bool tech5g;
         bool aeropuerto;
         int habitantes;
@@ -19,7 +20,7 @@ class Pais{
         // Si tiene o no centro de investigacion
         bool invcenter;
         //Constructor
-        Pais(bool _tech5g, bool _aeropuerto, bool _invcenter, int _habitantes, int continentePais);
+        Pais(string _nameCountry, bool _tech5g, bool _aeropuerto, bool _invcenter, int _habitantes, int continentePais);
         // Metodo de calculo del PIB
         double calculatePIB();
     protected:

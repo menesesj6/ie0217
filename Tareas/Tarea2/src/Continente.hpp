@@ -8,10 +8,10 @@ class Continente{
     public:
         string nameContinent;
         // Listas de paises
-        PaisEnDesarrollo paisesEDLista[MAX_PAISES]; 
-        PaisPrimerMundo paisesPMLista[MAX_PAISES]; 
+        int ped = 0; 
+        int ppm = 0;
         // Pasa el avion o no
-        bool avion;
+        bool avion = false;
         // Constructor y destructor
         Continente(string _nom);
         virtual ~Continente();

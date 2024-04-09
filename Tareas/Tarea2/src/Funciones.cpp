@@ -1,13 +1,29 @@
 #include "Funciones.hpp"
 
 void displayInfo(Planeta *tierra){
-    cout << tierra->planetName << " tiene los continentes: ";
+    int count = 1; 
+    cout << "\n-------------------" << endl;
+    cout << "INFORMACION MUNDIAL" << endl;
+    // COntinentes planeta
+    cout << tierra->planetName << " tiene los continentes: " << endl;
     for (int i = 0; i < 5; i++){
-        cout << i + 1 << ". " <<tierra->listaContinentes[i]->nameContinent << endl;
+        cout << i + 1 << ". " << tierra->listaContinentes[i]->nameContinent << ": " 
+        << tierra->listaContinentes[i]->ped << " paises en desarrollo y " << 
+        tierra->listaContinentes[i]->ppm << " paises de primer mundo." << endl;
     }
+
+    // COntinentes con avion
+    cout << "\nContinentes por los que pasa el avion:" << endl;
+    for (int i = 0; i < 5; i++){
+        if(tierra->listaContinentes[i]->avion){
+            cout << count << ". " << tierra->listaContinentes[i]->nameContinent << endl;
+            count++;
+        }
+    }
+    cout << "\n-------------------" << endl;
 }
 
-void addCountry(){
+void addCountry(Planeta* tierra){
     string pais;
     int aux, habs, cont;
     bool _aeropuerto = false;
@@ -50,7 +66,7 @@ void addCountry(){
     cin >> aux;
     if (aux == 1) {!center;}
 
-    Pais p(_tech5g, _aeropuerto, center, habs, cont);
+    Pais p(pais, _tech5g, _aeropuerto, center, habs, cont);
 } 
 
 void quitCountry(){
@@ -60,3 +76,17 @@ void quitCountry(){
 int generatePrimeNumbers(){
     return 0;
 }
+
+void basePPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra){
+    if(ppm->aeropuerto){cont->avion = true;}
+    cont->ppm++;
+    tierra->listaPPMTotal[tierra->ppmtot] = ppm;
+    tierra->ppmtot++;
+};
+
+void basePEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra){
+    if(ped->aeropuerto){cont->avion = true;}
+    cont->ped++;
+    tierra->listaPEDTotal[tierra->pedtot] = ped;
+    tierra->pedtot++;
+};

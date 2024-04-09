@@ -3,6 +3,8 @@
 #include "Planeta.hpp"
 
 void displayInfo(Planeta *tierra);
-void addCountry();
+void addCountry(Planeta *tierra);
+void basePPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra);
+void basePEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra);
 void quitCountry();
 int generatePrimeNumbers();

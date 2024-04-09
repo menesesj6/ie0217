@@ -8,6 +8,14 @@ int main(){
     Continente America("America"), Asia("Asia"), Africa("Africa"), Europa("Europa"), Oceania("Oceania");
     Planeta Tierra("Tierra", &America, &Asia, &Africa, &Europa, &Oceania);
     int option; // Eleccion del menu
+
+    // Paises iniciales
+   
+   PaisPrimerMundo USA("Estados Unidos", true, true, true, 333300000, AMERICA);
+   PaisEnDesarrollo Cuba("Cuba", false, false, false, 11000000, AMERICA);
+    
+    basePEDCountries(&Cuba, &America, &Tierra);
+    basePPMCountries(&USA, &America, &Tierra);
     do{
         cout << "\nMENU: Administracion Mundial" << endl;
         cout << "1. Desplegar la informacion del planeta. " << endl;
@@ -32,7 +40,7 @@ int main(){
 
             // Agregar palabras al diccionario
             case AGREGAR:
-                addCountry();
+                addCountry(&Tierra);
                 break;
 
             // Ver diccionario
