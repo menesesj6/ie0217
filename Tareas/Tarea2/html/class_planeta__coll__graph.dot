@@ -1,0 +1,16 @@
+digraph "Planeta"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="Planeta",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black",tooltip="Clase Planeta. Se compone de continentes y paises y almacena los IDs."];
+  Node2 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" c1\nc2\nc3\nc4\nc5\nlistaContinentes" ,fontname="Helvetica"];
+  Node2 [label="Continente",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_continente.html",tooltip="Clase Continente almacena los datos de cuantos paises de cada tipo tiene y si el avion pasa por el."];
+  Node3 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" listaPPMTotal" ,fontname="Helvetica"];
+  Node3 [label="PaisPrimerMundo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_pais_primer_mundo.html",tooltip="Clase que instancia objetos de paises primer mundo, hereda de Pais atributos y metodos."];
+  Node4 -> Node3 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node4 [label="Pais",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_pais.html",tooltip="Clase Pais sera instanciada en objetos para despues ser clasificada en PaisPrimerMundo o PaisEnDesarr..."];
+  Node5 -> Node1 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" listaPEDTotal" ,fontname="Helvetica"];
+  Node5 [label="PaisEnDesarrollo",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$class_pais_en_desarrollo.html",tooltip="Clase que instancia objetos de paises en desarrollo, hereda de Pais atributos y metodos."];
+  Node4 -> Node5 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}
