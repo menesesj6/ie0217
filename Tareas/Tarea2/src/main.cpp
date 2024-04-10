@@ -8,6 +8,7 @@ int main(){
     Continente America("America"), Asia("Asia"), Africa("Africa"), Europa("Europa"), Oceania("Oceania");
     Planeta Tierra("Tierra", &America, &Asia, &Africa, &Europa, &Oceania);
     int option; // Eleccion del menu
+    int auxcountppm = 0, auxcountped = 0;
 
     // Generar IDS posibles
     generateIDS(&Tierra);
@@ -15,13 +16,18 @@ int main(){
     // Paises iniciales
     PaisPrimerMundo USA("Estados Unidos", true, true, true, 333300000, AMERICA);
     PaisPrimerMundo China("China", true, true, true, 1412000000, ASIA);
+    PaisPrimerMundo Rusia("Rusia", true, true, true, 271200000, EUROPA);
     PaisEnDesarrollo Cuba("Cuba", false, true, false, 11000000, AMERICA);
     PaisEnDesarrollo Uganda("Uganda", false, false, false, 47000000, AFRICA);
     
-    addPPMCountries(&USA, &America, &Tierra);
-    addPPMCountries(&China, &Asia, &Tierra);
-    addPEDCountries(&Cuba, &America, &Tierra);
-    addPEDCountries(&Uganda, &Africa, &Tierra);
+    basePPMCountries(&USA, &America, &Tierra);
+    basePPMCountries(&China, &Asia, &Tierra);
+    basePPMCountries(&Rusia, &Asia, &Tierra);
+    basePEDCountries(&Cuba, &America, &Tierra);
+    basePEDCountries(&Uganda, &Africa, &Tierra);
+
+    vector<PaisPrimerMundo> auxPPM;
+    vector<PaisEnDesarrollo> auxPED;
 
     do{
         cout << "\nMENU: Administracion Mundial" << endl;
@@ -70,11 +76,18 @@ int main(){
             Pais p = addCountry(&Tierra);
             if(p.tech5g || p.invcenter){
                 PaisPrimerMundo p1(p.nameCountry, p.tech5g, p.aeropuerto, p.invcenter, p.habitantes, p.continentePais);
-                addPPMCountries(&p1, Tierra.listaContinentes[p.continentePais - 1], &Tierra);
-            }else if (!p.tech5g && !p.invcenter){
+                cout << "Se ha creado " << p1.nameCountry << " exitosamente!" << endl;
+                auxPPM.push_back(p1);
+                basePPMCountries(&auxPPM[auxcountppm], Tierra.listaContinentes[p.continentePais - 1], &Tierra);
+                auxcountppm++;
+            }else{
                 PaisEnDesarrollo p2(p.nameCountry, p.tech5g, p.aeropuerto, p.invcenter, p.habitantes, p.continentePais);
-                addPEDCountries(&p2, Tierra.listaContinentes[p.continentePais - 1], &Tierra);
+                cout << "Se ha creado " << p2.nameCountry << " exitosamente!" << endl;
+                auxPED.push_back(p2);
+                basePEDCountries(&auxPED[auxcountped], Tierra.listaContinentes[p.continentePais - 1], &Tierra);
+                auxcountped++;
             };
+
         }
     }while(option != SALIR);
 

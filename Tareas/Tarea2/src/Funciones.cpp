@@ -53,19 +53,19 @@ void displayInfo(Planeta *tierra){
     cout << "\n-------------------" << endl;
 }
 
-void addPPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra){
+void basePPMCountries(PaisPrimerMundo* ppm, Continente* cont, Planeta* tierra){
     if(ppm->aeropuerto){cont->avion = true;}
     cont->ppm++;
-    ppm->setID(tierra->primeIDS[tierra->ppmtot]);
     tierra->listaPPMTotal[tierra->ppmtot] = ppm;
+    ppm->setID(tierra->primeIDS[tierra->ppmtot]);
     tierra->ppmtot++;
 };
 
-void addPEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra){
+void basePEDCountries(PaisEnDesarrollo* ped, Continente* cont, Planeta* tierra){
     if(ped->aeropuerto){cont->avion = true;}
-    ped->setID(tierra->nonprimeIDS[tierra->pedtot]);
     cont->ped++;
     tierra->listaPEDTotal[tierra->pedtot] = ped;
+    ped->setID(tierra->nonprimeIDS[tierra->pedtot]);
     tierra->pedtot++;
 };
 

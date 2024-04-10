@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 #include "Menu.hpp"
 using namespace std;
 

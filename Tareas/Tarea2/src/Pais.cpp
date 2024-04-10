@@ -17,6 +17,7 @@ double Pais::calculatePIB(){
 bool Pais::operator== (const Pais* otro){
     int thisID = this->id;
     int otroID = otro->id;
+    return true;
 }
 
 void Pais::setID(int _id){

@@ -23,6 +23,7 @@ class Planeta{
         Continente* c4; /**<- Cuarto continente del planeta*/
         Continente* c5; /**<- Quinto continente del planeta*/
         string planetName; /**<- Nombre del planeta*/
+        
         Continente* listaContinentes[5] = {c1, c2, c3, c4, c5}; /**<- Array de continentes que componen al planeta*/
 
         PaisEnDesarrollo* listaPEDTotal[TOTAL_PAISES]; /**<- Lista de paises en desarrollo*/
