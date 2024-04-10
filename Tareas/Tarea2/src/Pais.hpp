@@ -65,7 +65,9 @@ class Pais{
         void setID(int _id);
         
         /**
-         * @brief Sobrecarga del operador == entre dos objetos tipo Pais
+         * @brief Sobrecarga del operador == entre dos objetos tipo Pais para saber si son del mismo tipo
+         * 
+         * La comparacion se basa en si tiene tecnologia 5G o si tiene centro de investigacion y desarrollo
          * 
          * @param otro El otro objeto tipo Pais con el que se comparara
          * @return true Los tipos son iguales

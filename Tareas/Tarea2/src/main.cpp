@@ -8,7 +8,7 @@ int main(){
     Continente America("America"), Asia("Asia"), Africa("Africa"), Europa("Europa"), Oceania("Oceania");
     Planeta Tierra("Tierra", &America, &Asia, &Africa, &Europa, &Oceania);
     int option; // Eleccion del menu
-    int auxcountppm = 0, auxcountped = 0;
+    
 
     // Generar IDS posibles
     generateIDS(&Tierra);
@@ -22,13 +22,16 @@ int main(){
     
     basePPMCountries(&USA, &America, &Tierra);
     basePPMCountries(&China, &Asia, &Tierra);
-    basePPMCountries(&Rusia, &Asia, &Tierra);
+    basePPMCountries(&Rusia, &Europa, &Tierra);
     basePEDCountries(&Cuba, &America, &Tierra);
     basePEDCountries(&Uganda, &Africa, &Tierra);
 
+    // Vectores y conteo para agregar paises
     vector<PaisPrimerMundo> auxPPM;
     vector<PaisEnDesarrollo> auxPED;
+    int auxcountppm = 0, auxcountped = 0;
 
+    // Menu
     do{
         cout << "\nMENU: Administracion Mundial" << endl;
         cout << "1. Desplegar la informacion del planeta. " << endl;
@@ -42,21 +45,21 @@ int main(){
         cout << " " << endl;
 
         switch(option){
-            // Configuracion de dificultad
+            // imprimir informacion entera
             case INFO:
                 displayInfo(&Tierra);
                 break;
 
-            // Inicio del juego
+            // Comparar dos paises
             case COMPARAR:
                 compareCountries(&Tierra);
                 break;
 
-            // Agregar palabras al diccionario
+            // Agregar pais
             case AGREGAR:
                 break;
 
-            // Ver diccionario
+            // Quitar pais
             case QUITAR:
                 quitCountry(&Tierra);
                 break;
@@ -72,21 +75,28 @@ int main(){
                 cout << "Ingrese uno de los numeros disponibles." << endl;
                 break;
         }
-
+        
+        /*
+        Se separa este caso del switch-case porque ocasionaba problemas con la instanciacion del objeto p
+        */
         if(option == AGREGAR){
-            Pais p = addCountry(&Tierra);
+            Pais p = addCountry(&Tierra); // Crear pais base
+
+            // Verificar atributos del pais
             if(p.tech5g || p.invcenter){
+                // Crear Pais Primer MUndo
                 PaisPrimerMundo p1(p.nameCountry, p.tech5g, p.aeropuerto, p.invcenter, p.habitantes, p.continentePais);
                 cout << "Se ha creado " << p1.nameCountry << " exitosamente!" << endl;
                 auxPPM.push_back(p1);
                 basePPMCountries(&auxPPM[auxcountppm], Tierra.listaContinentes[p.continentePais - 1], &Tierra);
-                auxcountppm++;
+                auxcountppm++; // AUmentar conteo
             }else{
+                // Crear Pais en Desarrollo
                 PaisEnDesarrollo p2(p.nameCountry, p.tech5g, p.aeropuerto, p.invcenter, p.habitantes, p.continentePais);
                 cout << "Se ha creado " << p2.nameCountry << " exitosamente!" << endl;
                 auxPED.push_back(p2);
                 basePEDCountries(&auxPED[auxcountped], Tierra.listaContinentes[p.continentePais - 1], &Tierra);
-                auxcountped++;
+                auxcountped++; // AUmentar conteo
             };
 
         }

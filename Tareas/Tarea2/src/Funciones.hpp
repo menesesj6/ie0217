@@ -64,8 +64,8 @@ void generateIDS(Planeta* tierra);
 /**
  * @brief Indica si dos paises son del mismo tipo (PED o PPM) o distintos
  * 
- * Hace uso de una sobrecarga de operadores en la clase Pais. ESta comparacion se hace basada en el identificador de los dos
- * objetos involucrados.
+ * Hace uso de una sobrecarga de operadores en la clase Pais. ESta comparacion se hace basada en el dato de tecnologia 5G y el del centro
+ * de investigacion y desarrollo de los dos objetos involucrados.
  * 
  * @param tierra Puntero hacia el objeto planeta instanciado en main()
  */
