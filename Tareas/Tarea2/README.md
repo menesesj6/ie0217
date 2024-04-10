@@ -3,6 +3,8 @@
 
 Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux.  A continuación se exponen las formas de compilar y ejecutar por medio de un Makefile al igual que de forma manual por medio de la terminal, desde el directorio de **Tarea2**. Cabe destacar que este instructivo está pensado para abrir la documentación de Doxygen en FireFox.
 
+- Cabe destacar que es recomendable ejecutar por medio de Makefile, dada la gran cantidad de archivos .cpp
+
 ## Instrucciones de compilación y ejecución: Juego Ahorcado
 ### Makefile
 ```
@@ -13,8 +15,8 @@ $ make doxygen # Despliegue documentacion Doxygen
 ### Forma general
 
 ```
-$ 
-$ 
+$ g++ src/main.cpp src/Continente.cpp src/Pais.cpp src/PaisEnDesarrollo.cpp src/PaisPrimerMundo.cpp  src/Planeta.cpp src/Funciones.cpp -o Exe.exe
+$ ./Exe.exe
 ``` 
 ### Documentacion en Netlify
 
