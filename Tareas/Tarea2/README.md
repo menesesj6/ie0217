@@ -1,14 +1,14 @@
 # Tarea 2
 ## IE-0217: Estructuras Abstractas de Datos y Algoritmos para Ingeniería
 
-Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux.  A continuación se exponen las formas de compilar y ejecutar por medio de un Makefile al igual que de forma manual por medio de la terminal, desde el directorio de **Tarea2**. Cabe destacar que este instructivo está pensado para abrir la documentación de Doxygen en FireFox.
+Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux.  A continuación se exponen las formas de compilar y ejecutar por medio de un Makefile al igual que de forma manual por medio de la terminal, desde el directorio de **Tareas/Tarea2**. Cabe destacar que este instructivo está pensado para abrir la documentación de Doxygen en FireFox.
 
 - Cabe destacar que es recomendable ejecutar por medio de Makefile, dada la gran cantidad de archivos .cpp
 
-## Instrucciones de compilación y ejecución: Juego Ahorcado
+## Instrucciones de compilación y ejecución: Administracion Mundial
 ### Makefile
 ```
-$ make AdminMundial # Ejecucion del juego
+$ make AdminMundial # Ejecucion del programa
 $ make doxygen # Despliegue documentacion Doxygen
 ``` 
 
