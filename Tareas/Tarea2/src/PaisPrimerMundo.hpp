@@ -13,6 +13,10 @@
 
 #include "Pais.hpp"
 
+/**
+ * @brief Clase que instancia objetos de paises primer mundo, hereda de Pais atributos y metodos
+ * 
+ */
 class PaisPrimerMundo : public Pais{
     public: 
         int workers; /**<- Cantidad de personas que trabajan en el pais*/

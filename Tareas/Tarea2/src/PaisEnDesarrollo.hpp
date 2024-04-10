@@ -15,7 +15,7 @@
 #include "Pais.hpp"
 
 /**
- * @brief Clase que hereda de Pais atributos y metodos
+ * @brief Clase que instancia objetos de paises en desarrollo, hereda de Pais atributos y metodos
  * 
  */
 class PaisEnDesarrollo : public Pais{

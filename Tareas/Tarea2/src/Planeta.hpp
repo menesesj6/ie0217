@@ -13,6 +13,10 @@
 
 #include "Continente.hpp"
 
+/**
+ * @brief Clase Planeta. Se compone de continentes y paises y almacena los IDs
+ * 
+ */
 class Planeta{
     public:
         int pedtot = 0; /**<- Cantidad actual de paises en desarrollo*/
