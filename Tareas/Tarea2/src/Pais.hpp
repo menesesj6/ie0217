@@ -71,7 +71,7 @@ class Pais{
          * @return true Los tipos son iguales
          * @return false Los tipos son distintos
          */
-        bool operator== (const Pais* otro);
+        bool operator== (const Pais &otro);
 };
 
 #endif

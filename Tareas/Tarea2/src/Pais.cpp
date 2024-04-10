@@ -14,10 +14,14 @@ double Pais::calculatePIB(){
     return rand() % RAND_MAX + 3.17e7;
 }
 
-bool Pais::operator== (const Pais* otro){
-    int thisID = this->id;
-    int otroID = otro->id;
-    return true;
+bool Pais::operator== (const Pais &otro){
+    bool thisPPM, otroPPM;
+    if(this->tech5g && otro.tech5g){return true;}
+    else if(this->invcenter && otro.invcenter){return true;}
+    else if(this->tech5g && otro.invcenter){return true;}
+    else if(this->invcenter && otro.tech5g){return true;}
+    else if(!this->tech5g && !otro.tech5g){return true;}
+    else{return false;}
 }
 
 void Pais::setID(int _id){

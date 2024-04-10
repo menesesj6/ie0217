@@ -172,7 +172,7 @@ void compareCountries(Planeta* tierra){
     cout << "\nPais 2: " << endl;
     getline(cin, p2);
 
-    cout << "\n" << p1 << " == " << p2 << "?   ";
+    cout << "\nSon " << p1 << " y " << p2 << "del mismo tipo? " << endl;
 
     // Revisar PPM
     for (int i = 0; i < tierra->ppmtot; i++){
@@ -193,7 +193,7 @@ void compareCountries(Planeta* tierra){
     }
 
     
-    if(ptr1 == ptr2){
+    if(*ptr1 == *ptr2){
         cout << "Si, son del mismo tipo!" << endl;
     }else{
         cout << "No, no son el mismo tipo!" << endl;

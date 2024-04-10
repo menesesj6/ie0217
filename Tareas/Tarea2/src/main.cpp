@@ -64,6 +64,7 @@ int main(){
             // Salir del juego
             case SALIR:
                 cout << "Saliendo del sistema..." << endl;
+                exit(0);
                 break;
 
             // Caso default, eleccion invalida
