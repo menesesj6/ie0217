@@ -1,10 +1,14 @@
 #include <iostream>
 #include "Enum.hpp"
+#include "HashTable.hpp"
 
 using namespace std;
 
 
 int main(){
+    // Instanciar Hash Table
+    HashTable ht;
+    // Eleccion del menu
     int option;
     do{
         cout << "----------------------" << endl;
@@ -20,12 +24,16 @@ int main(){
         cin >> option;
         switch (option) {
             case AGREGAR:
+                ht.addContact();
                 break;
             case ELIMINAR:
+                ht.deleteContact();
                 break;
             case PRINTHTLL:
+                ht.printHTLL();
                 break;
             case DISPLAY:
+                ht.displayContacts();
                 break;
             case SALIR:
                 cout << "Saliendo del programa..." << endl;
