@@ -26,8 +26,10 @@ int HashTable::hashFunction(string name){
     return x % this->size;
 };
 
-void HashTable::addContact(){
+void HashTable::addContact(string name, int index){
     Contact* newContact = (Contact*) malloc(sizeof(Contact)); 
+    index = this->hashFunction(name);
+    Contact* head = this->contactList[index];
 };
 
 void HashTable::deleteContact(){

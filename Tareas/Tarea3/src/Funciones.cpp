@@ -17,8 +17,8 @@ void addContact(HashTable* ht, ContactNode** head){
     cout << "Numero: ";
     cin >> newnumber;
 
+    // Ingresar al linked list
     ContactNode* last = *head;
-
     newLLCon->name = newname;
     newLLCon->number = newnumber;
     newLLCon->nextContactNode = nullptr;
@@ -34,8 +34,9 @@ void addContact(HashTable* ht, ContactNode** head){
 
     last->nextContactNode = newLLCon;
     
+}
 
-    cout << "Creado exitosamente!" << endl;
+void addContactLL(ContactNode* newCon, ContactNode** head, string name, int num){
     
 }
 
@@ -57,9 +58,11 @@ void deleteContact(HashTable* ht, ContactNode* con){
 
     switch (choice){
         case 1:
+            ht->deleteContact();
+            deleteofLL(delname, &con);
             break;
         case 2:
-            deleteofLL(delname, con);
+            deleteofLL(delname, &con);
             break;
         default:
             break;
@@ -67,13 +70,31 @@ void deleteContact(HashTable* ht, ContactNode* con){
 
 }
 
-void deleteofLL(string name, ContactNode* head){
+void deleteofLL(string name, ContactNode** head){   
+    while(*head != nullptr){
+        if((*head)->name == name){
+            if((*head)->nextContactNode == nullptr){
+                (*head) = nullptr;
+                break;
+            }else if((*head)->nextContactNode != nullptr){
+                (*head)->name = (*head)->nextContactNode->name;
+                (*head)->number = (*head)->nextContactNode->number;
+                (*head)->nextContactNode = (*head)->nextContactNode->nextContactNode;
+                free((*head)->nextContactNode);
+                cout << "Se ha eliminado a " << name << " exitosamente!"<< endl;
+            }
 
+        } 
+        *head = (*head)->nextContactNode;
+    }
 }
 
 void displayContacts(ContactNode* head){
     cout << "\nCONTACTOS EN ORDEN ALFABETICO" << endl;
     cout << "-------------------------------" << endl;
+    if(head == nullptr){
+        cout << "El celular esta vacio." << endl;
+    }
     while(head != nullptr){
         cout << "Nombre: " << head->name << endl;
         cout << "Numero: " << head->number << endl << endl;
@@ -90,3 +111,4 @@ void freeLinkedList(ContactNode** head){
     }
     cout << "Memoria limpia correctamente" << endl;
 }
+

@@ -12,9 +12,14 @@ int main(){
 
     // COntacto inicial del celular
     ContactNode* head = (ContactNode*) malloc(sizeof(ContactNode));
+    ContactNode* second = (ContactNode*) malloc(sizeof(ContactNode));
     head->name = "Jorge Meneses";
     head->number = 84310164;
-    head->nextContactNode = nullptr;
+    head->nextContactNode = second;
+
+    second->name = "Daniela Granados";
+    second->number = 85002305;
+    second->nextContactNode = nullptr;
 
     
     // Poner un contacto inicial
@@ -39,7 +44,7 @@ int main(){
                 addContact(&ht, &head);
                 break;
             case ELIMINAR:
-                //deleteContact(&ht, &head);
+                deleteContact(&ht, head);
                 break;
             case PRINTHTLL:
                 ht.displayHash();
@@ -49,6 +54,7 @@ int main(){
                 break;
             case SALIR:
                 freeLinkedList(&head);
+                displayContacts(head);
                 cout << "Saliendo del programa..." << endl;
                 break;
             default:
