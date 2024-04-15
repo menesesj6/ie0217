@@ -57,7 +57,7 @@ void HashTable::deleteContact(){
 };
 
 void HashTable::displayHash(){
-    cout << "---------------------" << endl;
+    cout << "\n---------------------" << endl;
     cout << "ALMACENAMIENTO CLOUD" << endl;
     cout << "---------------------" << endl;
     for(int i = 0; i < size; i++){

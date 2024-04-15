@@ -46,8 +46,10 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 3. Las estructuras de datos son tecnicas por medio de las cuales se manejan grandes cantidades de informacion. Estas son esenciales para la optimizacion de soluciones de problemas, pues ayudan a que el manejo de la misma informacionn sea mucho mas eficiente.
 
 4. La diferencia entre estructuras de datos estaticas y dinamicas es en torno al espacio ocupado en memoria por la misma. La estatica, se le debe especificar su tamano antes de la compilacion y la ejecucion; mientras que las dinamicas su tamano puede ser redefinido en tiempo de ejecucion de acuerdo  alo necesario. 
-5. 
-6. 
+5. La memoria dinámica es la característica de lenguajes de programación como C o C++ donde el tamaño del espacio en memoria que ocnsume algo puede ser definido con tiempo de ejecución. Para la gestión de esto, se tienen comandos como lo son ***new***, ***malloc***, ***calloc*** o ***realloc***, con los que se deifne el tamaño del espacio de memoria a reservar y otros comandos como ***delete*** o ***free*** que sirven para liberar esa memoria y evitar _memory leaks_. Respecto a los primeros, ***new*** asigna memoria a una variable específica; ***malloc*** sirve para reservar un bloque de memoria en el heap, ***calloc*** permite reservar un bloque de memoria en el heap e inicializarlo a cero; y ***realloc*** se encarga de redimensionar un bloque de memoria del heap. Por otro lado, ***fre*** libera la memoria reservada con malloc, calloc y realloc, mientras que ***delete*** libera la memoria reservada con new.
+
+6. La mayor ventaja de la memoria dinámica es que permite trabajar con datos cambiantes y que el programa se adapte en tiempo de ejecución, sin tener que hardcodear para tamaños distintos. Sin embargo, al trabajr con esta propiedad, existe la posibilidad de que ocurra un _memory leak_, que es perjudicial para el funcionamiento de los programas de la computadora. 
+
 7. 
 8. 
 9. 
