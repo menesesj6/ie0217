@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Funciones.hpp"
 #include "Enum.hpp"
 #include "HashTable.hpp"
 
@@ -6,8 +7,19 @@ using namespace std;
 
 
 int main(){
-    // Instanciar Hash Table
+    // Instanciar Hash Table y Liked List
     HashTable ht;
+
+    // COntacto inicial del celular
+    ContactNode* head = (ContactNode*) malloc(sizeof(ContactNode));
+    head->name = "Jorge Meneses";
+    head->number = 84310164;
+    head->nextContactNode = nullptr;
+
+    
+    // Poner un contacto inicial
+   
+
     // Eleccion del menu
     int option;
     do{
@@ -24,18 +36,19 @@ int main(){
         cin >> option;
         switch (option) {
             case AGREGAR:
-                ht.addContact();
+                addContact(&ht, &head);
                 break;
             case ELIMINAR:
-                ht.deleteContact();
+                //deleteContact(&ht, &head);
                 break;
             case PRINTHTLL:
-                ht.printHTLL();
+                ht.displayHash();
                 break;
             case DISPLAY:
-                ht.displayContacts();
+                displayContacts(head);
                 break;
             case SALIR:
+                freeLinkedList(&head);
                 cout << "Saliendo del programa..." << endl;
                 break;
             default:
@@ -44,6 +57,5 @@ int main(){
         }
 
     } while (option != SALIR);
-    
     return 0;
 }

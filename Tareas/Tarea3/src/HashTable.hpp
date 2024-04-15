@@ -17,16 +17,15 @@ struct Contact{
 // Hash Table
 class HashTable{
     private:
-        const int size = MAX_CONTACTS;
-        vector<Contact*> contactList;
-        int hashFunction(string name);
+        int size = MAX_CONTACTS;
     public:
         HashTable();
         ~HashTable();
+        Contact* contactList[MAX_CONTACTS];
+        int hashFunction(string name);
         void addContact();
         void deleteContact();
-        void printHTLL();
-        void displayContacts();
+        void displayHash();
 };
 
 #endif
