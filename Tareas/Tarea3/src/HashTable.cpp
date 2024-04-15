@@ -26,10 +26,30 @@ int HashTable::hashFunction(string name){
     return x % this->size;
 };
 
-void HashTable::addContact(string name, int index){
-    Contact* newContact = (Contact*) malloc(sizeof(Contact)); 
-    index = this->hashFunction(name);
+void HashTable::addContact(int num, string name){
+    // Ingresar al linked list
+    int index = this->hashFunction(name);
+    Contact* newCon = (Contact*) malloc(sizeof(Contact));
+    newCon->name = name;
+    newCon->number = num;
+    newCon->nextContact = nullptr;
+
     Contact* head = this->contactList[index];
+    Contact** ptr_head = &head;
+
+    if(head == nullptr){
+        this->contactList[index] = newCon;
+        return;
+    }else{
+        while(*ptr_head != nullptr){
+            if((*ptr_head)->nextContact == nullptr){
+                this->contactList[index]->nextContact = newCon;
+            }
+            (*ptr_head) = (*ptr_head)->nextContact;
+        };  
+    }
+     
+
 };
 
 void HashTable::deleteContact(){
@@ -42,6 +62,7 @@ void HashTable::displayHash(){
     cout << "---------------------" << endl;
     for(int i = 0; i < size; i++){
         Contact* head = this->contactList[i];
+        Contact** ptr_head = &head;
         cout << "Indice " << i << ":" << endl;
         if(head == nullptr){
             cout << "No hay nada almacenado en este indice.\n" << endl;
@@ -49,6 +70,7 @@ void HashTable::displayHash(){
         while(head != nullptr){
             cout << "Nombre: " << head->name << endl << endl;
             cout << "Numero: " << head->number << endl << endl;
+            *ptr_head = (*ptr_head)->nextContact;
         }
     }
 };

@@ -23,7 +23,7 @@ class HashTable{
         ~HashTable();
         Contact* contactList[MAX_CONTACTS];
         int hashFunction(string name);
-        void addContact(string name, int index);
+        void addContact(int num, string name);
         void deleteContact();
         void displayHash();
 };

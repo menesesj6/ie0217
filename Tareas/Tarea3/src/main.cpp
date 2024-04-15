@@ -10,6 +10,10 @@ int main(){
     // Instanciar Hash Table y Liked List
     HashTable ht;
 
+    // COntacto inicial en el cloud
+    ht.addContact(84310164, "Jorge Meneses");
+    ht.addContact(85002305, "Daniela Granados");
+
     // COntacto inicial del celular
     ContactNode* head = (ContactNode*) malloc(sizeof(ContactNode));
     ContactNode* second = (ContactNode*) malloc(sizeof(ContactNode));
@@ -22,8 +26,6 @@ int main(){
     second->nextContactNode = nullptr;
 
     
-    // Poner un contacto inicial
-   
 
     // Eleccion del menu
     int option;

@@ -33,12 +33,12 @@ void addContact(HashTable* ht, ContactNode** head){
     }
 
     last->nextContactNode = newLLCon;
+
+    // Ingresar al Hash Table
+    ht->addContact(newnumber, newname);
     
 }
 
-void addContactLL(ContactNode* newCon, ContactNode** head, string name, int num){
-    
-}
 
 void deleteContact(HashTable* ht, ContactNode* con){
     int choice;
