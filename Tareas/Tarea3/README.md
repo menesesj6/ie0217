@@ -78,4 +78,4 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 
 20. La complejidad temporal de búsqueda en un árbol binario balanceado es de O(log n).
 
-21. 
+21. La diferencia entre la notación Big O y Omega es que la Big O representa la complejidad del peor de los casos de ejecución y la Omega da la complejidad del mejor de los casos de ejecución. Por ejemplo, el conocido algoritmo de _Bubble sort_ tiene una complejidad temporal descrita por Big O de $O(n^2)$, mientras que el Big Omega es dada por $\Omega (n)$. Esto significa que en el peor de los casos, el tiempo de ejecucion del algoritmo crecera cuadraticamente respecto al numero de elementos en la lista, array, etc. Por otro lado, su mejor caso es cuando solo debe iterar esta lista, array o cualquier estructura con la que se este trabajando una vez; a pesar de que es sumamente inusual y normalmente se da porque la estructura ya esta ordenada.
