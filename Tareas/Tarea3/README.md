@@ -61,11 +61,17 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 11. La _hash function_ son las encargadas de computar el índice de la tabla que ocupará una pareja de llave y valor, basado en la llave. Son esenciales porque son las encargadas de asignar cada dato a un índice y así organizar óptimamente los datos.
 
 12. Si el Hash Table tiene una muy buena hash function, su complejidad temporal es de O(1).
-13. 
-14. 
-15. 
-16. 
-17. 
+
+13. Para agregar un elemento a la pila, se debe aumentar el contador _top_ del stack y en ese espacio libre que queda, se inserta el nuevo elemento. Esta operación es hecha por medio de punteros para que el acomodo quede hecho correctamente en memoria.
+
+14. Estas acciones son de complejidad O(1).
+
+15. Una lista enlazada consiste en un conjunto de nodos que cada uno contiene datos y la dirección del siguiente nodo en la lista, por lo que no es una lista como un array o vector pero sí se puede iterar sobre sus elementos nada más cambiando el nodo. Sus mayor ventaja es respecto al no despedicio de memoria de esta estuctura de datos respecto a otras, al igual que son considerablemente más dinámicas y su escalabilidad. Por otro lado, su mayor desventaja es la utilización de memoria dinámica y el hecho que no hay acceso aleatorio y es muy difícil de compartir la información.
+
+16. Un nodo en el contexto de las linked lists son los elementos de la lista. Estos contienen únicamente el set de información que caracteriza cada nodo y la dirección del nodo al que apunta.
+
+17. Las listas enlazadas simples tienen la característica de que solo cuentan con la posición del próximo nodo, no la del anterior. En las doblemente enlazadas ocurre lo contrario, pues en estas cada nodo sí cuenta con las direcciones de los nodos anterior y próximo.
+
 18. 
 19. 
 20. 
