@@ -50,12 +50,17 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 
 6. La mayor ventaja de la memoria dinámica es que permite trabajar con datos cambiantes y que el programa se adapte en tiempo de ejecución, sin tener que hardcodear para tamaños distintos. Sin embargo, al trabajr con esta propiedad, existe la posibilidad de que ocurra un _memory leak_, que es perjudicial para el funcionamiento de los programas de la computadora. 
 
-7. 
-8. 
-9. 
-10. 
-11. 
-12. 
+7.  Un árbol binario es una estructura de datos similar al árbol normal, con la diferencia de que en esta cada nodo puede tener únicamente dos nodos hijos. Cada nodo cuenta con datos, dirección del nodo hijo izquierdo y dirección del nodo hijo derecho. Hay lleno, perfecto y completo.
+
+8. El queue es una estructura de datos que funciona como una fila de un establecimiento, donde el primero en entrar  ala fila es el primero en ser atendido. Esto puede usado para aplicaciones de flujos de datos grandes como sistemas operativos, protocolos de red, y demás donde se ocupa un flujo FIFO (First In First Out).
+
+9. La diferencia entre queue y stack es el flujo de datos, pues el queue es FIFO y el stack es LIFO.
+
+10. Dependiendo de una llave específica, se tiene una función llamada _hash function_ que se encarga de computar un índice de la tabla para esa llave y su respectivo resultado. Una vez esto se haga, se almacena la llave con su resultado en el índice computado. Si varios elementos fueran direccionados a un mismo índice, habría una colisión que puede ser resuelta por varios métodos pero el más común es el de _chaining_ usando listas enlazadas.
+
+11. La _hash function_ son las encargadas de computar el índice de la tabla que ocupará una pareja de llave y valor, basado en la llave. Son esenciales porque son las encargadas de asignar cada dato a un índice y así organizar óptimamente los datos.
+
+12. Si el Hash Table tiene una muy buena hash function, su complejidad temporal es de O(1).
 13. 
 14. 
 15. 
