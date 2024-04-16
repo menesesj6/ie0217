@@ -77,4 +77,5 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 19. El algoritmo de traversal en un árbol binario consiste en visitar todos los nodos del árbol sin repetir ninguno. Esto puede hacerse preorden, inorden o postorden.
 
 20. La complejidad temporal de búsqueda en un árbol binario balanceado es de O(log n).
+
 21. 
