@@ -72,7 +72,9 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 
 17. Las listas enlazadas simples tienen la característica de que solo cuentan con la posición del próximo nodo, no la del anterior. En las doblemente enlazadas ocurre lo contrario, pues en estas cada nodo sí cuenta con las direcciones de los nodos anterior y próximo.
 
-18. 
-19. 
-20. 
+18. Para eliminar un nodo de una lista enlazada, depende de si creó el nodo con malloc o con new, pues se debe usar ***free*** o ***delete***, respectivamente. Además de eso, se debe revisar que no queden huecos en la cadena de conexión de la lista, por lo que se debe cambiar la dirección del próximo nodo en el nodo anterior al que se va a eliminar. Una vez hecho esto, se libera el espacio de memoria del nodo que se va a eliminar.
+
+19. El algoritmo de traversal en un árbol binario consiste en visitar todos los nodos del árbol sin repetir ninguno. Esto puede hacerse preorden, inorden o postorden.
+
+20. La complejidad temporal de búsqueda en un árbol binario balanceado es de O(log n).
 21. 
