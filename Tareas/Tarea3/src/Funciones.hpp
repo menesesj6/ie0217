@@ -45,10 +45,17 @@ void deleteofLL(string name, ContactNode** head);
  * 
  * @param head Primer nodo de la linked list que hace de memoria del celular.
  */
-void displayContacts(ContactNode* head);
+void displayContacts(ContactNode** head);
 
 /**
- * @brief LIbera la memoria de toda la linked list que hace de memoria del celular
+ * @brief Acomoda los contactos en la memoria del celular en orden alfabetico.
+ * 
+ * @param head Primer nodo de la linked list que hace de memoria del celular.
+ */
+void orderLL(ContactNode* head);
+
+/**
+ * @brief Libera la memoria de toda la linked list que hace de memoria del celular
  * 
  * @param head Doble puntero hacia el primer nodo del linked list de la memoria del celular.
  */

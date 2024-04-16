@@ -59,7 +59,9 @@ void deleteContact(HashTable* ht, ContactNode* con){
     switch (choice){
         case 1:
             ht->deleteContact(delname);
+            cout << "Se elimino a " << delname << " del cloud!" << endl;
             deleteofLL(delname, &con);
+            cout << "Se elimino a " << delname << " del celular!" << endl;
             break;
         case 2:
             deleteofLL(delname, &con);
@@ -76,28 +78,65 @@ void deleteofLL(string name, ContactNode** head){
         if((*head)->name == name && (*head)->nextContactNode != nullptr){
             (*head)->name = (*head)->nextContactNode->name;
             (*head)->number = (*head)->nextContactNode->number;
-            (*head)->nextContactNode = (*head)->nextContactNode->nextContactNode;
+            temp = (*head)->nextContactNode->nextContactNode;
             free((*head)->nextContactNode);
+            (*head)->nextContactNode = temp;
             cout << "Se ha eliminado a " << name << " exitosamente!"<< endl;
             return;
-        } 
-        *head = (*head)->nextContactNode;
+        } else if((*head)->name == name && (*head)->nextContactNode == nullptr){
+            (*head) = nullptr;
+            return;
+
+        }
+        head = &((*head)->nextContactNode);
     }
     
 }
 
-void displayContacts(ContactNode* head){
+void displayContacts(ContactNode** head){
     cout << "\nCONTACTOS EN ORDEN ALFABETICO" << endl;
     cout << "-------------------------------" << endl;
-    if(head == nullptr){
+    if(*head == nullptr){
         cout << "El celular esta vacio." << endl;
     }
-    while(head != nullptr){
-        cout << "Nombre: " << head->name << endl;
-        cout << "Numero: " << head->number << endl << endl;
-        head = head->nextContactNode;
+    while(*head != nullptr){
+        cout << "Nombre: " << (*head)->name << endl;
+        cout << "Numero: " << (*head)->number << endl << endl;
+        head = &((*head)->nextContactNode);
     }
     cout << endl;
+}
+
+void orderLL(ContactNode* con){
+    string tempstr;
+    int tempint, check;
+    ContactNode* memory = con;
+    ContactNode** head = &con;
+    bool swapped = true;
+
+    while(swapped){
+        swapped = false;
+        head = &memory;
+
+        while((*head)->nextContactNode != nullptr){
+        check = (*head)->name.compare((*head)->nextContactNode->name);
+        if(check == 0 || check < 0){
+            head = &((*head)->nextContactNode);
+        } else{
+            tempstr = (*head)->name;
+            tempint = (*head)->number;
+            (*head)->name = (*head)->nextContactNode->name;
+            (*head)->number = (*head)->nextContactNode->number;
+
+            (*head)->nextContactNode->name = tempstr;
+            (*head)->nextContactNode->number = tempint;
+
+            swapped = true;
+            head = &((*head)->nextContactNode);
+        }
+    }       
+    }
+    
 }
 
 void freeLinkedList(ContactNode** head){

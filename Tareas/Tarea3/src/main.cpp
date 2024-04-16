@@ -47,17 +47,17 @@ int main(){
                 break;
             case ELIMINAR:
                 deleteContact(&ht, head);
-                cout << head->name << endl;
                 break;
             case PRINTHTLL:
                 ht.displayHash();
                 break;
             case DISPLAY:
-                displayContacts(head);
+                orderLL(head);
+                displayContacts(&head);
                 break;
             case SALIR:
                 freeLinkedList(&head);
-                displayContacts(head);
+                displayContacts(&head);
                 cout << "Saliendo del programa..." << endl;
                 break;
             default:

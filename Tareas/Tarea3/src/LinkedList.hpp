@@ -14,7 +14,8 @@
 
 #include <iostream>
 #include <string>
-#include <vector>
+#include <cstring>
+#include <vector>s
 using namespace std;
 
 /**
@@ -22,9 +23,9 @@ using namespace std;
  * 
  */
 struct ContactNode{
-    string name;
-    int number;
-    ContactNode* nextContactNode; 
+    string name; /**<- Nombre del contacto.*/
+    int number; /**<- Numero del contacto*/
+    ContactNode* nextContactNode; /**<- Direccion del siguiente contacto.*/
 };
 
 #endif
