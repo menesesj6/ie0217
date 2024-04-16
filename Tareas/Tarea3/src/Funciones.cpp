@@ -58,7 +58,7 @@ void deleteContact(HashTable* ht, ContactNode* con){
 
     switch (choice){
         case 1:
-            ht->deleteContact();
+            ht->deleteContact(delname);
             deleteofLL(delname, &con);
             break;
         case 2:
@@ -71,22 +71,19 @@ void deleteContact(HashTable* ht, ContactNode* con){
 }
 
 void deleteofLL(string name, ContactNode** head){   
-    while(*head != nullptr){
-        if((*head)->name == name){
-            if((*head)->nextContactNode == nullptr){
-                (*head) = nullptr;
-                break;
-            }else if((*head)->nextContactNode != nullptr){
-                (*head)->name = (*head)->nextContactNode->name;
-                (*head)->number = (*head)->nextContactNode->number;
-                (*head)->nextContactNode = (*head)->nextContactNode->nextContactNode;
-                free((*head)->nextContactNode);
-                cout << "Se ha eliminado a " << name << " exitosamente!"<< endl;
-            }
-
+    ContactNode* temp;
+    while((*head) != nullptr){
+        if((*head)->name == name && (*head)->nextContactNode != nullptr){
+            (*head)->name = (*head)->nextContactNode->name;
+            (*head)->number = (*head)->nextContactNode->number;
+            (*head)->nextContactNode = (*head)->nextContactNode->nextContactNode;
+            free((*head)->nextContactNode);
+            cout << "Se ha eliminado a " << name << " exitosamente!"<< endl;
+            return;
         } 
         *head = (*head)->nextContactNode;
     }
+    
 }
 
 void displayContacts(ContactNode* head){

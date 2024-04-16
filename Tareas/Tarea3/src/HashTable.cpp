@@ -34,25 +34,46 @@ void HashTable::addContact(int num, string name){
     newCon->number = num;
     newCon->nextContact = nullptr;
 
-    Contact* head = this->contactList[index];
-    Contact** ptr_head = &head;
+    Contact** ptr_head = &(this->contactList[index]);
 
-    if(head == nullptr){
+    if(this->contactList[index] == nullptr){
         this->contactList[index] = newCon;
         return;
-    }else{
-        while(*ptr_head != nullptr){
-            if((*ptr_head)->nextContact == nullptr){
-                this->contactList[index]->nextContact = newCon;
-            }
-            (*ptr_head) = (*ptr_head)->nextContact;
-        };  
     }
+
+    while ((*ptr_head)->nextContact != NULL) {
+        ptr_head = &((*ptr_head)->nextContact);
+    }
+
+    (*ptr_head)->nextContact = newCon;
+    
      
 
 };
 
-void HashTable::deleteContact(){
+void HashTable::deleteContact(string delname){
+    int index = this->hashFunction(delname);
+    if(this->contactList[index]->name == delname){
+        this->contactList[index] = nullptr;
+    }
+
+    while(this->contactList[index] != nullptr){
+        if(this->contactList[index]->name == delname && this->contactList[index]->nextContact != nullptr){
+            Contact* temp = this->contactList[index]->nextContact->nextContact;
+            this->contactList[index]->name = this->contactList[index]->nextContact->name;
+            this->contactList[index]->number = this->contactList[index]->nextContact->number;
+            free(this->contactList[index]->nextContact);
+            this->contactList[index]->nextContact = temp;
+            return;
+            
+        }else if(this->contactList[index]->name == delname && this->contactList[index]->nextContact == nullptr){
+            this->contactList[index] = nullptr;
+            return;
+
+        }else{
+            this->contactList[index] = this->contactList[index]->nextContact;
+        }
+    }
 
 };
 

@@ -5,7 +5,8 @@
 #include <vector>
 using namespace std;
 
-#define MAX_CONTACTS 20
+#define MAX_CONTACTS = 100;
+#define MAX_INDEXES 20
 
 // Elemento del hash table
 struct Contact{
@@ -17,14 +18,14 @@ struct Contact{
 // Hash Table
 class HashTable{
     private:
-        int size = MAX_CONTACTS;
+        int size = MAX_INDEXES;
     public:
         HashTable();
         ~HashTable();
-        Contact* contactList[MAX_CONTACTS];
+        Contact* contactList[MAX_INDEXES];
         int hashFunction(string name);
         void addContact(int num, string name);
-        void deleteContact();
+        void deleteContact(string name);
         void displayHash();
 };
 

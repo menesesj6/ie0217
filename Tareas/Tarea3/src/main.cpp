@@ -47,6 +47,7 @@ int main(){
                 break;
             case ELIMINAR:
                 deleteContact(&ht, head);
+                cout << head->name << endl;
                 break;
             case PRINTHTLL:
                 ht.displayHash();
