@@ -58,6 +58,8 @@ class HashTable{
         /**
          * @brief Computa el indice del Hash-Table donde se almacenara el par llave-valor
          * 
+         * Esto computa un indice de la tabla basado en el indice ASCII total del nombre.
+         * 
          * @param name Llave en base a la cual se calcula el indice del Hash-Table.
          * @return int INdice del Hash-Table donde se almacenara el contacto.
          */

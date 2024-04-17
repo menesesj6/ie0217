@@ -1,11 +1,12 @@
 #include "Funciones.hpp"
 
 void addContact(HashTable* ht, ContactNode** head){
+    // NOmbre nuevo contacto
     string newname;
+    // Numero nuevo contacto
     int newnumber;
+    // Alocar memoria de un nuevo objeto ContactNode
     ContactNode* newLLCon = (ContactNode*)malloc(sizeof(ContactNode));
-    int choice;
-    int index;
 
     // Pedir los datos al usuario
     cout << "AGREGAR CONTACTO" << endl;
@@ -23,25 +24,28 @@ void addContact(HashTable* ht, ContactNode** head){
     newLLCon->number = newnumber;
     newLLCon->nextContactNode = nullptr;
 
-    if (*head == nullptr) {
-        *head = newLLCon;
-        return;
+    // Caso 1: El nodo es null, lo asigna
+    if (last == nullptr) {
+        last = newLLCon;
     }
 
+    // Caso 2: Itera la linked list y pone el nuevo contacto al final
     while (last->nextContactNode != NULL) {
         last = last->nextContactNode;
     }
 
     last->nextContactNode = newLLCon;
 
-    // Ingresar al Hash Table
+    // Ingresar contacto al Hash Table
     ht->addContact(newnumber, newname);
     
 }
 
 
 void deleteContact(HashTable* ht, ContactNode* con){
+    // Eleccion sobre de donde se eliminara
     int choice;
+    // Nombre del contacto a eliminar
     string delname;
     // Pedir datos de eliminacion
     cout << "ELMINIAR CONTACTO" << endl;
@@ -49,8 +53,9 @@ void deleteContact(HashTable* ht, ContactNode* con){
     cout << "De donde desea eliminarlo? Ingrese el numero de su eleccion." << endl;
     cout << "1. Cloud storage (Eliminacion total)" << endl; 
     cout << "2. Memoria del celular" << endl;
-    cout << "\nEleccion: " << endl;
+    cout << "\nEleccion: ";
     cin >> choice; 
+    cout << endl;
 
     cout << "Ingrese el nombre del contacto que desea eliminar: ";
     cin.ignore();
@@ -58,13 +63,16 @@ void deleteContact(HashTable* ht, ContactNode* con){
 
     switch (choice){
         case 1:
+            // Eliminar contacto del hash tabe y del linked list aparte
             ht->deleteContact(delname);
             cout << "Se elimino a " << delname << " del cloud!" << endl;
             deleteofLL(delname, &con);
             cout << "Se elimino a " << delname << " del celular!" << endl;
             break;
         case 2:
+            // Eliminar solo de la linked list aparte (memoria celular)
             deleteofLL(delname, &con);
+            cout << "Se elimino a " << delname << " del celular!" << endl;
             break;
         default:
             break;
@@ -73,21 +81,23 @@ void deleteContact(HashTable* ht, ContactNode* con){
 }
 
 void deleteofLL(string name, ContactNode** head){   
-    ContactNode* temp;
+    ContactNode* temp; // Variable temporal, como en swap
     while((*head) != nullptr){
+        // Caso #1: se encuentra el nombre y el proximo nodo no es nulo
         if((*head)->name == name && (*head)->nextContactNode != nullptr){
+            // Se copian los datos del proximo y se elimina el siguiente
             (*head)->name = (*head)->nextContactNode->name;
             (*head)->number = (*head)->nextContactNode->number;
             temp = (*head)->nextContactNode->nextContactNode;
             free((*head)->nextContactNode);
             (*head)->nextContactNode = temp;
-            cout << "Se ha eliminado a " << name << " exitosamente!"<< endl;
             return;
+        // Caso #2: sencuentra el nombre y el proximo nodo es nulo (fin de la lista)
         } else if((*head)->name == name && (*head)->nextContactNode == nullptr){
             (*head) = nullptr;
             return;
-
         }
+        // Apuntar al siguiente nodo de la lista enlazada
         head = &((*head)->nextContactNode);
     }
     
@@ -96,9 +106,12 @@ void deleteofLL(string name, ContactNode** head){
 void displayContacts(ContactNode** head){
     cout << "\nCONTACTOS EN ORDEN ALFABETICO" << endl;
     cout << "-------------------------------" << endl;
+    // Caso en que el primero sea null (NO hay lista)
     if(*head == nullptr){
         cout << "El celular esta vacio." << endl;
+        return;
     }
+    // Iterar lista e imprimir valores
     while(*head != nullptr){
         cout << "Nombre: " << (*head)->name << endl;
         cout << "Numero: " << (*head)->number << endl << endl;
@@ -108,21 +121,32 @@ void displayContacts(ContactNode** head){
 }
 
 void orderLL(ContactNode* con){
+    // Almacena el nombre para hacer el swap
     string tempstr;
-    int tempint, check;
+    // Almacena el numero para hacer el swap
+    int tempint;
+    // Guarda el valor de la comparacion de strings
+    int check;
+
     ContactNode* memory = con;
     ContactNode** head = &con;
     bool swapped = true;
 
+    // Algoritmo de acomodo en orden alfabetico
+    // Mantener un loop while siempre que haya habido un cambio entre los nodos
     while(swapped){
-        swapped = false;
-        head = &memory;
+        swapped = false; // Se pone qu eno hubo swaps,
+        head = &memory; // Puntero base
 
+        // Iterar la lista enlazada
         while((*head)->nextContactNode != nullptr){
+        // Obtener la comparacion entre el nombre del contacto actual y del proximo
         check = (*head)->name.compare((*head)->nextContactNode->name);
+        // Casos en los que no pasa nada
         if(check == 0 || check < 0){
             head = &((*head)->nextContactNode);
         } else{
+            // Intercambiar nombre y numero
             tempstr = (*head)->name;
             tempint = (*head)->number;
             (*head)->name = (*head)->nextContactNode->name;
@@ -131,7 +155,9 @@ void orderLL(ContactNode* con){
             (*head)->nextContactNode->name = tempstr;
             (*head)->nextContactNode->number = tempint;
 
+            // Indicar que si hubo un cambio
             swapped = true;
+            // Apuntar al proximo contacto
             head = &((*head)->nextContactNode);
         }
     }       
@@ -140,6 +166,7 @@ void orderLL(ContactNode* con){
 }
 
 void freeLinkedList(ContactNode** head){
+    // Iterar por toda la linked list y liberar la memoria
     while(*head != nullptr){
         ContactNode* temp = (*head)->nextContactNode;
         free(*head);

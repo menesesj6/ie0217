@@ -12,7 +12,7 @@ int main(){
 
     // COntacto inicial en el cloud
     ht.addContact(84310164, "Jorge Meneses");
-    ht.addContact(85002305, "Daniela Granados");
+    ht.addContact(84139015, "Esteban Badilla");
 
     // COntacto inicial del celular
     ContactNode* head = (ContactNode*) malloc(sizeof(ContactNode));
@@ -21,8 +21,8 @@ int main(){
     head->number = 84310164;
     head->nextContactNode = second;
 
-    second->name = "Daniela Granados";
-    second->number = 85002305;
+    second->name = "Esteban Badilla";
+    second->number = 84139015;
     second->nextContactNode = nullptr;
 
     
@@ -42,22 +42,27 @@ int main(){
         cout << "Su seleccion: ";
         cin >> option;
         switch (option) {
+            // Agregar contacto
             case AGREGAR:
                 addContact(&ht, &head);
                 break;
+            // ELiminar contacto
             case ELIMINAR:
                 deleteContact(&ht, head);
                 break;
+            // Imprimir almacenamiento cloud
             case PRINTHTLL:
                 ht.displayHash();
                 break;
+            // Imprimir contactos celular
             case DISPLAY:
                 orderLL(head);
                 displayContacts(&head);
                 break;
+            // Salir del programa
             case SALIR:
+                // Liberar memoria
                 freeLinkedList(&head);
-                displayContacts(&head);
                 cout << "Saliendo del programa..." << endl;
                 break;
             default:
