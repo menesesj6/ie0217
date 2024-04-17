@@ -1,3 +1,13 @@
+/**
+ * @file HashTable.cpp
+ * @author Jorge Meneses
+ * @brief Definicion de metodos de la clase HashTable
+ * @version 1.0
+ * @date 2024-04-17
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #include "HashTable.hpp"
 
 HashTable::HashTable(){

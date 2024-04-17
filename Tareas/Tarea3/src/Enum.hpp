@@ -12,6 +12,10 @@
 #ifndef OPCIONES_HPP
 #define OPCIONES_HPP
 
+/**
+ * @brief Enum con las opciones para el menu principal del programa
+ * 
+ */
 enum Opciones{
     AGREGAR =1,
     ELIMINAR,

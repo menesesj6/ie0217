@@ -1,3 +1,13 @@
+/**
+ * @file Funciones.cpp
+ * @author Jorge Meneses Garro
+ * @brief Definicion de las funciones del programa
+ * @version 1.0
+ * @date 2024-04-17
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #include "Funciones.hpp"
 
 void addContact(HashTable* ht, ContactNode** head){
@@ -6,8 +16,7 @@ void addContact(HashTable* ht, ContactNode** head){
     // Numero nuevo contacto
     int newnumber;
     // Alocar memoria de un nuevo objeto ContactNode
-    ContactNode* newLLCon = (ContactNode*)malloc(sizeof(ContactNode));
-
+    ContactNode* newLLCon = (ContactNode*) calloc(1, sizeof(ContactNode));
     // Pedir los datos al usuario
     cout << "AGREGAR CONTACTO" << endl;
     cout << "-----------------" << endl;
@@ -23,10 +32,12 @@ void addContact(HashTable* ht, ContactNode** head){
     newLLCon->name = newname;
     newLLCon->number = newnumber;
     newLLCon->nextContactNode = nullptr;
-
+    
     // Caso 1: El nodo es null, lo asigna
     if (last == nullptr) {
-        last = newLLCon;
+        *head = newLLCon;
+        ht->addContact(newnumber, newname);
+        return;
     }
 
     // Caso 2: Itera la linked list y pone el nuevo contacto al final
@@ -42,7 +53,7 @@ void addContact(HashTable* ht, ContactNode** head){
 }
 
 
-void deleteContact(HashTable* ht, ContactNode* con){
+void deleteContact(HashTable* ht, ContactNode** con){
     // Eleccion sobre de donde se eliminara
     int choice;
     // Nombre del contacto a eliminar
@@ -66,12 +77,12 @@ void deleteContact(HashTable* ht, ContactNode* con){
             // Eliminar contacto del hash tabe y del linked list aparte
             ht->deleteContact(delname);
             cout << "Se elimino a " << delname << " del cloud!" << endl;
-            deleteofLL(delname, &con);
+            deleteofLL(delname, con);
             cout << "Se elimino a " << delname << " del celular!" << endl;
             break;
         case 2:
             // Eliminar solo de la linked list aparte (memoria celular)
-            deleteofLL(delname, &con);
+            deleteofLL(delname, con);
             cout << "Se elimino a " << delname << " del celular!" << endl;
             break;
         default:
@@ -82,6 +93,12 @@ void deleteContact(HashTable* ht, ContactNode* con){
 
 void deleteofLL(string name, ContactNode** head){   
     ContactNode* temp; // Variable temporal, como en swap
+
+    if((*head)->name == name && (*head)->nextContactNode == nullptr){
+        *head = nullptr;
+        return;
+    }
+
     while((*head) != nullptr){
         // Caso #1: se encuentra el nombre y el proximo nodo no es nulo
         if((*head)->name == name && (*head)->nextContactNode != nullptr){
@@ -99,8 +116,7 @@ void deleteofLL(string name, ContactNode** head){
         }
         // Apuntar al siguiente nodo de la lista enlazada
         head = &((*head)->nextContactNode);
-    }
-    
+    } 
 }
 
 void displayContacts(ContactNode** head){
@@ -108,7 +124,7 @@ void displayContacts(ContactNode** head){
     cout << "-------------------------------" << endl;
     // Caso en que el primero sea null (NO hay lista)
     if(*head == nullptr){
-        cout << "El celular esta vacio." << endl;
+        cout << "El celular esta vacio." << endl << endl;
         return;
     }
     // Iterar lista e imprimir valores
@@ -131,7 +147,10 @@ void orderLL(ContactNode* con){
     ContactNode* memory = con;
     ContactNode** head = &con;
     bool swapped = true;
-
+    // Caso que no haya nada
+    if(con == nullptr){
+        return;
+    }
     // Algoritmo de acomodo en orden alfabetico
     // Mantener un loop while siempre que haya habido un cambio entre los nodos
     while(swapped){
@@ -172,6 +191,5 @@ void freeLinkedList(ContactNode** head){
         free(*head);
         *head = temp; 
     }
-    cout << "Memoria limpia correctamente" << endl;
 }
 

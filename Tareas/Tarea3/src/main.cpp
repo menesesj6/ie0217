@@ -1,3 +1,13 @@
+/**
+ * @file main.cpp
+ * @author Jorge Meneses Garro
+ * @brief Implementacion principal del programa
+ * @version 1.0
+ * @date 2024-04-17
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #include <iostream>
 #include "Funciones.hpp"
 #include "Enum.hpp"
@@ -48,7 +58,7 @@ int main(){
                 break;
             // ELiminar contacto
             case ELIMINAR:
-                deleteContact(&ht, head);
+                deleteContact(&ht, &head);
                 break;
             // Imprimir almacenamiento cloud
             case PRINTHTLL:

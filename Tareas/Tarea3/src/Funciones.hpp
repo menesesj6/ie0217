@@ -28,9 +28,9 @@ void addContact(HashTable* ht, ContactNode** head);
  * Se le solicita al usuario que indique si desea eliminar el contacto solo de la memoria del celular o si tambien del cloud, eliminandolo totalmente. ELimina el ususario basado en el nombre deseado.
  * 
  * @param ht Puntero al Hash-Table existente que hace como la memoria cloud.
- * @param con Primer nodo de la linked list que hace de memoria del celular.
+ * @param con Doble puntero hacia el primer nodo del linked list de la memoria del celular.
  */
-void deleteContact(HashTable* ht, ContactNode* con);
+void deleteContact(HashTable* ht, ContactNode** con);
 
 /**
  * @brief Elimina un contacto de un linked list
@@ -43,7 +43,7 @@ void deleteofLL(string name, ContactNode** head);
 /**
  * @brief Imprime los contactos en orden alfabetico.
  * 
- * @param head Primer nodo de la linked list que hace de memoria del celular.
+ * @param head Doble puntero hacia el primer nodo del linked list de la memoria del celular.
  */
 void displayContacts(ContactNode** head);
 

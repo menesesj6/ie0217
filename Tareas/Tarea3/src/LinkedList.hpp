@@ -1,7 +1,7 @@
 /**
- * @file Funciones.hpp
+ * @file LinkedList.hpp
  * @author Jorge Meneses Garro
- * @brief Struct para la creacion del linked list que hara de memoria del celular.
+ * @brief EStructura de nodo para la creacion de un linked list.
  * 
  * @version 1.0
  * @date 2024-04-17
@@ -18,7 +18,7 @@
 using namespace std;
 
 /**
- * @brief EStructura que define los nodos del linked list que hara como memoria del celular.
+ * @brief Estructura que define los nodos del linked list que hara como memoria del celular.
  * 
  */
 struct ContactNode{
