@@ -4,7 +4,7 @@ using namespace std;
 using namespace std::chrono;
 
 int main(){
-    // Datos del array
+    // Array a ordenar
     const int SIZE = 10000;
     int arr[SIZE];
 

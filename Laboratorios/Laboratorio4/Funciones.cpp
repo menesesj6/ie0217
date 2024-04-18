@@ -73,7 +73,7 @@ int partition(int arr[], int low, int high) {
     int temp = arr[i + 1];
     arr[i + 1] = arr[high];
     arr[high] = temp;
-    // Retorna el punto de particion
+    // Retorna el punto de particion con el pivote
     return i + 1;
 }
 
