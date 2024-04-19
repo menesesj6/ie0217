@@ -37,11 +37,11 @@
 	- Laboratorio12: CUDA
 	- Laboratorio13: Depuracion, gdb, Memcheck, asan, Valgrind, Helgrind; Software testing y gunit
 3. Tareas
-	- Tarea1: Git, GitHub, Markdown y C++ teoria
-	- Tarea2: C++ Clases y Objetos
-	- Tarea3: C++ Manejo de memoria; estructuras de datos y algoritmos
-	- Tarea4: C++ Algoritmos de ordenamiento y Biblioteca STL
-	- Tarea5: C++ Templates y Excepciones; Expresiones regulares y Makefiles
-	- Tarea6: Bases de datos: SQL, MySQL, PostgreSQL, Azure, GCP, AWS, MongoDB
-	- Tarea7: Programacion concurrente y CUDA
-	- Tarea8: Depuracion y SOftware testing: gdb, Memcheck, asan, Valgrind, Helgrind, gunit
+	- Tarea1: Juego de ahorcado
+	- Tarea2: Administracion mundial
+	- Tarea3: Gestion de contactos
+	- Tarea4: 
+	- Tarea5: 
+	- Tarea6: 
+	- Tarea7: 
+	- Tarea8: 
