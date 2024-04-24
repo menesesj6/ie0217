@@ -3,11 +3,13 @@
 
 #include"Libro.hpp"
 
+// Inicializacion de la clase Biblioteca
 class Biblioteca {
 private:
+    // Todos los libros de la biblioteca
     std::vector<Libro> libros;
-
 public:
+    // Metodos de la clase
     void agregarLibro(const Libro& libro);
     void mostrarLibros();
     void ordenarLibrosPorAnio();

@@ -6,14 +6,16 @@
 #include<vector>
 #include<algorithm>
 
+// Inicializacion de clase Libro
 class Libro {
     public:
+        // Atributos
         std::string titulo;
         std::string autor;
         int anioPublicacion;
-
-        Libro(std::string t, std::string a, int anio) : titulo(t), autor(a), anioPublicacion(anio) {}
-
+        
+        // Metodos
+        Libro(std::string t, std::string a, int anio);
         bool operator<(const Libro& l) const;
 };
 
