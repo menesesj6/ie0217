@@ -22,6 +22,7 @@ class Statistics{
             T sum = 0;
             // Iterar el vector y obtener la suma de todos sus elementos
             for(const T& value : data){
+                // Sumar cada elemento
                 sum += value;
             }
             // Retornar el promedio usando esa suma y el tamano del vector
@@ -49,6 +50,8 @@ class Statistics{
 
 int main(){
     try{
+        /***********Prueba de ints***********/
+
         // Crear vector de ints
         std::vector<int> intData = {1, 2, 3, 4, 5};
         // Crear clase de analisis de ints
@@ -57,7 +60,8 @@ int main(){
         std::cout << "Media de intData: " << statsInt.mean() << std::endl;
         std::cout << "Desviacion estandar de intData: " << statsInt.standardDeviation() << std::endl;
 
-        /**********************************************************/
+        /*********Prueba de doubles*********/
+
         // Crear vector de doubles
         std::vector<double> doubleData = {1.5, 2.5, 3.5, 4.5, 5.5};
         // Crear clase de analisis de doubles
@@ -66,11 +70,11 @@ int main(){
         std::cout << "Media de doubleData: " << statsDouble.mean() << std::endl;
         std::cout << "Desviacion estandar de doubleData: " << statsDouble.standardDeviation() << std::endl;
         
-        /************************/
+        /******Prueba de vector vacio******/
         std::vector<int>empyData;
         Statistics<int> statsEmpty(empyData);
 
-    } // Manejar la excepcion de argumento invalido 
+    } // Manejar la excepcion de argumento invalido tirada por vector vacio
     catch(const std::invalid_argument& e){
         std::cerr << "Excepcion encontrada: " << e.what() <<std::endl;
     }
