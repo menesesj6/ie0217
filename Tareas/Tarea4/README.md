@@ -1,7 +1,7 @@
 # Tarea 4
 ## IE-0217: Estructuras Abstractas de Datos y Algoritmos para Ingeniería
 
-Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux.  A continuación se exponen las formas de compilar y ejecutar por medio de un Makefile al igual que de forma manual por medio de la terminal, desde el directorio de **Tareas/Tarea3**. Cabe destacar que este instructivo está pensado para abrir la documentación de Doxygen en FireFox.
+Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux.  A continuación se exponen las formas de compilar y ejecutar por medio de un Makefile al igual que de forma manual por medio de la terminal, desde el directorio de **Tareas/Tarea4**. Cabe destacar que este instructivo está pensado para abrir la documentación de Doxygen en FireFox.
 
 - Cabe destacar que es recomendable ejecutar por medio de Makefile, dada la gran cantidad de archivos .cpp
 
@@ -94,7 +94,27 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 
 3. ***STL***
     
-    1. Contenedore STL
-    2. Iteradores STL
-    3. Algoritmos STL
-    4. Algoritmos personalizados
+    1. Contenedores STL:
+        - vector:
+        Representaciones vectoriales de aplicaciones STEM, _data science_, implementaciones de estructuras de datos.
+        - deque:
+        Sistemas de manejo de tareas, historiales de internet, sistemas de tipo cache. 
+        - set:
+        Casos donde no se puedan repetir datos, como un sistema de identificaciones, una memoria de carnets universitarios o un programa que obtenga valores especificos, pues seria unico.
+        - multimap:
+        Aplicaciones de memoria y almacenamiento, diccionarios, casos donde se necesite indexacion de valores con una llave respectiva, sistemas de organizacion.
+        - list:
+        Operacione de rehacer y deshacer, implementar estructuras de datos, aplicaciones que involucren muchas iteraciones.
+
+    2. Iteradores STL:
+        Los iteradores pueden ser vistos como un puntero que apunta a los distintos elementos de un contenedor STL. Para la utilizacion de estos es esencial poder obtener el primer y ultimo elemento del contenedor y asi poder iterar sobre el contenedor adecuadamente. Por ejemplo, para un vector, tiene metodos begin() y end() que retornan iteradores que apuntan al inicio o final del vector. Para acceder al i-esimo elemento de un contenedor, vector en este caso, se usan esos iteradores mencionados y se le suman o restan posiciones para acceder a los elementos.
+        
+    3. Algoritmos STL:
+        - binary search:
+        Consiste en ir partiendo a la mitad la porcion del contenedor donde podria estar el elemento bsucado, hasta que se logra reducir el tamano de dicha porcion a un elemento. Este algoritmo se hace en un rango ordenado de elementos. 
+        - reverse:
+        Este invierte el orden de un rango. Es decir, si un rango de un contenedor esta ordenado en orden ascendiente, este algoritmo cambiara ese ordenamiento a orden descendiente.
+        - sort:
+        Se encarga de ordenar en orden ascendiente un ranog de datos, o bien, un contenedor entero.
+    4. Algoritmos personalizados:
+        Para modificar un algoritmo de STL, lo que se debe hacer es invocar al algoritmo necesario y pasarle como parametro  la funcion, metodo o clase que sera la funcion usada para llevar a cabo las operaciones y asi cumplir el objetivo del algoritmo. Por ejemplo, para aplicar el ```std::sort``` a un vector, se debe pasar el punto de inicio y el punto de fin del rango que se desea ordenar. Esto para correr el algoritmo de STL, pero si se desea modificar, se debe codificar una funcion que funcione para la comparacion y ordenamiento, y pasarlo como el tercer parametro al algoritmo.
