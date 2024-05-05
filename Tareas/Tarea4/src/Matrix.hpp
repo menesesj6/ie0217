@@ -4,8 +4,9 @@
 #include <iostream>
 #include <vector>
 #include <complex>
-#include <typeinfo>
-#include <type_traits>
+#include <string>
+#include "InputValidator.hpp"
+
 using namespace std;
 
 template <class T>
@@ -14,10 +15,12 @@ class Matrix{
         int rows, cols;
         vector<vector<T>> data;
     public:
+        InputValidator<T> checker;
         Matrix(int r, int c);
         ~Matrix();
         void setDimensiones(int rows, int columns);
         void fillMatrix();
+        void randomFillMatrix();
         void display();
         Matrix<T> operator+(const Matrix<T>& other);
         Matrix<T> operator-(const Matrix<T>& other);

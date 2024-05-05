@@ -2,11 +2,17 @@
 
 template <class T>
 Matrix<T>::Matrix(int r, int c) : rows(r), cols(c){
-    // EStablecer las caracteristicas de la matriz
-    this->setDimensiones(this->rows, this->cols);
-    // Imprimir la matriz
-    cout << "\nMatriz creada exitosamente!" << endl;
-    this->display();
+    try{
+        // EStablecer las caracteristicas de la matriz y verificar
+        this->setDimensiones(this->rows, this->cols);
+        // Imprimir la matriz
+        cout << "\nMatriz creada exitosamente!" << endl;
+    }
+    catch (const exception& e){
+        cerr << e.what() << endl;
+        exit(0);
+    }
+    
 }
 // Arreglar linking problems
 template Matrix<int>::Matrix(int r, int c);
@@ -21,27 +27,37 @@ template Matrix<int>::~Matrix();
 
 template <class T>
 void Matrix<T>::setDimensiones(int rows, int columns){
-    if (rows <= 0 || columns <= 0){
-        throw runtime_error("Dimensiones invalidas, revise que no sea 0 o negativas.");
+    this->rows = rows;
+    this->cols = columns;
+    // Inicializar la matriz en cero
+    vector<T> init (this->cols, 0);
+    for(int i = 0; i < this->rows; i++){
+        this->data.push_back(init);
     }
+    this->checker.validateDimensions(rows, columns);
 }
 
 template <class T>
 void Matrix<T>::fillMatrix(){
-    int num;
+    string num;
     vector<T> aux;
-    for(int i = 0; i < this->rows; i++){
-        for(int j = 0; j < this->cols; j++){
-            cout << "Ingrese el valor [" << i << "][" << j << "] de la matriz: ";
-            cin >> num;
-            if(typeid(T) != typeid(num)){
-                throw invalid_argument("Tipo de dato incorrecto ingresado a la matriz.");
+    this->data.clear();
+    try{
+        for(int i = 0; i < this->rows; i++){
+            for(int j = 0; j < this->cols; j++){
+                cout << "Ingrese el valor [" << i << "][" << j << "] de la matriz: ";
+                cin >> num;
+                this->checker.validateData(num);
             }
-            aux.push_back(num);
+            this->data.push_back(aux);
+            aux.clear();
         }
-        this->data.push_back(aux);
-        aux.clear();
     }
+    catch (const exception& e){
+        cerr << e.what() << endl;
+        exit(0);
+    }
+    
 }
 template void Matrix<int>::fillMatrix();
 template void Matrix<float>::fillMatrix();
@@ -88,3 +104,4 @@ Matrix<T> Matrix<T>::operator-(const Matrix<T>& other){
 }
 template Matrix<int> Matrix<int>::operator-(const Matrix<int>& other);
 template Matrix<float>  Matrix<float>::operator-(const Matrix<float>& other);
+
