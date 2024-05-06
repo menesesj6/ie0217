@@ -13,9 +13,9 @@ using namespace std;
 template <class T>
 class Matrix{
     private:
-        int rows, cols;
         vector<vector<T>> data;
     public:
+        int rows, cols;
         InputValidator<T> checker;
         Matrix(int r, int c);
         ~Matrix();

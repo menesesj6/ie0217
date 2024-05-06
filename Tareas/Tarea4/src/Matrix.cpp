@@ -70,7 +70,7 @@ void Matrix<T>::randomFillMatrix(){
     vector<T> aux; 
     if(typeid(T) == typeid(int)){
         random_device rd;
-        uniform_int_distribution<int> dis(0, 100);
+        uniform_int_distribution<int> dis(-100, 100);
         this->data.clear();
         for(int i = 0; i < this->rows; i++){
             for(int j = 0; j < this->cols; j++){
@@ -82,7 +82,7 @@ void Matrix<T>::randomFillMatrix(){
         }
     }  else if (typeid(T) == typeid(float)){
         random_device rd;
-        uniform_real_distribution<float> dis(0, 100);
+        uniform_real_distribution<float> dis(-100, 100);
         this->data.clear();
         for(int i = 0; i < this->rows; i++){
             for(int j = 0; j < this->cols; j++){
@@ -111,6 +111,7 @@ template <class T>
 Matrix<T> Matrix<T>::operator+(const Matrix<T>& other){
     vector<T> aux;
     Matrix<T> result(this->rows, this->cols);
+    result.data.clear();
     for(int i = 0; i < this->rows; i++){
         for(int j = 0; j < this->cols; j++){
             aux.push_back(this->data[i][j]+other.data[i][j]);
@@ -127,6 +128,7 @@ template <class T>
 Matrix<T> Matrix<T>::operator-(const Matrix<T>& other){
     vector<T> aux;
     Matrix<T> result(this->rows, this->cols);
+    result.data.clear();
     for(int i = 0; i < this->rows; i++){
         for(int j = 0; j < this->cols; j++){
             aux.push_back(this->data[i][j] - other.data[i][j]);
@@ -142,13 +144,12 @@ template <class T>
 Matrix<T> Matrix<T>::operator*(const Matrix<T>& other){
     vector<T> aux;
     Matrix<T> result(this->rows, other.cols);
-    T item1, item2, item = 0;
+    result.data.clear();
      for (int i = 0; i < this->data.size(); i++){
         for (int j = 0; j < other.data.size(); j++){
             for (int k = 0; k < this->data.size();k++)
                 result.data[i][j] += this->data[i][k] * other.data[k][j];
         }
-
     }
     
     return result;

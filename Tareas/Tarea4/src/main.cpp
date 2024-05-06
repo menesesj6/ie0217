@@ -1,7 +1,10 @@
-#include "Matrix.hpp"
 #include "InputValidator.hpp"
+#include "BasicOperations.hpp"
 int main(){
     int out, option, op, type, rand, _rows1, _cols1,  _rows2, _cols2;
+    BasicOperations<int> intOp;
+    BasicOperations<float> floatOp;
+    // BasicOperations<complex<float>> complexOP;
     do{
         cout << "CALCULADORA DE MATRICES" << endl;
         cout << "-----------------------" << endl << endl;
@@ -74,7 +77,13 @@ int main(){
                     m2.display();
                     break;
                 case 4:
-
+                    try{
+                        intOp.sum(m1, m2);
+                    }
+                    catch(const exception& e){
+                        cerr << e.what() << endl;
+                    }
+                    
                     break;  
                 case 5:
                     goto exit;
