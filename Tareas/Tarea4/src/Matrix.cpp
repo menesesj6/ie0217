@@ -5,8 +5,6 @@ Matrix<T>::Matrix(int r, int c) : rows(r), cols(c){
     try{
         // EStablecer las caracteristicas de la matriz y verificar
         this->setDimensiones(r, c);
-        // Imprimir la matriz
-        cout << "\nMatriz creada exitosamente!" << endl;
     }
     catch (const exception& e){
         cerr << e.what() << endl;
@@ -101,7 +99,7 @@ template <class T>
 void Matrix<T>::display(){
     for (int i = 0; i < this->data.size(); i++) { 
         for (int j = 0; j < this->data[i].size(); j++) 
-            cout << this->data[i][j] << " "; 
+            cout << this->data[i][j] << "  "; 
         cout << endl; 
     }
 }
@@ -144,7 +142,6 @@ template <class T>
 Matrix<T> Matrix<T>::operator*(const Matrix<T>& other){
     vector<T> aux;
     Matrix<T> result(this->rows, other.cols);
-    result.data.clear();
      for (int i = 0; i < this->data.size(); i++){
         for (int j = 0; j < other.data.size(); j++){
             for (int k = 0; k < this->data.size();k++)

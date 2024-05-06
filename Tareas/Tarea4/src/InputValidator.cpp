@@ -29,8 +29,6 @@ void InputValidator<T>::validateDimensions(int r, int c){
     // Verificacion de 
     if(c <= 0 || r <= 0){
         throw runtime_error("ERROR: Dimensiones invalidas.");
-    } else{
-        cout << "Dimensiones validas!" << endl;
     }
 }
 
