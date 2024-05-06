@@ -29,7 +29,7 @@ int main(){
         
         Matrix<int> m1(_rows1, _cols1);
         Matrix<int> m2(_rows2, _cols2);
-    
+        Matrix<int> m3(1,1);    
 
         cout << "2. Escoja la operacion a realizar." << endl;
         cout << "\t1. +" << endl;
@@ -56,8 +56,12 @@ int main(){
                 case 2: 
                     cout << "Ingrese valores de matriz 1: " << endl;
                     m1.fillMatrix();
+                    m1.display();
                     cout << "Ingrese valores de matriz 2: " << endl;
                     m2.fillMatrix();
+                    m2.display();
+                    m3 = m1*m2;
+                    m3.display();
                     break;
                 case 3:
                     cout << "Matriz 1: " << endl;
@@ -66,6 +70,7 @@ int main(){
                     m2.display();
                     break;
                 case 4:
+
                     break;  
                 case 5:
                     goto exit;
