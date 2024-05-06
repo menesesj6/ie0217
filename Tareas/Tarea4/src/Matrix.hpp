@@ -5,6 +5,7 @@
 #include <vector>
 #include <complex>
 #include <string>
+#include <random>
 #include "InputValidator.hpp"
 
 using namespace std;
