@@ -1,8 +1,5 @@
-# Nombre del programa de salida
-TARGET = gestion_biblioteca.exe
-
-# Objetivo predeterminado
-all: $(TARGET)
+# Objetivo
+TARGET = regex_example.exe
 
 # Compilador
 CXX = g++
@@ -11,7 +8,7 @@ CXX = g++
 CXXFLAGS = -Wall -std=c++11
 
 # Lista de archivos fuente
-SOURCES = main.cpp biblioteca.cpp libro.cpp
+SOURCES = regex.cpp
 
 # Lista de archivos objeto generados a partir de los archivos fuente
 OBJECTS = $(SOURCES:.cpp=.exe)
@@ -26,6 +23,6 @@ $(TARGET): $(OBJECTS)
 	./$(TARGET)
 
 # Regla para limpiar los archivos generados
-.PHONY: clean
 clean:
 	rm $(TARGET) $(OBJECTS)
+
