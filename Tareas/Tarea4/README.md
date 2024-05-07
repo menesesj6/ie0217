@@ -15,7 +15,7 @@ $ make doxygen # Despliegue documentacion Doxygen
 ### Forma general
 
 ```
-$ g++  -o Exe.exe
+$ g++ src/main.cpp src/Matrix.cpp src/InputValidator.cpp src/BasicOperations.cpp -o Exe.exe
 $ ./Exe.exe
 ``` 
 ### Documentacion en Netlify

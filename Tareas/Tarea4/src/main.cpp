@@ -1,14 +1,19 @@
 #include "InputValidator.hpp"
 #include "BasicOperations.hpp"
 int main(){
-    int out, option, op, type, rand, _rows1, _cols1,  _rows2, _cols2;
+    // Inicializar variables importantes del menu
+    int option, op, type;
+    // Inicializar variables de dimensiones
+    int _rows1, _cols1,  _rows2, _cols2;
+    // Instanciar los objetos encargados de las operaciones
     BasicOperations<int> intOp;
     BasicOperations<float> floatOp;
-    // BasicOperations<complex<float>> complexOP;
+    
     do{
         cout << "CALCULADORA DE MATRICES" << endl;
         cout << "-----------------------" << endl << endl;
         cout << "1. Creacion de las matrices" << endl;
+
         // Pedir tipo de datos
         cout << "1.1. Escoja el tipo de dato de las matrices." << endl;
         cout << "\t1. Integers" << endl;
@@ -30,6 +35,7 @@ int main(){
         cout << "\tColumnas: ";
         cin >> _cols2;
 
+        // Preguntar la operacion a realizar
         cout << "2. Escoja la operacion a realizar." << endl;
         cout << "\t1. +" << endl;
         cout << "\t2. -" << endl;
@@ -37,7 +43,9 @@ int main(){
         cout << "Seleccion: ";
         cin >> op;
         
+        // Caso de integers
         if(type == 1){
+            // Crear objetos matriz tipo int
             Matrix<int> m1(_rows1, _cols1);
             Matrix<int> m2(_rows2, _cols2);
             do{
@@ -54,62 +62,94 @@ int main(){
 
                 switch(option){
                     case 1:
+                        // Randomizar valores e imprimir matrices
                         cout << "Rellenando la matriz 1..." << endl;
                         m1.randomFillMatrix();
+                        cout << "\nMATRIZ 1" << endl;
+                        cout << "--------" << endl;
                         m1.display();
                         cout << "Rellenando la matriz 2..." << endl;
                         m2.randomFillMatrix();
+                        cout << "\nMATRIZ 2" << endl;
+                        cout << "--------" << endl;
                         m2.display();
                         break;
                     case 2: 
+                        // Ingresar valores manualmente e imprimir matrices
                         cout << "Ingrese valores de matriz 1: " << endl;
                         m1.fillMatrix();
+                        cout << "\nMATRIZ 1" << endl;
+                        cout << "--------" << endl;
                         m1.display();
                         cout << "Ingrese valores de matriz 2: " << endl;
                         m2.fillMatrix();
+                        cout << "\nMATRIZ 2" << endl;
+                        cout << "--------" << endl;
                         m2.display();
                         break;
                     case 3:
-                        cout << "Matriz 1: " << endl;
+                        // Imprimir matrices
+                        cout << "\nMATRIZ 1" << endl;
+                        cout << "--------" << endl;
                         m1.display();
-                        cout << "Matriz 2: " << endl;
+                        cout << "\nMATRIZ 2" << endl;
+                        cout << "--------" << endl;
                         m2.display();
                         break;
                     case 4:
+                        // Sentencia condicional para realizar operaciones
                         if (op == 1){
+                            // Suma
                             try{
-                            intOp.sum(m1, m2);
+                                cout << "\nRESULTADO" << endl;
+                                cout << "--------" << endl; 
+                                // Validar y realizar la operacion
+                                intOp.sum(m1, m2);
                             }
+                            // Manejar excepcion en caso de operacion invalida, si hiciera falta
                             catch(const exception& e){
                                 cerr << e.what() << endl;
                             }
                         } else if(op == 2){
+                            // Resta
                             try{
-                            intOp.sub(m1, m2);
+                                cout << "\nRESULTADO" << endl;
+                                cout << "--------" << endl; 
+                                // Validar y realizar la operacion
+                                intOp.sub(m1, m2);
                             }
+                            // Manejar excepcion en caso de operacion invalida, si hiciera falta
                             catch(const exception& e){
                                 cerr << e.what() << endl;
                             }
                         } else if(op == 3){
+                            // Multiplicacion
                             try{
-                            intOp.mult(m1, m2).display();
+                                cout << "\nRESULTADO" << endl;
+                                cout << "--------" << endl; 
+                                // Validar y realizar la operacion
+                                intOp.mult(m1, m2).display();
                             }
+                            // Manejar excepcion en caso de operacion invalida, si hiciera falta
                             catch(const exception& e){
                                 cerr << e.what() << endl;
                             }
                         }
-                        
-
                         break;  
                     case 5:
+                        // Salir del programa
                         goto exit;
                         break;
                     default:
+                        // Volver a pedir opcion
                         cout << "Ingrese una opcion valida." << endl;
                         break;
                 }
             } while(true);
-        } else if (type == 2){
+        } 
+        // Caso de floats
+        else if (type == 2){
+            // Crear objetos matriz tipo float
             Matrix<float> m1(_rows1, _cols1);
             Matrix<float> m2(_rows2, _cols2);
             do{
@@ -126,59 +166,81 @@ int main(){
 
                 switch(option){
                     case 1:
+                        // Randomizar valores e imprimir matrices
                         cout << "Rellenando la matriz 1..." << endl;
                         m1.randomFillMatrix();
+                        cout << "MATRIZ 1" << endl;
+                        cout << "--------" << endl;  
                         m1.display();
                         cout << "Rellenando la matriz 2..." << endl;
                         m2.randomFillMatrix();
+                        cout << "MATRIZ 2" << endl;
+                        cout << "--------" << endl;  
                         m2.display();
                         break;
                     case 2: 
-                        cout << "Valores de matriz 1: " << endl;
-                        cout << "--------------------" << endl;
+                        // Ingresar valores manualmente e imprimir matrices
+                        cout << "\nMATRIZ 1" << endl;
+                        cout << "--------" << endl;
                         m1.fillMatrix();
                         m1.display();
-                        cout << "Valores de matriz 2: " << endl;
-                        cout << "--------------------" << endl;
+                        cout << "\nMATRIZ 2" << endl;
+                        cout << "--------" << endl;
                         m2.fillMatrix();
                         m2.display();
                         break;
                     case 3:
-                        cout << "Matriz 1: " << endl;
+                        // Imprimir matrices
+                        cout << "Matriz 1 " << endl;
                         cout << "---------" << endl;
                         m1.display();
-                        cout << "Matriz 2: " << endl;
+                        cout << "Matriz 2 " << endl;
                         cout << "---------" << endl;
                         m2.display();
                         break;
                     case 4:
+                        // Sentencia condicional para realizar operaciones
                        if (op == 1){
+                        // Suma
                             try{
+                                cout << "\nRESULTADO" << endl;
+                                cout << "--------" << endl; 
                                 floatOp.sum(m1, m2).display();
                             }
+                            // Manejar excepcion en caso de operacion invalida, si hiciera falta
                             catch(const exception& e){
                                 cerr << e.what() << endl;
                             }
                         } else if(op == 2){
+                            // Resta
                             try{
+                                cout << "\nRESULTADO" << endl;
+                                cout << "--------" << endl; 
                                 floatOp.sub(m1, m2).display();
                             }
+                            // Manejar excepcion en caso de operacion invalida, si hiciera falta
                             catch(const exception& e){
                                 cerr << e.what() << endl;
                             }
                         } else if(op == 3){
+                            // Multiplicacion
                             try{
+                                cout << "\nRESULTADO" << endl;
+                                cout << "--------" << endl;  
                                 floatOp.mult(m1, m2).display();
                             }
+                            // Manejar excepcion en caso de operacion invalida, si hiciera falta
                             catch(const exception& e){
                                 cerr << e.what() << endl;
                             }
                         }
                         break;  
                     case 5:
+                        // Salir del programa
                         goto exit;
                         break;
                     default:
+                        // Volver a pedir opcion
                         cout << "Ingrese una opcion valida." << endl;
                         break;
                 }
