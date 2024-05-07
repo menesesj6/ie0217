@@ -8,7 +8,7 @@ int main(){
     // Instanciar los objetos encargados de las operaciones
     BasicOperations<int> intOp;
     BasicOperations<float> floatOp;
-    
+    BasicOperations<complex<float>> complexOP;
     do{
         cout << "CALCULADORA DE MATRICES" << endl;
         cout << "-----------------------" << endl << endl;
@@ -228,6 +228,106 @@ int main(){
                                 cout << "\nRESULTADO" << endl;
                                 cout << "--------" << endl;  
                                 floatOp.mult(m1, m2).display();
+                            }
+                            // Manejar excepcion en caso de operacion invalida, si hiciera falta
+                            catch(const exception& e){
+                                cerr << e.what() << endl;
+                            }
+                        }
+                        break;  
+                    case 5:
+                        // Salir del programa
+                        goto exit;
+                        break;
+                    default:
+                        // Volver a pedir opcion
+                        cout << "Ingrese una opcion valida." << endl;
+                        break;
+                }
+            } while(true);
+        }
+        // Caso de complex
+        else if (type == 3){
+            // Crear objetos matriz tipo float
+            Matrix<complex<float>> m1(_rows1, _cols1);
+            Matrix<complex<float>> m2(_rows2, _cols2);
+            do{
+                cout << "\nMENU SECUNDARIO" << endl;
+                cout << "---------------" << endl;
+                cout << "Seleccione lo que desee hacer ahora." << endl << endl;
+                cout << "\t1. Randomizar los valores de la matriz." << endl;
+                cout << "\t2. Asignar valores manualmente." << endl;
+                cout << "\t3. Mostrar las matrices generadas." << endl;
+                cout << "\t4. Ejecutar la operacion deseada." << endl;
+                cout << "\t5. Salir del programa" << endl;
+                cout << "Seleccion: ";
+                cin >> option;
+
+                switch(option){
+                    case 1:
+                        // Randomizar valores e imprimir matrices
+                        cout << "Rellenando la matriz 1..." << endl;
+                        m1.randomFillMatrix();
+                        cout << "MATRIZ 1" << endl;
+                        cout << "--------" << endl;  
+                        m1.display();
+                        cout << "Rellenando la matriz 2..." << endl;
+                        m2.randomFillMatrix();
+                        cout << "MATRIZ 2" << endl;
+                        cout << "--------" << endl;  
+                        m2.display();
+                        break;
+                    case 2: 
+                        // Ingresar valores manualmente e imprimir matrices
+                        cout << "\nMATRIZ 1" << endl;
+                        cout << "--------" << endl;
+                        m1.fillMatrix();
+                        m1.display();
+                        cout << "\nMATRIZ 2" << endl;
+                        cout << "--------" << endl;
+                        m2.fillMatrix();
+                        m2.display();
+                        break;
+                    case 3:
+                        cout << "NOTA: LOs numeros complejos son mostrados de la forma (Re, Im)" << endl;
+                        // Imprimir matrices
+                        cout << "Matriz 1 " << endl;
+                        cout << "---------" << endl;
+                        m1.display();
+                        cout << "Matriz 2 " << endl;
+                        cout << "---------" << endl;
+                        m2.display();
+                        break;
+                    case 4:
+                        // Sentencia condicional para realizar operaciones
+                       if (op == 1){
+                        // Suma
+                            try{
+                                cout << "\nRESULTADO" << endl;
+                                cout << "--------" << endl; 
+                                complexOP.sum(m1, m2).display();
+                            }
+                            // Manejar excepcion en caso de operacion invalida, si hiciera falta
+                            catch(const exception& e){
+                                cerr << e.what() << endl;
+                            }
+                        } else if(op == 2){
+                            // Resta
+                            try{
+                                cout << "\nRESULTADO" << endl;
+                                cout << "--------" << endl; 
+                                complexOP.sub(m1, m2).display();
+                            }
+                            // Manejar excepcion en caso de operacion invalida, si hiciera falta
+                            catch(const exception& e){
+                                cerr << e.what() << endl;
+                            }
+                        } else if(op == 3){
+                            // Multiplicacion
+                            try{
+                                cout << "\nRESULTADO" << endl;
+                                cout << "--------" << endl;  
+                                complexOP.mult(m1, m2).display();
                             }
                             // Manejar excepcion en caso de operacion invalida, si hiciera falta
                             catch(const exception& e){

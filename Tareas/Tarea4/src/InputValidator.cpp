@@ -29,6 +29,15 @@ void InputValidator<T>::validateData(string num){
     // Revisar si el input es float
     else if (nums + dots + minuses == num.length()) type = 2;
     
+    // Revisar para el caso de complejos que tiene componentes floats
+    if(typeid(T) == typeid(complex<float>)){
+        if(type == 1){
+            throw runtime_error("COmponente complejo de tipo erroneo.");
+        } else if(type == 2){
+            return;
+        }
+    }
+
     // Lanzar excepcion si el tipo de input es distinto del parametro T 
     if (typeid(T).name() == typeid(aux).name() && type == 2){
         throw runtime_error("Error de tipo.");
@@ -48,7 +57,11 @@ void InputValidator<T>::validateDimensions(int r, int c){
 // Solucion linking problems
 template void InputValidator<int>::validateData(string num);
 template void InputValidator<float>::validateData(string num);
-
+template void InputValidator<complex<float>>::validateData(string num);
+//template void InputValidator<complex<int>>::validateData(string num);
 
 template void InputValidator<int>::validateDimensions(int r, int c);
 template void InputValidator<float>::validateDimensions(int r, int c);
+template void InputValidator<complex<float>>::validateDimensions(int r, int c);
+//template void InputValidator<complex<int>>::validateDimensions(int r, int c);
+
