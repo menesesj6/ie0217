@@ -1,8 +1,6 @@
 #include "InputValidator.hpp"
 #include "BasicOperations.hpp"
 
-using namespace std; 
-
 int main(){
     // Inicializar variables importantes del menu
     int option, op, type;
@@ -36,7 +34,7 @@ int main(){
                     cout << "Seleccione un tipo valido." << endl;
                     break;
             }
-        }while(type != 1 || type != 2 || type != 3);
+        }while(type != 1 && type != 2 && type != 3);
        
 
         // Pedir dimensiones
@@ -52,13 +50,27 @@ int main(){
         cout << "\tColumnas: ";
         cin >> _cols2;
 
-        // Preguntar la operacion a realizar
-        cout << "2. Escoja la operacion a realizar." << endl;
-        cout << "\t1. +" << endl;
-        cout << "\t2. -" << endl;
-        cout << "\t3. *" << endl;
-        cout << "Seleccion: ";
-        cin >> op;
+        do{
+            // Preguntar la operacion a realizar
+            cout << "2. Escoja la operacion a realizar." << endl;
+            cout << "\t1. +" << endl;
+            cout << "\t2. -" << endl;
+            cout << "\t3. *" << endl;
+            cout << "Seleccion: ";
+            cin >> op;
+            switch (op){
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    cout << "Seleccione una operacion valida." << endl;
+                    break;
+            }
+        }while(op != 1 && op != 2 && op != 3);
+        
         
         // Caso de integers
         if(type == 1){
