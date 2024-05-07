@@ -102,7 +102,7 @@ void Matrix<T>::randomFillMatrix(){
     // Caso de floats
     else if (typeid(T) == typeid(float)){
         // Vector auxiliar para agregar datos
-    vector<T> aux; 
+        vector<T> aux; 
         // Mecanismo de floats aleatorios no deterministicos
         random_device rd;
         // Obtener un numero en [-100, 100] de una distribucion uniforme de floats
@@ -126,20 +126,25 @@ void Matrix<T>::randomFillMatrix(){
     // Caso de complex
     else if (typeid(T) == typeid(complex<float>)){
         // Vector auxiliar para agregar datos
-        vector<T> aux; 
+        vector<complex<float>> aux; 
         // Mecanismo de floats aleatorios no deterministicos
         random_device rd;
         // Obtener un numero en [-100, 100] de una distribucion uniforme de floats
         uniform_real_distribution<float> dis(-100, 100);
         // Componentes aleatorios
         float compR, compI;
+        // Limpiar la matriz
+        this->data.clear();
         // Iterar la matriz
         for(int i = 0; i < this->rows; i++){
             for(int j = 0; j < this->cols; j++){
                 compR = dis(rd);
                 compI = dis(rd);
-                // this->data[i][j] = complex<float> (compR, compI);
+                complex<float> newcomplex (compR, compI);
+                aux.push_back(newcomplex);
             }
+            // this->data.push_back(aux);
+            aux.clear();
         }
     }
 };

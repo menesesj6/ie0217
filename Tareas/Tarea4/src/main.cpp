@@ -1,5 +1,8 @@
 #include "InputValidator.hpp"
 #include "BasicOperations.hpp"
+
+using namespace std; 
+
 int main(){
     // Inicializar variables importantes del menu
     int option, op, type;
@@ -13,14 +16,28 @@ int main(){
         cout << "CALCULADORA DE MATRICES" << endl;
         cout << "-----------------------" << endl << endl;
         cout << "1. Creacion de las matrices" << endl;
-
-        // Pedir tipo de datos
-        cout << "1.1. Escoja el tipo de dato de las matrices." << endl;
-        cout << "\t1. Integers" << endl;
-        cout << "\t2. Floats" << endl;
-        cout << "\t3. Complex" << endl;
-        cout << "Seleccion: ";
-        cin >> type;
+        
+        do{
+             // Pedir tipo de datos
+            cout << "1.1. Escoja el tipo de dato de las matrices." << endl;
+            cout << "\t1. Integers" << endl;
+            cout << "\t2. Floats" << endl;
+            cout << "\t3. Complex" << endl;
+            cout << "Seleccion: ";
+            cin >> type;
+            switch (type){
+                case 1:
+                    break;
+                case 2:
+                    break;
+                case 3:
+                    break;
+                default:
+                    cout << "Seleccione un tipo valido." << endl;
+                    break;
+            }
+        }while(type != 1 || type != 2 || type != 3);
+       
 
         // Pedir dimensiones
         cout << "\n1.2. Escoja las dimensiones de la matriz 1." << endl;
