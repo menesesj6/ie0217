@@ -26,7 +26,7 @@ void InputValidator<T>::validateData(string num){
     if(typeid(T) == typeid(complex<float>)){
         for(int i = 0; i < num.length(); i++){
             // Revisar si el caracter es es no-numero, no punto y no guion
-            if(!isdigit(num[i]) && num[i] != '.' && num[i] != '-') throw runtime_error("Error de tipo.");
+            if(!isdigit(num[i]) && num[i] != '.' && num[i] != '-') throw runtime_error("ERROR: Tipo de dato ingresado incorrecto.");
         }
         return;
     }
@@ -34,7 +34,7 @@ void InputValidator<T>::validateData(string num){
     // Iterar el input para definir si es int, float o algo mas
     for(int i = 0; i < num.length(); i++){
         // Revisar si el caracter es es no-numero, no punto y no guion
-        if(!isdigit(num[i]) && num[i] != '.' && num[i] != '-') throw runtime_error("Error de tipo.");
+        if(!isdigit(num[i]) && num[i] != '.' && num[i] != '-') throw runtime_error("ERROR: Tipo de dato ingresado incorrecto.");
         // Revisar si es numero
         else if (isdigit(num[i])) nums ++;
         // Revisar si es punto, por los decimales
