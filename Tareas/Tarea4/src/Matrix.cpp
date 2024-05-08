@@ -1,3 +1,14 @@
+/**
+ * @file Matrix.cpp
+ * @author Jorge Meneses (j.menesesgarro@gmail.com)
+ * @brief Definicion de metodos de la clase Matrix
+ * @version 1.0
+ * @date 2024-05-08
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "Matrix.hpp"
 
 template <class T>
@@ -109,7 +120,7 @@ void Matrix<T>::fillMatrix(){
 
 
 template <class T>
-void Matrix<T>::randomFillMatrix(int type){
+void Matrix<T>::randomFillMatrix(){
     // Caso de ints
     if constexpr (is_same<T, int>::value){
         // Vector auxiliar para agregar datos

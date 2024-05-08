@@ -1,3 +1,13 @@
+/**
+ * @file main.cpp
+ * @author Jorge Meneses (j.menesesgarro@gmail.com)
+ * @brief Implementacion principal del programa
+ * @version 1.0
+ * @date 2024-05-08
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #include "InputValidator.hpp"
 #include "BasicOperations.hpp"
 
@@ -94,12 +104,12 @@ int main(){
                     case 1:
                         // Randomizar valores e imprimir matrices
                         cout << "Rellenando la matriz 1..." << endl;
-                        m1.randomFillMatrix(type);
+                        m1.randomFillMatrix();
                         cout << "\nMATRIZ 1" << endl;
                         cout << "--------" << endl;
                         m1.display();
                         cout << "Rellenando la matriz 2..." << endl;
-                        m2.randomFillMatrix(type);
+                        m2.randomFillMatrix();
                         cout << "\nMATRIZ 2" << endl;
                         cout << "--------" << endl;
                         m2.display();
@@ -198,12 +208,12 @@ int main(){
                     case 1:
                         // Randomizar valores e imprimir matrices
                         cout << "Rellenando la matriz 1..." << endl;
-                        m1.randomFillMatrix(type);
+                        m1.randomFillMatrix();
                         cout << "MATRIZ 1" << endl;
                         cout << "--------" << endl;  
                         m1.display();
                         cout << "Rellenando la matriz 2..." << endl;
-                        m2.randomFillMatrix(type);
+                        m2.randomFillMatrix();
                         cout << "MATRIZ 2" << endl;
                         cout << "--------" << endl;  
                         m2.display();
@@ -298,12 +308,12 @@ int main(){
                     case 1:
                         // Randomizar valores e imprimir matrices
                         cout << "Rellenando la matriz 1..." << endl;
-                        m1.randomFillMatrix(type);
+                        m1.randomFillMatrix();
                         cout << "MATRIZ 1" << endl;
                         cout << "--------" << endl;  
                         m1.display();
                         cout << "Rellenando la matriz 2..." << endl;
-                        m2.randomFillMatrix(type);
+                        m2.randomFillMatrix();
                         cout << "MATRIZ 2" << endl;
                         cout << "--------" << endl;  
                         m2.display();

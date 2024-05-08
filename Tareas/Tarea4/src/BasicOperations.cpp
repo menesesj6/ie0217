@@ -1,3 +1,14 @@
+/**
+ * @file BasicOperations.cpp
+ * @author Jorge Meneses (j.menesesgarro@gmail.com)
+ * @brief Definicion de los metodos de la clase BasicOperations
+ * @version 1.0
+ * @date 2024-05-08
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include"BasicOperations.hpp"
 
 template <class T>

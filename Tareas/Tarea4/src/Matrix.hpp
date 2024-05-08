@@ -3,7 +3,7 @@
  * @author Jorge Meneses (j.menesesgarro@gmail.com)
  * @brief Clase Matriz que define los objetos para la calculadora
  * @version 1.0
- * @date 2024-05-06
+ * @date 2024-05-08
  * 
  * @copyright Copyright (c) 2024
  * 
@@ -22,6 +22,11 @@
 
 using namespace std;
 
+/**
+ * @brief Clase que definira los objetos de matriz.
+ * 
+ * @tparam T Tipo de datos involucrados en la matriz.
+ */
 template <class T>
 class Matrix{
     public:
@@ -64,7 +69,7 @@ class Matrix{
          * Se hizo uso de uniform_int_distribution para los ints y uniform_real_distribution para floats, Ambos tipos en un rango de -100 a 100.
          * Para la creacion de numeros complejos aleatorios se generaron dos floats aleatorios y en base a eso se creaba el complejo.
          */
-        void randomFillMatrix(int type);
+        void randomFillMatrix();
         /**
          * @brief Imprime la matriz en pantalla.
          * 

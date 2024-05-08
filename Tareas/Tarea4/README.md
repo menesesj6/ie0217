@@ -3,20 +3,26 @@
 
 Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux.  A continuación se exponen las formas de compilar y ejecutar por medio de un Makefile al igual que de forma manual por medio de la terminal, desde el directorio de **Tareas/Tarea4**. Cabe destacar que este instructivo está pensado para abrir la documentación de Doxygen en FireFox.
 
-- Cabe destacar que es recomendable ejecutar por medio de Makefile, dada la gran cantidad de archivos .cpp
-
 ## Instrucciones de compilación y ejecución: Calculadora de matrices
 ### Makefile
 ```
-$ make matrix # Ejecucion del programa
+$ make matrix  # Ejecucion del programa
 $ make doxygen # Despliegue documentacion Doxygen
+$ make clean   # Limpiar archivos compilados
 ``` 
 
 ### Forma general
 
 ```
+# Compilacion y ejecucion
 $ g++ src/main.cpp src/Matrix.cpp src/InputValidator.cpp src/BasicOperations.cpp -o Exe.exe
 $ ./Exe.exe
+
+#Documentacion Doxygen
+$ firefox html/index.html
+
+# Limpiar archivos compilados
+$ make clean
 ``` 
 ### Documentacion en Netlify
 

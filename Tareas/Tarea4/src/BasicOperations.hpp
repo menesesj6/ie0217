@@ -3,7 +3,7 @@
  * @author Jorge Meneses (j.menesesgarro@gmail.com)
  * @brief Clase de validacion y realizacion de operaciones basicas de matrices.
  * @version 1.0
- * @date 2024-05-06
+ * @date 2024-05-08
  * 
  * @copyright Copyright (c) 2024
  * 

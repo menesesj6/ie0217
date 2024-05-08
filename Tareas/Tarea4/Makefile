@@ -27,7 +27,7 @@ matrix: $(OBJECTS)
 
 # Documentacion Doxygen
 doxygen: html
-	,/html/index.html
+	firefox html/index.html
 
 # Regla para limpiar los archivos generados
 .PHONY: clean
