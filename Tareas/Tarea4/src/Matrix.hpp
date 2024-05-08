@@ -62,6 +62,7 @@ class Matrix{
          * 
          * Hace uso de la libreria random con random_device y dos distribuciones numericas uniformes para la generacion de numeros aleatorios no deterministicos.
          * Se hizo uso de uniform_int_distribution para los ints y uniform_real_distribution para floats, Ambos tipos en un rango de -100 a 100.
+         * Para la creacion de numeros complejos aleatorios se generaron dos floats aleatorios y en base a eso se creaba el complejo.
          */
         void randomFillMatrix(int type);
         /**

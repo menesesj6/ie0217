@@ -169,15 +169,15 @@ void Matrix<T>::randomFillMatrix(int type){
         // Componentes aleatorios
         float compR, compI;
         // Limpiar la matriz
-        //this->data.clear();
+        this->data.clear();
         // Iterar la matriz
         for(int i = 0; i < this->rows; i++){
             for(int j = 0; j < this->cols; j++){
                 compR = dis(rd);
                 compI = dis(rd);
-                this->data[i][j] = complex<float>(compR, compI);
+                aux.push_back(complex<float>(compR, compI));
             }
-            //this->data.push_back(aux);
+            this->data.push_back(aux);
             aux.clear();
         }
     }
@@ -248,11 +248,11 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& other){
     // Instanciar la matriz resultado con las dimensiones correctas
     Matrix<T> result(this->rows, other.cols);
     // Iterar las columnas de la primer matriz
-    for (int i = 0; i < this->data.size(); i++){
+    for (int i = 0; i < this->rows; i++){
         // Iterar las columnas de la segunda matriz
-        for (int j = 0; j < other.data.size(); j++){
+        for (int j = 0; j < other.cols; j++){
             // Iterar las columnas de la primera matriz de nuevo
-            for (int k = 0; k < this->data.size();k++)
+            for (int k = 0; k < this->rows;k++)
                 // Ir sumando al elemento [i][j] del resultado la multiplicacion de los elementos [i][j] y [j][i]
                 result.data[i][j] += this->data[i][k] * other.data[k][j];
         }
