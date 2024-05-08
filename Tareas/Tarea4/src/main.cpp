@@ -144,7 +144,7 @@ int main(){
                                 cout << "\nRESULTADO" << endl;
                                 cout << "--------" << endl; 
                                 // Validar y realizar la operacion
-                                intOp.sum(m1, m2);
+                                intOp.sum(m1, m2).display();
                             }
                             // Manejar excepcion en caso de operacion invalida, si hiciera falta
                             catch(const exception& e){
