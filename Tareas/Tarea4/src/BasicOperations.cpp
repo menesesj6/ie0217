@@ -41,27 +41,6 @@ Matrix<T> BasicOperations<T>::mult(Matrix<T>& a, Matrix<T>& b){
 };
 
 // Solucion linking problems
-template void BasicOperations<int>::validateSumSub(Matrix<int>& a, Matrix<int>& b);
-template void BasicOperations<float>::validateSumSub(Matrix<float>& a, Matrix<float>& b);
-template void BasicOperations<complex<float>>::validateSumSub(Matrix<complex<float>>& a, Matrix<complex<float>>& b);
-//template void BasicOperations<complex<int>>::validateSumSub(Matrix<complex<int>>& a, Matrix<complex<int>>& b);
-
-template void BasicOperations<int>::validateMultiplication(Matrix<int>& a, Matrix<int>& b);
-template void BasicOperations<float>::validateMultiplication(Matrix<float>& a, Matrix<float>& b);
-template void BasicOperations<complex<float>>::validateMultiplication(Matrix<complex<float>>& a, Matrix<complex<float>>& b);
-//template void BasicOperations<complex<int>>::validateMultiplication(Matrix<complex<int>>& a, Matrix<complex<int>>& b);
-
-template Matrix<int> BasicOperations<int>::sum(Matrix<int>& a, Matrix<int>& b);
-template Matrix<float> BasicOperations<float>::sum(Matrix<float>& a, Matrix<float>& b);
-template Matrix<complex<float>> BasicOperations<complex<float>>::sum(Matrix<complex<float>>& a, Matrix<complex<float>>& b);
-//template Matrix<complex<int>> BasicOperations<complex<int>>::sum(Matrix<complex<int>>& a, Matrix<complex<int>>& b);
-
-template Matrix<int> BasicOperations<int>::sub(Matrix<int>& a, Matrix<int>& b);
-template Matrix<float> BasicOperations<float>::sub(Matrix<float>& a, Matrix<float>& b);
-template Matrix<complex<float>> BasicOperations<complex<float>>::sub(Matrix<complex<float>>& a, Matrix<complex<float>>& b);
-//template Matrix<complex<int>> BasicOperations<complex<int>>::sub(Matrix<complex<int>>& a, Matrix<complex<int>>& b);
-
-template Matrix<int> BasicOperations<int>::mult(Matrix<int>& a, Matrix<int>& b);
-template Matrix<float> BasicOperations<float>::mult(Matrix<float>& a, Matrix<float>& b);
-template Matrix<complex<float>> BasicOperations<complex<float>>::mult(Matrix<complex<float>>& a, Matrix<complex<float>>& b);
-//template Matrix<complex<int>> BasicOperations<complex<int>>::mult(Matrix<complex<int>>& a, Matrix<complex<int>>& b);
+template class BasicOperations<int>;
+template class BasicOperations<float>;
+template class BasicOperations<complex<float>>;

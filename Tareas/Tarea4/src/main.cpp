@@ -1,6 +1,7 @@
 #include "InputValidator.hpp"
 #include "BasicOperations.hpp"
 
+
 int main(){
     // Inicializar variables importantes del menu
     int option, op, type;
@@ -93,12 +94,12 @@ int main(){
                     case 1:
                         // Randomizar valores e imprimir matrices
                         cout << "Rellenando la matriz 1..." << endl;
-                        m1.randomFillMatrix();
+                        m1.randomFillMatrix(type);
                         cout << "\nMATRIZ 1" << endl;
                         cout << "--------" << endl;
                         m1.display();
                         cout << "Rellenando la matriz 2..." << endl;
-                        m2.randomFillMatrix();
+                        m2.randomFillMatrix(type);
                         cout << "\nMATRIZ 2" << endl;
                         cout << "--------" << endl;
                         m2.display();
@@ -197,12 +198,12 @@ int main(){
                     case 1:
                         // Randomizar valores e imprimir matrices
                         cout << "Rellenando la matriz 1..." << endl;
-                        m1.randomFillMatrix();
+                        m1.randomFillMatrix(type);
                         cout << "MATRIZ 1" << endl;
                         cout << "--------" << endl;  
                         m1.display();
                         cout << "Rellenando la matriz 2..." << endl;
-                        m2.randomFillMatrix();
+                        m2.randomFillMatrix(type);
                         cout << "MATRIZ 2" << endl;
                         cout << "--------" << endl;  
                         m2.display();
@@ -277,6 +278,7 @@ int main(){
         }
         // Caso de complex
         else if (type == 3){
+            cout << "NOTA: Los numeros complejos son mostrados de la forma (Re, Im)" << endl;
             // Crear objetos matriz tipo float
             Matrix<complex<float>> m1(_rows1, _cols1);
             Matrix<complex<float>> m2(_rows2, _cols2);
@@ -296,12 +298,12 @@ int main(){
                     case 1:
                         // Randomizar valores e imprimir matrices
                         cout << "Rellenando la matriz 1..." << endl;
-                        m1.randomFillMatrix();
+                        m1.randomFillMatrix(type);
                         cout << "MATRIZ 1" << endl;
                         cout << "--------" << endl;  
                         m1.display();
                         cout << "Rellenando la matriz 2..." << endl;
-                        m2.randomFillMatrix();
+                        m2.randomFillMatrix(type);
                         cout << "MATRIZ 2" << endl;
                         cout << "--------" << endl;  
                         m2.display();
@@ -318,7 +320,6 @@ int main(){
                         m2.display();
                         break;
                     case 3:
-                        cout << "NOTA: LOs numeros complejos son mostrados de la forma (Re, Im)" << endl;
                         // Imprimir matrices
                         cout << "Matriz 1 " << endl;
                         cout << "---------" << endl;

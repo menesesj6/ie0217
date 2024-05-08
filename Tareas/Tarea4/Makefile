@@ -8,7 +8,7 @@ all: $(TARGET)
 CXX = g++
 
 # Opciones de compilacion
-CXXFLAGS = -std=c++11
+CXXFLAGS = -std=c++17
 
 # Lista de archivos fuente
 SOURCES = src/main.cpp src/Matrix.cpp src/BasicOperations.cpp src/InputValidator.cpp

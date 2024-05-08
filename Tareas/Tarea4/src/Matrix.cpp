@@ -30,6 +30,8 @@ void Matrix<T>::setDimensiones(int rows, int columns){
     for(int i = 0; i < this->rows; i++){
         this->data.push_back(init);
     }
+    
+    
 }
 
 
@@ -39,6 +41,39 @@ void Matrix<T>::fillMatrix(){
     string num;
     // NUevo elemento del tipo T, depende de la matriz
     T newel;
+    if constexpr(is_same<T, complex<float>>::value){
+        try{
+        // Iterar la matriz para asignar valores
+            for(int i = 0; i < this->rows; i++){
+                for(int j = 0; j < this->cols; j++){
+                    float compR, compI;
+                    // Solicitar elementos
+                    cout << "Ingrese el valor real de [" << i << "][" << j << "] de la matriz: ";
+                    cin >> num;
+                    // Verificar cada elemento
+                    this->checker.validateData(num);
+                    // Procesar el string y castearlo
+                    istringstream ss(num);
+                    ss >> compR;
+                    // Solicitar elementos
+                    cout << "Ingrese el valor imaginario de [" << i << "][" << j << "] de la matriz: ";
+                    cin >> num;
+                    // Verificar cada elemento
+                    this->checker.validateData(num);
+                    // Procesar el string y castearlo
+                    istringstream ss1(num);
+                    ss1 >> compI;
+                    complex<float> newcomplex (compR, compI);
+                    this->data[i][j] = newcomplex;
+                }
+            }
+        }
+        // Capturar y manejar excepcion por tipo de dato erroneo, de ser necesario
+        catch (const exception& e){
+            cerr << e.what() << endl;
+        }
+        return;
+    }
     // Vector donde se cargan lso nuevos valores y luego se carga a la matriz
     vector<T> aux;
     // Limpiar los valores que esten
@@ -74,11 +109,11 @@ void Matrix<T>::fillMatrix(){
 
 
 template <class T>
-void Matrix<T>::randomFillMatrix(){
+void Matrix<T>::randomFillMatrix(int type){
     // Caso de ints
-    if(typeid(T) == typeid(int)){
+    if constexpr (is_same<T, int>::value){
         // Vector auxiliar para agregar datos
-    vector<T> aux; 
+        vector<T> aux; 
         // Mecanismo de int aleatorios no deterministicos
         random_device rd;
         // Obtener un numero en [-100, 100] de una distribucion uniforme de ints
@@ -100,7 +135,7 @@ void Matrix<T>::randomFillMatrix(){
         }
     }  
     // Caso de floats
-    else if (typeid(T) == typeid(float)){
+    else if constexpr(is_same<T, float>::value){
         // Vector auxiliar para agregar datos
         vector<T> aux; 
         // Mecanismo de floats aleatorios no deterministicos
@@ -124,9 +159,9 @@ void Matrix<T>::randomFillMatrix(){
         }
     }
     // Caso de complex
-    else if (typeid(T) == typeid(complex<float>)){
+    else if constexpr (is_same<T, complex<float>>::value){
         // Vector auxiliar para agregar datos
-        vector<complex<float>> aux; 
+        vector<T> aux; 
         // Mecanismo de floats aleatorios no deterministicos
         random_device rd;
         // Obtener un numero en [-100, 100] de una distribucion uniforme de floats
@@ -134,16 +169,15 @@ void Matrix<T>::randomFillMatrix(){
         // Componentes aleatorios
         float compR, compI;
         // Limpiar la matriz
-        this->data.clear();
+        //this->data.clear();
         // Iterar la matriz
         for(int i = 0; i < this->rows; i++){
             for(int j = 0; j < this->cols; j++){
                 compR = dis(rd);
                 compI = dis(rd);
-                complex<float> newcomplex (compR, compI);
-                aux.push_back(newcomplex);
+                this->data[i][j] = complex<float>(compR, compI);
             }
-            // this->data.push_back(aux);
+            //this->data.push_back(aux);
             aux.clear();
         }
     }
@@ -180,8 +214,6 @@ Matrix<T> Matrix<T>::operator+(const Matrix<T>& other){
         // LImpiar el vector auxiliar
         aux.clear();
     }
-    // IMprimir el resultado
-    result.display();
     // Retornar la matriz resultado
     return result;
 }
@@ -205,8 +237,6 @@ Matrix<T> Matrix<T>::operator-(const Matrix<T>& other){
         // Limpiar el vector auxiliar
         aux.clear();
     }
-    // Imprimir el resultado
-    result.display();
     // Retornar la matriz resultado
     return result;
 }
@@ -231,46 +261,10 @@ Matrix<T> Matrix<T>::operator*(const Matrix<T>& other){
     return result;
 }
 
-// Solucion linking problems
-template Matrix<int>::Matrix(int r, int c);
-template Matrix<float>::Matrix(int r, int c);
-template Matrix<complex<float>>::Matrix(int r, int c);
-//template Matrix<complex<int>>::Matrix(int r, int c);
+//// Solucion linking problems
 
-template Matrix<int>::~Matrix();
-template Matrix<float>::~Matrix();
-template Matrix<complex<float>>::~Matrix();
-//template Matrix<complex<int>>::~Matrix();
-
-template void Matrix<int>::fillMatrix();
-template void Matrix<float>::fillMatrix();
-template void Matrix<complex<float>>::fillMatrix();
-//template void Matrix<complex<int>>::fillMatrix();
-
-
-template void Matrix<int>::randomFillMatrix();
-template void Matrix<float>::randomFillMatrix();
-template void Matrix<complex<float>>::randomFillMatrix();
-//template void Matrix<complex<int>>::randomFillMatrix();
-
-template void Matrix<int>::display();
-template void Matrix<float>::display();
-template void Matrix<complex<float>>::display();
-//template void Matrix<complex<int>>::display();
-
-template Matrix<int> Matrix<int>::operator+(const Matrix<int>& other);
-template Matrix<float> Matrix<float>::operator+(const Matrix<float>& other);
-template Matrix<complex<float>> Matrix<complex<float>>::operator+(const Matrix<complex<float>>& other);
-//template Matrix<complex<int>> Matrix<complex<int>>::operator+(const Matrix<complex<int>>& other);
-
-template Matrix<int> Matrix<int>::operator-(const Matrix<int>& other);
-template Matrix<float>  Matrix<float>::operator-(const Matrix<float>& other);
-template Matrix<complex<float>> Matrix<complex<float>>::operator-(const Matrix<complex<float>>& other);
-//template Matrix<complex<int>> Matrix<complex<int>>::operator-(const Matrix<complex<int>>& other);
-
-template Matrix<int> Matrix<int>::operator*(const Matrix<int>& other);
-template Matrix<float>  Matrix<float>::operator*(const Matrix<float>& other);
-template Matrix<complex<float>> Matrix<complex<float>>::operator*(const Matrix<complex<float>>& other);
-//template Matrix<complex<int>> Matrix<complex<int>>::operator+(const Matrix<complex<int>>& other);
+template class Matrix<int>;
+template class Matrix<float>;
+template class Matrix<complex<float>>;
 
 

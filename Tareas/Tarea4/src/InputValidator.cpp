@@ -12,6 +12,14 @@ void InputValidator<T>::validateData(string num){
     // Inicializar en 0 cantidades de caracteres
     int nums = 0, dots = 0, minuses = 0;
     
+    if(typeid(T) == typeid(complex<float>)){
+        for(int i = 0; i < num.length(); i++){
+            // Revisar si el caracter es es no-numero, no punto y no guion
+            if(!isdigit(num[i]) && num[i] != '.' && num[i] != '-') throw runtime_error("Error de tipo.");
+        }
+        return;
+    }
+
     // Iterar el input para definir si es int, float o algo mas
     for(int i = 0; i < num.length(); i++){
         // Revisar si el caracter es es no-numero, no punto y no guion
@@ -55,13 +63,8 @@ void InputValidator<T>::validateDimensions(int r, int c){
 }
 
 // Solucion linking problems
-template void InputValidator<int>::validateData(string num);
-template void InputValidator<float>::validateData(string num);
-template void InputValidator<complex<float>>::validateData(string num);
-//template void InputValidator<complex<int>>::validateData(string num);
+template class InputValidator<int>;
+template class InputValidator<float>;
+template class InputValidator<complex<float>>;
 
-template void InputValidator<int>::validateDimensions(int r, int c);
-template void InputValidator<float>::validateDimensions(int r, int c);
-template void InputValidator<complex<float>>::validateDimensions(int r, int c);
-//template void InputValidator<complex<int>>::validateDimensions(int r, int c);
 

@@ -19,13 +19,13 @@
 #include <random>
 #include "InputValidator.hpp"
 
+
 using namespace std;
 
 template <class T>
 class Matrix{
-    private:
-        vector<vector<T>> data; /**<- Vector de vectores que contiene los elementos de la matriz*/
     public:
+        vector<vector<T>> data; /**<- Vector de vectores que contiene los elementos de la matriz*/
         int rows; /**<- Cantidad de filas de la matriz*/
         int cols; /**<- Cantidad de columnas de la matriz*/
         InputValidator<T> checker; /**<- Validador de datos*/
@@ -63,7 +63,7 @@ class Matrix{
          * Hace uso de la libreria random con random_device y dos distribuciones numericas uniformes para la generacion de numeros aleatorios no deterministicos.
          * Se hizo uso de uniform_int_distribution para los ints y uniform_real_distribution para floats, Ambos tipos en un rango de -100 a 100.
          */
-        void randomFillMatrix();
+        void randomFillMatrix(int type);
         /**
          * @brief Imprime la matriz en pantalla.
          * 
