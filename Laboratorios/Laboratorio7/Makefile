@@ -18,4 +18,4 @@ $(BIN_DIR)/%.exe: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	rm $(BIN_DIR)/*
+	rm $(BIN_DIR)/*.exe

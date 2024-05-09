@@ -11,6 +11,7 @@ Este instructivo para la compilación y ejecución de los archivos en esta carpe
 - El directorio _data_ contiene los archivos input y output.
 - EL programa no imprime nada en terminal, su funcionamiento es corroborado al comparar los archivos en _data_.
 - Es esencial verificar la existencia de los directorios _data_ y _bin_ para la correcta compilacion por medio del Makefile. Si se fuera a trabajar sin estos directorios, se deberian hacer cambios en el Makefile y en el comando de ejecucion, por lo que es preferible tenerlos.
+- Existe un archivo bin/textprocessor que es el que asegura la existencia de este directorio, pero es el ejecutable del programa y no se debe abrir, pues es un binario.
 
 ## Instrucciones de compilación y ejecución: 
 
