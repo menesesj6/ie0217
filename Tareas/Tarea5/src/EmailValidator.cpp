@@ -1,6 +1,16 @@
+/**
+ * @file EmailValidator.cpp
+ * @author Jorge Meneses (j.menesesgarro@gmail.com)
+ * @brief Definicion de la clase que se encarga de verificar los emails (EmailValidator)
+ * @version 1.0
+ * @date 2024-05-13
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #include "EmailValidator.hpp"
 
-bool EmailValidator::checkEmail(const string& inputEmail, char complex){ 
+bool EmailValidator::checkEmail(const string& inputEmail, const char complex){ 
     // Formatos como regex
     regex nf(nameFormat);
     regex df(domainFormat);
@@ -49,6 +59,10 @@ bool EmailValidator::checkEmail(const string& inputEmail, char complex){
 
         // Excepcion en caso de haber caracteres invalidos
         if(inv) throw invalid_argument("ERROR: En el nombre no deben haber caracteres que no sean letras, numeros, puntos, guiones o guiones bajos.");
+
+        // Imprimir que el correo es invalido
+        cout << "Correo invalido por nombre invalido." << endl;
+        return false;
     } else cout << "Nombre valido!" << endl;
 
     // Obtener el ultimo y penultimo punto del email
@@ -101,16 +115,28 @@ bool EmailValidator::checkEmail(const string& inputEmail, char complex){
         // Excepcion si hay caracteres no permitidos
         if(emailDomain.find_first_not_of(domainFormat) != string::npos) 
             throw invalid_argument("ERROR: El dominio no puede tener dos puntos seguidos.");
+
+        // Imprimir que el correo es invalido
+        cout << "Correo invalido por dominio invalido." << endl;
+        return false;
     } else cout << "Dominio valido!" << endl;
 
     // Imprimir extension
     cout << "Extension: " << emailExtension << endl;
     // Verificar si la extension es valida
     if(!regex_match(emailExtension, ef)){
+        // Excepcion por dimension de extension
         if(emailExtension.length() < 2 || emailExtension.length() > 6)
             throw invalid_argument("ERROR: La extension debe ser entre 2 y 6 caracteres.");
+
+        // Excepcion si hay caracteres no permitidos
         if(emailExtension.find_first_not_of(extensionFormat) != string::npos)
             throw invalid_argument("ERROR: En la extension solo deben haber letras o un punto (compuestas).");
+
+        // Imprimir que el correo es invalido
+        cout << "Correo invalido por extension invalida." << endl;
+        return false;
     } else cout << "Extension valida!" << endl;
+
     return true;
 }

@@ -1,3 +1,13 @@
+/**
+ * @file main.hpp
+ * @author Jorge Meneses (j.menesesgarro@gmail.com)
+ * @brief Implementacion principal del programa.
+ * @version 1.0
+ * @date 2024-05-13
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
 #include "EmailValidator.hpp"
 
 int main(){
@@ -41,4 +51,6 @@ int main(){
     catch(const exception& e){
         cerr << e.what() << endl;
     }
+
+    return 0;
 }
