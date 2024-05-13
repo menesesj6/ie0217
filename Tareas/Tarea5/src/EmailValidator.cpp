@@ -1,14 +1,10 @@
 #include "EmailValidator.hpp"
 
-bool EmailValidator::checkEmail(const string& inputEmail){ 
+bool EmailValidator::checkEmail(const string& inputEmail, char complex){ 
     // Formatos como regex
-    regex nf(nameFormat); 
+    regex nf(nameFormat);
     regex df(domainFormat);
-    regex ef(extensionFormat);
-
-    // Analizar email
-    cout << "Datos email ingresado:" << endl;
-    cout << "----------------------" << endl;
+    regex ef(extensionFormat); 
 
     // Verificar la existencia del @
     int foundat = inputEmail.find_first_of('@');
@@ -54,6 +50,41 @@ bool EmailValidator::checkEmail(const string& inputEmail){
         // Excepcion en caso de haber caracteres invalidos
         if(inv) throw invalid_argument("ERROR: En el nombre no deben haber caracteres que no sean letras, numeros, puntos, guiones o guiones bajos.");
     } else cout << "Nombre valido!" << endl;
+
+    // Obtener el ultimo y penultimo punto del email
+    string restEmail = inputEmail.substr(foundat + 1, inputEmail.length());
+    int lastPoint = restEmail.rfind('.');
+    int secondLastPoint = restEmail.rfind('.', lastPoint - 1);
+    string emailDomain, emailExtension;  
+    
+    if(complex == 'Y' || complex == 'y'){
+        emailDomain = restEmail.substr(0, secondLastPoint);
+        emailExtension = restEmail.substr(secondLastPoint + 1, restEmail.length());
+    } else if (complex == 'N' || complex == 'n'){
+        emailDomain = restEmail.substr(0, lastPoint);
+        emailExtension = restEmail.substr(lastPoint + 1, restEmail.length());
+    }
+
+    cout << "Dominio: " << emailDomain << endl;
+    cout << "Extension: " << emailExtension << endl;
+
+    if(!regex_match(emailDomain, df)){
+        cout << "El dominio no entro en el regex" << endl;
+        bool cons = false;
+        if(emailDomain.length() < 3 || emailDomain.length() > 30) 
+            throw invalid_argument("ERROR: El dominio del email debe tener entre 3 y 30 caracteres.");
+
+        if(emailDomain[0] == '.' || emailDomain[emailDomain.length()] == '.' || emailDomain.find('.') == string::npos) 
+            throw invalid_argument("ERROR: El dominio debe tener al menos un punto, y no empezar ni terminar con punto.");
+
+        for (int i = 0; i < emailDomain.length(); i++){
+            if(emailDomain[i] == '.' && emailDomain[i+1] == '.')
+                cons = true;
+        }
+
+        if(cons) throw invalid_argument("ERROR: El dominio no puede tener dos puntos seguidos.");
+    } else cout << "Dominio valido!" << endl;
+
 
     return true;
 }

@@ -12,18 +12,22 @@ SRC_DIR = src
 # Lista de archivos fuente
 SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJECTS = $(SOURCES:$(SRC_DIR)/%.cpp=$(SRC_DIR)/%.exe)
-EXCECUTABLE = emailValidator.exe
+EXCECUTABLE = tarea5.x
 
+# Crear archivos objetos
 $(SRC_DIR)/%.exe: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
+# Compilar el ejecutable dle programa
 build: $(OBJECTS)
 	$(CXX) $(CXXFLAGS) $^ -o $(EXCECUTABLE) $(LDFLAGS)
 
+# Correr el programa
 run: $(EXCECUTABLE)
 	./$(EXCECUTABLE)
 
-all: 
+# Compilar y correr el programa
+all: $(SOURCES)
 	make build
 	make run
 

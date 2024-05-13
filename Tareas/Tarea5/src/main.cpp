@@ -5,6 +5,8 @@ int main(){
     int option;
     // Email de input
     string email;
+    // Define si es extension compleja o no
+    char complex;
     try{
         // Instanciar el validador de correos
         EmailValidator checker;
@@ -19,12 +21,14 @@ int main(){
             switch (option){
                 // Caso para verificar un mail
                 case 1:
+                    cout << "\nSu email tiene extension compuesta? (Y/N): ";
+                    cin >> complex;
                     // Pedir al ususario el correo a verificar
-                    cout << "\n\nIngrese el email que desea verificar: ";
+                    cout << "Ingrese el email que desea verificar: ";
                     cin.ignore();
                     getline(cin, email);
                     // Revisar si el correo es valido
-                    if(checker.checkEmail(email))
+                    if(checker.checkEmail(email, complex))
                         cout << "Correo valido!" << endl;
                     break;
                 default:

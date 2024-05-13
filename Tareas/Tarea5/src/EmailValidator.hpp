@@ -9,11 +9,11 @@ using namespace std;
 
 class EmailValidator{
     private:
-        string nameFormat =  "^(?![-._])(?!.*[-._]{2})[a-zA-Z0-9.-]{1,15}$";
-        string domainFormat = R"([a-zA-Z0-9][\w.-]{0,13}[a-zA-Z0-9])";
-        string extensionFormat = R"([a-zA-Z0-9][\w.-]{0,13}[a-zA-Z0-9])";
+        string nameFormat =  "^[^.-_](?!.*[-._]{2})([a-zA-Z0-9.-_]{1,15})+[^.-_]$";
+        string domainFormat = R"(^[^.-_](?!.*[-._]{2})(\w.\w)([a-zA-Z0-9.-_]{3,30})+[^.-_]$)";
+        string extensionFormat = "^(?!.*[.]{2})([a-zA-Z]{2,6})$";
     public:
-        bool checkEmail(const string& inputEmail);
+        bool checkEmail(const string& inputEmail, char complex);
 };
 
 #endif
