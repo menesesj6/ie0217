@@ -53,38 +53,64 @@ bool EmailValidator::checkEmail(const string& inputEmail, char complex){
 
     // Obtener el ultimo y penultimo punto del email
     string restEmail = inputEmail.substr(foundat + 1, inputEmail.length());
+
+    // Posiciones dle ultimo y penultimo punto
     int lastPoint = restEmail.rfind('.');
     int secondLastPoint = restEmail.rfind('.', lastPoint - 1);
+
+    // Strings que definen dominio y extension del email
     string emailDomain, emailExtension;  
     
+    // Caso para extension compuesta
     if(complex == 'Y' || complex == 'y'){
         emailDomain = restEmail.substr(0, secondLastPoint);
         emailExtension = restEmail.substr(secondLastPoint + 1, restEmail.length());
-    } else if (complex == 'N' || complex == 'n'){
+    } // Caso para extension sencilla 
+    else if (complex == 'N' || complex == 'n'){
         emailDomain = restEmail.substr(0, lastPoint);
         emailExtension = restEmail.substr(lastPoint + 1, restEmail.length());
     }
 
+    // Imprimir dominio
     cout << "Dominio: " << emailDomain << endl;
-    cout << "Extension: " << emailExtension << endl;
 
+    // Verificar si el dominio es valido
     if(!regex_match(emailDomain, df)){
-        cout << "El dominio no entro en el regex" << endl;
+        // Variable que indica si hay consecutivos
         bool cons = false;
+
+        // Expecion por dimension del dominio
         if(emailDomain.length() < 3 || emailDomain.length() > 30) 
             throw invalid_argument("ERROR: El dominio del email debe tener entre 3 y 30 caracteres.");
 
+        // Caso de que no haya punto, inicie o termine en punto
         if(emailDomain[0] == '.' || emailDomain[emailDomain.length()] == '.' || emailDomain.find('.') == string::npos) 
             throw invalid_argument("ERROR: El dominio debe tener al menos un punto, y no empezar ni terminar con punto.");
 
+        // Iterar dominio para revisar si hay puntos consecutivos
         for (int i = 0; i < emailDomain.length(); i++){
+            // Indicar con un booleano que hay puntos consecutivos
             if(emailDomain[i] == '.' && emailDomain[i+1] == '.')
                 cons = true;
         }
 
-        if(cons) throw invalid_argument("ERROR: El dominio no puede tener dos puntos seguidos.");
+        // Excepcion si hay puntos seguidos
+        if(cons) 
+            throw invalid_argument("ERROR: El dominio no puede tener dos puntos seguidos.");
+
+        // Excepcion si hay caracteres no permitidos
+        if(emailDomain.find_first_not_of(domainFormat) != string::npos) 
+            throw invalid_argument("ERROR: El dominio no puede tener dos puntos seguidos.");
     } else cout << "Dominio valido!" << endl;
 
-
+    // Imprimir extension
+    cout << "Extension: " << emailExtension << endl;
+    // Verificar si la extension es valida
+    if(!regex_match(emailExtension, ef)){
+        if(emailExtension.length() < 2 || emailExtension.length() > 6)
+            throw invalid_argument("ERROR: La extension debe ser entre 2 y 6 caracteres.");
+        if(emailExtension.find_first_not_of(extensionFormat) != string::npos)
+            throw invalid_argument("ERROR: En la extension solo deben haber letras o un punto (compuestas).");
+    } else cout << "Extension valida!" << endl;
     return true;
 }
