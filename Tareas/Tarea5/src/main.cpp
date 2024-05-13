@@ -1,23 +1,31 @@
 #include "EmailValidator.hpp"
 
 int main(){
+    // Variable de seleccion del menu
     int option;
+    // Email de input
     string email;
     try{
-        EmailValidator checker(R"([a-zA-Z0-9]+[\w.-]*[a-zA-Z0-9]+@[a-zA-Z]+(?:\.[a-zA-Z]+)+)");
+        // Instanciar el validador de correos
+        EmailValidator checker;
         cout << "VALIDADOR DE EMAILS" << endl;
         cout << "-------------------" << endl << endl;
         cout << "MENU: " << endl;
         do{
-            cout << "\t1. Verificar email." << endl;
-            cout << "\t2. Salir del programa." << endl;
+            cout << "1. Verificar email." << endl;
+            cout << "2. Salir del programa." << endl;
+            cout << "Seleccion: ";
             cin >> option;
             switch (option){
+                // Caso para verificar un mail
                 case 1:
-                    cout << "Ingrese el email que desea verificar: ";
+                    // Pedir al ususario el correo a verificar
+                    cout << "\n\nIngrese el email que desea verificar: ";
                     cin.ignore();
                     getline(cin, email);
-                    checker.checkEmail(email);
+                    // Revisar si el correo es valido
+                    if(checker.checkEmail(email))
+                        cout << "Correo valido!" << endl;
                     break;
                 default:
                     cout << "Saliendo del programa..." << endl;
@@ -25,6 +33,7 @@ int main(){
             } 
         }while(option != 2);
     }
+    // Atrapar las excepciones estandar lanzadas de la revision
     catch(const exception& e){
         cerr << e.what() << endl;
     }
