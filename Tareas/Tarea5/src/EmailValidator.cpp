@@ -17,7 +17,7 @@ bool EmailValidator::checkEmail(const string& inputEmail){
 
     // Extraer unicamente la parte del nombre
     string emailName = inputEmail.substr(0, foundat);
-    cout << "\tNombre: " << emailName << endl;
+    cout << "Nombre: " << emailName << endl;
     // Caso que el nombre sea invalido
     if(!regex_match(emailName, nf)){
         int namelen = 0;
@@ -53,7 +53,7 @@ bool EmailValidator::checkEmail(const string& inputEmail){
 
         // Excepcion en caso de haber caracteres invalidos
         if(inv) throw invalid_argument("ERROR: En el nombre no deben haber caracteres que no sean letras, numeros, puntos, guiones o guiones bajos.");
-    };
+    } else cout << "Nombre valido!" << endl;
 
     return true;
 }
