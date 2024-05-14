@@ -1,5 +1,5 @@
 /**
- * @file main.hpp
+ * @file main.cpp
  * @author Jorge Meneses (j.menesesgarro@gmail.com)
  * @brief Implementacion principal del programa.
  * @version 1.0
