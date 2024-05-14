@@ -22,8 +22,8 @@ int main(){
         EmailValidator checker;
         cout << "VALIDADOR DE EMAILS" << endl;
         cout << "-------------------" << endl << endl;
-        cout << "MENU: " << endl;
         do{
+            cout << "\nMENU: " << endl;
             cout << "1. Verificar email." << endl;
             cout << "2. Salir del programa." << endl;
             cout << "Seleccion: ";

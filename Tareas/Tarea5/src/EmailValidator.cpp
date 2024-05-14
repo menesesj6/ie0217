@@ -40,11 +40,11 @@ bool EmailValidator::checkEmail(const string& inputEmail, const char complex){
                 emailName[i] == '-' && emailName[i+1] == '-' ||
                 emailName[i] == '_' && emailName[i+1] == '_')
                 cont = true;
-
-            // Caracteres no permitidos
-            if (emailName.find_first_not_of(nameFormat) != string::npos)
-                inv = true;
         }
+
+        // Caracteres no permitidos
+        if (emailName.find_first_not_of(nameFormat) != string::npos)
+            inv = true;
 
         // Excepcion en caso de 15+ caracteres
         if(namelen > 15) throw invalid_argument("ERROR: NOmbre debe tener 15 o menos caracteres.");
