@@ -14,6 +14,9 @@ SOURCES = $(wildcard $(SRC_DIR)/*.cpp)
 OBJECTS = $(SOURCES:$(SRC_DIR)/%.cpp=$(SRC_DIR)/%.exe)
 EXCECUTABLE = tarea5.x
 
+# Compilar y correr el programa
+all: build run
+
 # Crear archivos objetos
 $(SRC_DIR)/%.exe: $(SRC_DIR)/%.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
@@ -26,10 +29,7 @@ build: $(OBJECTS)
 run: $(EXCECUTABLE)
 	./$(EXCECUTABLE)
 
-# Compilar y correr el programa
-all: $(SOURCES)
-	make build
-	make run
+
 
 # Regla para limpiar los archivos generados
 clean:
