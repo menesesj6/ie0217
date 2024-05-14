@@ -29,7 +29,8 @@ build: $(OBJECTS)
 run: $(EXCECUTABLE)
 	./$(EXCECUTABLE)
 
-
+doxygen: html
+	firefox html/index/html
 
 # Regla para limpiar los archivos generados
 clean:
