@@ -22,10 +22,10 @@ Si no se deseara abrir la documentacion por línea de comandos, también se aloj
 El Markdown es un estilo de escritura que funciona para darle formato al texto simple. Por medio de reglas de sintaxis especificas es posible darle formato a cualquier texto, que puede ser escrito en prosa. Por lo general, este formato es usado para los README en los repertorios de Git, donde se incluyen aclaraciones del repertorio, informacion ectra e instrucciones de funcionamiento. 
 
 ### Expresiones regulares
-1. 
-2. 
-3. 
-4. 
+1. Son patrones de texto que permiten comparar y manipular cadenas de texto. A nivel de programación son útiles para verificar que una cadena de texto cumpla con condiciones específicas deseadas sin tener que verificar caracter por caracter a mano y, por ende, simplifica los tiempos de computación de los algoritmos al analizar y manipular strings.
+2. El punto (.) representa que cualquier caracter hará match, excepto un salto de línea. El asterisco (*) representa cero o más repeticiones del elemento anterior.
+3. Por medio de los paréntesis, se agrupan elementos en subexpresiones y después estas se pueden concatenar usando caracteres especiales como un @, \., etc.
+4. El escape o \\, sirve para marcar caracteres literales en el texto. Por ejemplo, el \\. se marcará un punto literal en el texto.
 5. 
 6. 
 7. 
