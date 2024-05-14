@@ -34,11 +34,10 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
     ```
     ^([a-zA-Z0-9._+-]+)@[a-zA-Z0-9.-]+\.[a-zA-Z]$
     ```
-
-10. 
-11. 
-12. 
-13. 
+10. Las expresiones regulares pueden ser un arma de doble filo, pues podrían optimizar o empeorar el rendimiento del software en cuestión. Esto dado que puede ser que el proceso de análisis de un string en tiempo de ejecución sea más complejo de lo necesario, cuando escribiendo diferente la regex, se podrían obtener mejores resultados. se recomienda evitar anidaciones redundantes en subexpresiones, al igual que entender bein los usos de ^ y $, para poder hacer revisiones puntuales y no revisiones innecesarias de más. Ahora bien, todo depende de la aplicación, donde todo se resume en entender bien el funcionameinto de estas y cómo aplicarlas en lo deseado.
+11. Un Makefile es un archivo de un elemento llamados reglas. Estos funcionan en la programación, generalmente de C o C++, para automatizar el proceso de compilación y ejecución de un programa con base en sus archivos fuente. Entonces, en lugar de compilar todo a mano invocando g++ o gcc cada vez que se desea hacer una prueba, con un Makefile bien hecho, solo se debe ingresar un único comando que compila únicamente los archivos que fueron alterados y ejecuta el programa. La aplicaciones de un Makefile son demasiadas, pues permiten evitar tener que hacer muchos comandos a mano y sólo usar un único.
+12. Las reglas explícitas son reglas para específicos archivos con comandos definidos propiamente por el desarrollador. Las implícitas son reglas generales que se aplica Make para resolver la actualización de archivos sin tener que escribir los comando so instrucciones propiamente.
+13. Sirven para parametrizar el Makefile y facilitar el proceso de modificación de este mismo. Por ejemplo, si se tuviera un Makefile que ocupa source files de un directorio src, pero este directorio cambia por X o Y razón, al tener todo parametrizado por variables, solo basta cambiar el valor de esta variable en lugar de tener que cambiar el nombre del directorio en cada parte que se necesite.
 14. 
 15. 
 16. 
