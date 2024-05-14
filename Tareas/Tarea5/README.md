@@ -26,11 +26,15 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 2. El punto (.) representa que cualquier caracter hará match, excepto un salto de línea. El asterisco (*) representa cero o más repeticiones del elemento anterior.
 3. Por medio de los paréntesis, se agrupan elementos en subexpresiones y después estas se pueden concatenar usando caracteres especiales como un @, \., etc.
 4. El escape o \\, sirve para marcar caracteres literales en el texto. Por ejemplo, el \\. se marcará un punto literal en el texto.
-5. 
-6. 
-7. 
-8. 
-9. 
+5. Aplicando cuantificadores a la subexpresión dentro de los paréntesis. Por ejemplo (ab)+ coincidirá con ab o abab, etc.
+6. En regex, un \\d hace match a dígitos (números), mientras que \\D hace match a los no-dígitos (letras, caracteres especiales, etc.).
+7. Las clases de caracteres, también referidas como conjuntos de caracteres, son especificados al usar paréntesis cuadrados, por ejemplo [a-zA-Z] es una clase de letras minúsculas y mayúsculas.
+8. El $ sirve para indicar que la coincidencia debe estar al final de la línea.
+9. Depende mucho de las especificaciones de nombre, domino y extensión, pero una forma básica de hacer esto sería con la siguiente regex. Esto es para un nombre sin límite de caracteres y sin restricciones de primer o último caracter y que tiene letras, números y los caracteres .,-,+, _. Las mismas especificaciones van para el dominio pero este sin el + ni _. Y por último la extensión, que permite únicamente letras pero sin límite de caracteres.
+    ```
+    ^([a-zA-Z0-9._+-]+)@[a-zA-Z0-9.-]+\.[a-zA-Z]$
+    ```
+
 10. 
 11. 
 12. 
