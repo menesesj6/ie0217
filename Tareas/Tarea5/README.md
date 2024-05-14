@@ -41,10 +41,34 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 14. Los targets son los resultados que se desean obtener al ejecutar el Makefile. Estos pueden ser un archivo o una acción.
 15. Modularizar el código de C++ en distintos archivos fuente permite tener un proyecto más ordenado y, por ende, más sencillo de implementar y debuggear. El uso de un Makefile para esto permite simplificar la compilación y ejecución, pues si se hace a mano se estaría constantemente escribiendo g++ <archivos>.cpp-o <ejecutable> una y otra vez, lo que resulta contraproducente, pero al tener un buen Makefile creado, se automiza este proceso con un solo comando que, a su vez, re-compila solo lo necesario o que fue modificado, no compila todo de nuevo, optimizando el consumo de tiempo.
 16. Por medio de las LDFLAGS, pues son las banderas que se le pasan al compilador para que invoque al linker con instrucciones específicas.
-17. 
-18. 
-19. 
+17. Para esto, se puede usar el OSFLAG. De esta forma, el Makefile puede identificar en cuál sistema operativo está operando y así definir los rules dependiendo de eso y así tratar debidamente los paths, comandos, etc. Un ejemplo de Makefile detector de OS es el mostrado en [este enlace.](https://gist.github.com/sighingnow/deee806603ec9274fd47)
+18. Es un target que se encarga de ejecutar las otras rules que se tengan. Al ser el primero definido, este será el que se invoque si se corre el comando ***make*** por sí solo. Clean es el target usado normalmente para eliminar lo generado por otros targets del Makefile. En el contexto de C++, el clean se encargará de borrar los archivos ejecutables. Un ejemplo es mostrado a continuación.
+
+    ```
+    all: one two three
+
+    one:
+	    touch one
+    two:
+	    touch two
+    three:
+	    touch three
+
+    clean:  
+	    rm -f one two three
+    ``` 
+19. Esto es logrado por medio de un _override_ de variables, pues si se tiene el Makefile mostrado, se puede usar ```make file=main.cpp``` y así el comando que ejecutaría el target mostrado es ```g++ -Wall main.cpp -o Exe.exe```.
+    ```
+    file = empty.cpp
+    
+    Exe.exe: $(file)
+        $(CXX) $(CXXFLAGS) $< -o ^@
+    ```
 20. 
+    ``` 
+    archivo.o: archivo.cpp
+        $(CXX) $(CXXFLAGS) $< -o $@
+    ```
 
 ### Makefile
 1. La variable CC contiene el compilador que se desea usar; que seria gcc para C; y, por convencion, si se desea C++, se usa CXX. Luego, en CFLAGS se pasan las _flags_ o directivas extra que se le deseen dar al compilador de C. Analogamente, CXXFLAGS se usa para pasar _flags_ al compilador de C++. Por ultimo, LDFLAGS sirve para pasar _flags_ al compilador cuando ocupe invocar al _linker_ del programa.
