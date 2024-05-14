@@ -38,9 +38,9 @@ El Markdown es un estilo de escritura que funciona para darle formato al texto s
 11. Un Makefile es un archivo de un elemento llamados reglas. Estos funcionan en la programación, generalmente de C o C++, para automatizar el proceso de compilación y ejecución de un programa con base en sus archivos fuente. Entonces, en lugar de compilar todo a mano invocando g++ o gcc cada vez que se desea hacer una prueba, con un Makefile bien hecho, solo se debe ingresar un único comando que compila únicamente los archivos que fueron alterados y ejecuta el programa. La aplicaciones de un Makefile son demasiadas, pues permiten evitar tener que hacer muchos comandos a mano y sólo usar un único.
 12. Las reglas explícitas son reglas para específicos archivos con comandos definidos propiamente por el desarrollador. Las implícitas son reglas generales que se aplica Make para resolver la actualización de archivos sin tener que escribir los comando so instrucciones propiamente.
 13. Sirven para parametrizar el Makefile y facilitar el proceso de modificación de este mismo. Por ejemplo, si se tuviera un Makefile que ocupa source files de un directorio src, pero este directorio cambia por X o Y razón, al tener todo parametrizado por variables, solo basta cambiar el valor de esta variable en lugar de tener que cambiar el nombre del directorio en cada parte que se necesite.
-14. 
-15. 
-16. 
+14. Los targets son los resultados que se desean obtener al ejecutar el Makefile. Estos pueden ser un archivo o una acción.
+15. Modularizar el código de C++ en distintos archivos fuente permite tener un proyecto más ordenado y, por ende, más sencillo de implementar y debuggear. El uso de un Makefile para esto permite simplificar la compilación y ejecución, pues si se hace a mano se estaría constantemente escribiendo g++ <archivos>.cpp-o <ejecutable> una y otra vez, lo que resulta contraproducente, pero al tener un buen Makefile creado, se automiza este proceso con un solo comando que, a su vez, re-compila solo lo necesario o que fue modificado, no compila todo de nuevo, optimizando el consumo de tiempo.
+16. Por medio de las LDFLAGS, pues son las banderas que se le pasan al compilador para que invoque al linker con instrucciones específicas.
 17. 
 18. 
 19. 
