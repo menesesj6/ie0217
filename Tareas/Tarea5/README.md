@@ -6,9 +6,11 @@ Este instructivo para la compilación y ejecución de los archivos en esta carpe
 ## Instrucciones de compilación y ejecución: Validador de _emails_
 ### Makefile
 ```
-$ make build    # Ejecucion del programa
-$ make run      # Despliegue documentacion Doxygen
-$ make all      # Limpiar archivos compilados
+$ make build    # Compilacion de archivos fuente
+$ make run      # Ejecucion del programa
+$ make all      # Compilar y ejecutar programa
+$ make clean    # Limpiar archivos ejecutables creados
+$ make doxygen  # Despliegue de documentacion Doxygen
 ``` 
 
 ### Documentacion en Netlify
