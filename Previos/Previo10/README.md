@@ -2,13 +2,14 @@
 ## Instrucciones de compilación y ejecución
 
 Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux. Se debe tener en cuenta que aquello escrito entre los caracteres _<>_ depende del usuario. A continuación se exponen las formas de compilar y ejecutar los tres programas incluidos en este directorio y en sus respectivos subdirectorios. ESte directorio consta de diversas carpetas, donde cada una contiene un ejemplo distinto sobre usos y manejo de WxWidgets haciendo uso de C++ para la creacion de GUIs (Graphic User Interfaces). Para estos ejemplos, se tienen diversos subdirectorios donde cada uno cuenta con su propio Makefile sencillo. A continuacion se detalla la infromacion de compilacion y ejecucion.
-    - ***IMPORTANTE:*** Debe asegurarse que tiene compilada e instalada la libreria que permite uso e inclusion de WxWidgets. Sin esto, los programas no funcionaran, pues estos hacen uso de los _header files_ dados por esta libreria, como <wx/wx.h>, siendo el mas utilizado.
+- ***IMPORTANTE:*** Debe asegurarse que tiene compilada e instalada la libreria que permite uso e inclusion de WxWidgets. Sin esto, los programas no funcionaran, pues estos hacen uso de los _header files_ dados por esta libreria, como <wx/wx.h>, siendo el mas utilizado.
 
 ***Listado de subdirectorios***
 - Controles
 - Estilos
 - ManejoDinamicoEventos
 - ManejoEstaticoEventos
+- Propagacion de eventos (1, 2 y 3)
 - VentanaBasica
 - VerificarFuncionamiento
 
