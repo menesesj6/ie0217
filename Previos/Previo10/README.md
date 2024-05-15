@@ -10,6 +10,8 @@ Este instructivo para la compilación y ejecución de los archivos en esta carpe
 - ManejoDinamicoEventos
 - ManejoEstaticoEventos
 - Propagacion de eventos (1, 2 y 3)
+- Eventos del mouse
+- Eventos del teclado
 - VentanaBasica
 - VerificarFuncionamiento
 
