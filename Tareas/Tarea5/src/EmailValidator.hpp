@@ -44,9 +44,9 @@ using namespace std;
  */
 class EmailValidator{
     private:
-        string nameFormat =  "^[^._-](?!.*[-._]{2})([a-zA-Z0-9._-]{1,15})[^._-]$"; /**<- Patron para el regex del nombre del email*/
-        string domainFormat = R"(^[^.-_](?!.*[-._]{2})[\w.\w]([a-zA-Z0-9.-_]{3,30})+[^.-_]$)"; /**<- Patron para el regex del dominio del email*/
-        string extensionFormat = "^(?!.*[.]{2})([a-zA-Z.]{2,6})$"; /**<- Patron para el regex de la estension del email*/
+        string nameFormat =  "^[^._-](?!.*[-._]{2})([a-zA-Z0-9._-]{1,16})[^._-]$"; /**<- Patron para el regex del nombre del email*/
+        string domainFormat = R"(^[^.-_](?!.*[-._]{2})[\w.\w]([a-zA-Z0-9.-_]{3,31})+[^.-_]$)"; /**<- Patron para el regex del dominio del email*/
+        string extensionFormat = "^(?!.*[.]{2})([a-zA-Z.]{2,7})$"; /**<- Patron para el regex de la estension del email*/
     public:
         /**
          * @brief Metodo que verifica el email en base a los regex miembros de la clase.

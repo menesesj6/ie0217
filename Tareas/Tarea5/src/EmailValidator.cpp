@@ -11,6 +11,7 @@
 #include "EmailValidator.hpp"
 
 bool EmailValidator::checkEmail(const string& inputEmail, const char complex){ 
+    cout << "RESULTADO:" << endl;
     // Formatos como regex
     regex nf(nameFormat);
     regex df(domainFormat);
@@ -23,7 +24,7 @@ bool EmailValidator::checkEmail(const string& inputEmail, const char complex){
 
     // Extraer unicamente la parte del nombre
     string emailName = inputEmail.substr(0, foundat);
-    cout << "Nombre: " << emailName << endl;
+    cout << "\nNombre: " << emailName << endl;
     // Caso que el nombre sea invalido
     if(!regex_match(emailName, nf)){
         int namelen = 0;
@@ -86,7 +87,7 @@ bool EmailValidator::checkEmail(const string& inputEmail, const char complex){
     }
 
     // Imprimir dominio
-    cout << "Dominio: " << emailDomain << endl;
+    cout << "\nDominio: " << emailDomain << endl;
 
     // Verificar si el dominio es valido
     if(!regex_match(emailDomain, df)){
@@ -122,7 +123,7 @@ bool EmailValidator::checkEmail(const string& inputEmail, const char complex){
     } else cout << "Dominio valido!" << endl;
 
     // Imprimir extension
-    cout << "Extension: " << emailExtension << endl;
+    cout << "\nExtension: " << emailExtension << endl;
     // Verificar si la extension es valida
     if(!regex_match(emailExtension, ef)){
         // Excepcion por dimension de extension

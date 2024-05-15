@@ -39,7 +39,7 @@ int main(){
                     getline(cin, email);
                     // Revisar si el correo es valido
                     if(checker.checkEmail(email, complex))
-                        cout << "Correo valido!" << endl;
+                        cout << "\nCorreo valido!" << endl;
                     break;
                 default:
                     cout << "Saliendo del programa..." << endl;
