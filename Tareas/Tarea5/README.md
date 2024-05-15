@@ -3,7 +3,8 @@
 
 Este instructivo para la compilación y ejecución de los archivos en esta carpeta está enfocado hacia una terminal _bash_ de Linux.  A continuación se exponen las formas de compilar y ejecutar por medio de un Makefile al igual que de forma manual por medio de la terminal, desde el directorio de **Tareas/Tarea5**. Cabe destacar que este instructivo está pensado para abrir la documentación de Doxygen en FireFox.
 
-## Instrucciones de compilación y ejecución: Validador de _emails_
+## Instrucciones de compilación y ejecución: Validador de emails
+
 ### Makefile
 ```
 $ make build    # Compilacion de archivos fuente
