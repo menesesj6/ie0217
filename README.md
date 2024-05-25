@@ -15,13 +15,6 @@
 	- Previo8: C++ Templates y Excepciones
 	- Previo9: C++ EXpresiones regulares y Makefiles
 	- Previo10: Interfaces graficas, FLTK y WxWindows
-	- Previo11: Bases de datos y lenguaje SQL 
-	- Previo12: MySQL, POstgreSQL, Azure, GCP, AWS
-	- Previo13: Bases de datos no relacionales: MongoDB
-	- Previo14: Programacion paralela/concurrente. Mutex, semaforos
-	- Previo15: CUDA
-	- Previo16: Depuracion, gdb, Memcheck, asan, Valgrind, Helgrind
-	- Previo17: Software Testing, gunit
 2. Laboratorios
 	- Laboratorio1: Git, GitHub, Markdown y C++ teoria
 	- Laboratorio2: C++ Clases y Objetos
@@ -40,8 +33,7 @@
 	- Tarea1: Juego de ahorcado
 	- Tarea2: Administracion mundial
 	- Tarea3: Gestion de contactos
-	- Tarea4: 
-	- Tarea5: 
+	- Tarea4: Calculadora de matrices
+	- Tarea5: Validador de emails
 	- Tarea6: 
 	- Tarea7: 
-	- Tarea8: 
