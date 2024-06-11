@@ -35,5 +35,4 @@
 	- Tarea3: Gestion de contactos
 	- Tarea4: Calculadora de matrices
 	- Tarea5: Validador de emails
-	- Tarea6: 
-	- Tarea7: 
+	- Tarea6: Plan de estudios en MySQL
