@@ -22,9 +22,38 @@
 10. 
 
 ## Parte práctica
-### Creación de la base de datos
+### Creación de la base de datos y sus tablas
 
+```
+CREATE DATABASE IF NOT EXISTS TAREA6_IE0217;
+USE TAREA6_IE0217;
+```
 
+```
+-- Crear tabla de Cursos
+CREATE TABLE Cursos (
+    CursoID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    Sigla VARCHAR(8) UNIQUE KEY NOT NULL,
+    Nombre VARCHAR(100) UNIQUE KEY NOT NULL,
+    Semestre VARCHAR(8) NOT NULL,
+    Creditos TINYINT NOT NULL);
+    
+-- Crear tabla de Requisitos
+CREATE TABLE Requisitos(
+    RequisitoID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    CursoID INT NOT NULL,
+    RequisitoCursoID INT NOT NULL,
+    FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID),
+    FOREIGN KEY (RequisitoCursoID) REFERENCES Cursos(CursoID));
+    
+-- Crear tabla de Descripciones
+CREATE TABLE Descripciones(
+    DescripcionID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+    CursoID INT NOT NULL,
+    Descripcion TEXT NOT NULL,
+    Dificultad VARCHAR(8) NOT NULL,
+    FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID));
+```
 
 ### Inserción de datos
 
