@@ -7,11 +7,23 @@
 
 3. Son aquellas que crean un vínculo entre tablas y permiten que estas se relacionen entre sí. Estas permiten que una tabla tenga un registro y este se asocie a un valor en otra tabla. Por ejemplo, si se tienen tablas CLIENTE y COMPRAS, el comprador se identifica por medio de una _foreign key_ que se asocia con los IDs de cada cliente.
 
-4. 
+4. Una transacción en el contexto de las DBs corresponde a un conjunto de una o más instrucciones o comandos ejecutados; y que permiten mantener la integridad y coherencia de los datos en la DB. Los principios ACID que esta debe seguir son atomicidad, constancia, que sean aisladas y que sean duraderas.
 
-5. 
+5. Es una tabla virtual que no existe propiamente como un conjunto de datos per sé en la base de datos, por lo que no ocupa almacenamiento en el disco. Estas son producto de una consulta a la base de datos que esté en uso. Los beneficios de estas incluyen el aumento de seguridad para los datos, simplicidad en los _queries_, simplicidad para observar el _schema_ y tener información estable aunque las tablas madre cambien. Por otro lado, las _views_ pueden degradar el rendimiento del análisis de datos dado que estos son objetos dentro del DB, y esto hace que el procesador tenga que traducir _queries_ y en aplicaciones complejas podría afectar severamente la eficacia.
 
-6. 
+6.  La normalización es el proceso de organizar los datos de un DB, explicado de manera sencilla. En este proceso está la creación de tablas y la relación entre estas para crear una base de datos robusta pero flexible al eliminar la redundancia de las relaciones entre tablas. Las _normal forms_ son las siguientes:
+
+    - ***First Normal Form***: Cada celda tiene un valor sencillo y las columnas deben tener un único nombre. Se eliminan datos duplicados y simplifica los _queries_.
+    
+    - ***Second Normal Form***: Cada columna está relacionada a la _primary key_. Se elimina redundancia en los datos.
+    
+    - ***Third Normal Form***: Basada en la anterior, todas las columnas son independientes, relacionándolo al _primary key_ y no a las otras columnas de la tabla.
+    
+    - ***Boyce-Codd Normal Form***: Todo lo que no sea un _key_ está relacinoado y es dependiente del _candidate key_.
+    
+    - ***Fourth Normal Form***: No hay dependencias multi-valor.
+    
+    - ***Fifth Normal Form***: Descomponer cada tabla en pequeñas tablas para minimizar riesgo de redundancia y mejorar la integridad de los datos.
 
 7. 
 
@@ -25,8 +37,11 @@
 ### Creación de la base de datos y sus tablas
 
 ```
+-- Crear la base de datos
 CREATE DATABASE IF NOT EXISTS TAREA6_IE0217;
+-- Seleccionar la base de datos para usarla
 USE TAREA6_IE0217;
+
 ```
 
 ```
@@ -56,7 +71,25 @@ CREATE TABLE Descripciones(
 ```
 
 ### Inserción de datos
+Cursos
+```
+
+```
+
+Requisitos
+
+```
+
+```
+
+Descripciones
+
+```
+```
+### Consultas
 
 
+### Actualizaciones
 
-### CRUD
+
+### Eliminaciones
