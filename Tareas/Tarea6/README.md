@@ -50,13 +50,15 @@
 ## Parte práctica
 ### Creación de la base de datos y sus tablas
 
+Para el desarrollo de la parte práctica, se debe iniciar creando una base de datos sobre la cual se realziarán las directivas SQL solicitadas. Para esta asignación, se escogió el nombre ***TAREA6_IE0217***, que es creada y seleccionada para usar como se muestra a continuación. 
+
 ```
 -- Crear la base de datos
 CREATE DATABASE IF NOT EXISTS TAREA6_IE0217;
 -- Seleccionar la base de datos para usarla
 USE TAREA6_IE0217;
-
 ```
+Sin embargo, con solo crear la base de datos no se logra mucho, sino que se deben crear las tablas que componen el _Schema_ de la base de datos y darle sus respectivas especificaciones para los datos que va a contener cada tabla. Esto es logrado por medio de la siguiente sección del _query_ haciendo uso de la directiva CREATE TABLE para la creación de las tablas. Las características de cada tabla son especificadas por medio de el tipo de dato y especificando si esta es un tipo de _key_ por medio de las directivas PRIMARY KEY, UNIQUE KEY o FOREIGN KEY. Cabe destacar que en las definiciones de FOREIGN KEY se agregó la directiva ON DELETE CASCADE, que fue investigada por aparte y su utilidad es eliminar todos los registros hijos si se elimina la llave foránea a la que están referenciadas.
 
 ```
 -- Crear tabla de Cursos
@@ -83,6 +85,20 @@ CREATE TABLE Descripciones(
     Dificultad VARCHAR(8) NOT NULL,
     FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID));
 ```
+
+Al hacer esto, se puede verificar la creación de las tablas, haciendo uso de las siguientes directivas. Ahora bien, como solo se crearon peor no se han ingresado datos, no deben haber registros en las tablas. Únicamente debe haber un registro especial que tenga todo en NULL y su ROWID es un *, lo que indica que no es un registro de datos como tal. Esto se expone en las imágenes mostradas.
+```
+SELECT * FROM Cursos;
+SELECT * FROM Requisitos;
+SELECT * FROM Descripciones;
+```
+![Imgur](https://i.imgur.com/s50ejaH.png)
+
+![Imgur](https://i.imgur.com/GlO8lCG.png)
+
+![Imgur](https://i.imgur.com/iNu7XOy.png)
+
+
 
 ### Inserción de datos
 Cursos
