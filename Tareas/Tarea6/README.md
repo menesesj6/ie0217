@@ -25,13 +25,27 @@
     
     - ***Fifth Normal Form***: Descomponer cada tabla en pequeñas tablas para minimizar riesgo de redundancia y mejorar la integridad de los datos.
 
-7. 
+7. Los índices en SQL son un objeto a nivel del _Schema_ qu eoperan por medio de punteros. Estos son usados para optimizar el tiempo de respuesta de una consulta a la base de datos. Esto permite ahorrar capacidad de procesamiento y exigir menos el esfuerzo I/O del disco al usar un método de acceso a datos más veloz. Esto permite optimizar las directivas SELECT y WHERE, optimizando las consultas pero degradando el rendimiento en los UPDATE e INSERT. Dado esto, los índices pueden ser creados y eliminados en un _query_ sin afectar los datos almacenados.
 
-8. 
+8. El SQL Injection es una técnica usada por _hackers_ donde se ingresan comandos SQL mal intencionados a través de páginas web para obtener acceso no autorizado a una base de datos. Entre las medidas de prevención pueden estar:
+    - Implementar autenticación de usuario.
+    - Limitar el acceso de los usuarios autorizados. Es decir, aquellos que sí tienen acceso autorizado a la DB tendrán un límite de datos a los que pueden acceder.
+    - No tener usuarios con permisos de administrador.
 
-9. 
+9. Como las funciones en los lenguajes de programación "normales", los _stored procedures_ en SQL son _queries_ guardados que se pueden reusar. Estos son sumamente útiles para evitar reescribir los mismos comandos SQL una y otra vez, lo que permite optimizar el _query_ y aumentar la eficiencia.
 
-10. 
+10. Para esta pregunta, se estudian los 3 casos solicitados
+    - Uno a uno:
+    
+    Esto se puede lograr definiendo los _constraints_ FOREIGN KEY y un UNIQUE KEY en una misma columna. Acá se debe tomar en cuenta y diseñar correctamente cuál será la tabla padre hacia la que se referenciará el FOREIGN KEY. Podría necesitarse claves compuestas si se quisiera aumentar la robustez de relación e identificación entre las tablas.
+
+    - Uno a muchos:
+    
+    Para este caso, se logra únicamente con el _constraint_ de FOREIGN KEY. Para este caso es similar al anterior, pues se debe definir cuál serpa la tabla y la columna hacia la que se referenciará.
+    
+    - Muchos a muchos:
+    
+    Una forma de lograr esto, puede ser haciendo uso de una _join table_, donde se junten todos los valores de dos tablas para lograr dar el resultado de relación muchos a muchos deseada. Acá la tabla intermedia debe tener un _primary key_ compuesto por foráneas de las dos tablas madre. Al igual que con las otras, definir correctamente los FOREIGN KEYs es crucial para la integridad de la relación entre tablas.
 
 ## Parte práctica
 ### Creación de la base de datos y sus tablas
