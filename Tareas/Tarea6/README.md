@@ -59,32 +59,32 @@ CREATE DATABASE IF NOT EXISTS TAREA6_IE0217;
 -- Seleccionar la base de datos para usarla
 USE TAREA6_IE0217;
 ```
-Sin embargo, con solo crear la base de datos no se logra mucho, sino que se deben crear las tablas que componen el _Schema_ de la base de datos y darle sus respectivas especificaciones para los datos que va a contener cada tabla. Esto es logrado por medio de la siguiente sección del _query_ haciendo uso de la directiva CREATE TABLE para la creación de las tablas. Las características de cada tabla son especificadas por medio de el tipo de dato y especificando si esta es un tipo de _key_ por medio de las directivas PRIMARY KEY, UNIQUE KEY o FOREIGN KEY. Cabe destacar que en las definiciones de FOREIGN KEY se agregó la directiva ON DELETE CASCADE, que fue investigada por aparte y su utilidad es eliminar todos los registros hijos si se elimina la llave foránea a la que están referenciadas.
+Sin embargo, con solo crear la base de datos no se logra mucho, sino que se deben crear las tablas que componen el _Schema_ de la base de datos y darle sus respectivas especificaciones para los datos que va a contener cada tabla. Esto es logrado por medio de la siguiente sección del _query_ haciendo uso de la directiva CREATE TABLE para la creación de las tablas. Las características de cada tabla son especificadas por medio de el tipo de dato y especificando si esta es un tipo de _key_ por medio de las directivas PRIMARY KEY (claves primarias), UNIQUE KEY (claves candidatas) o FOREIGN KEY (claves foráneas). Cabe destacar que en las definiciones de FOREIGN KEY se agregó la directiva ON DELETE CASCADE, que fue investigada por aparte y su utilidad es eliminar todos los registros hijos si se elimina la llave foránea a la que están referenciadas.
 
 ```
 -- Crear tabla de Cursos
 CREATE TABLE Cursos (
-    CursoID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	CursoID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     Sigla VARCHAR(8) UNIQUE KEY NOT NULL,
     Nombre VARCHAR(100) UNIQUE KEY NOT NULL,
     Semestre VARCHAR(8) NOT NULL,
-    Creditos TINYINT NOT NULL);
+    Creditos INT NOT NULL);
     
 -- Crear tabla de Requisitos
 CREATE TABLE Requisitos(
-    RequisitoID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	RequisitoID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     CursoID INT NOT NULL,
     RequisitoCursoID INT NOT NULL,
-    FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID),
-    FOREIGN KEY (RequisitoCursoID) REFERENCES Cursos(CursoID));
+    FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID) ON DELETE CASCADE,
+    FOREIGN KEY (RequisitoCursoID) REFERENCES Cursos(CursoID) ON DELETE CASCADE);
     
 -- Crear tabla de Descripciones
 CREATE TABLE Descripciones(
-    DescripcionID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	DescripcionID INT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     CursoID INT NOT NULL,
     Descripcion TEXT NOT NULL,
     Dificultad VARCHAR(8) NOT NULL,
-    FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID));
+    FOREIGN KEY (CursoID) REFERENCES Cursos(CursoID) ON DELETE CASCADE);
 ```
 
 Al hacer esto, se puede verificar la creación de las tablas, haciendo uso de las siguientes directivas. Ahora bien, como solo se crearon peor no se han ingresado datos, no deben haber registros en las tablas. Únicamente debe haber un registro especial que tenga todo en NULL y su ROWID es un *, lo que indica que no es un registro de datos como tal. Esto se expone en las imágenes mostradas.
