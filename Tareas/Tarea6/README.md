@@ -1,5 +1,6 @@
 # Tarea 6
 ## IE-0217: Estructuras Abstractas de Datos y Algoritmos para Ingeniería
+Esta asignación es orientada hacia el manejo de bases de datos de tipo relacional SQL, y es en este documento que se encuentra explicado todo el flujo de trabajo realizado, incluidos los screenshots necesarios para la demostración del funcionamiento correcto de los _queries_ aplicados. Para esta asignación se trabajó directamente en MySQL Workbench en Ubuntu 22.04. No se adjunta ningún archivo ejecutable por lo que no se adjuntan códigos fuente, pues todos los comandos y resultados son expuestos a continuación.
 ## Parte teórica
 1. Las bases de datos relacionales son aquellas que usan tablas para la organización de la información. Las tablas de este tipo de bases de datos incluyen _fields_ (columnas) y _registers_ (filas). Las tablas se interrelacionan por medio de _Foreign Keys_ y en cada tabla, existe una _Primary Key_ que permite identificar cada registro. Sus principales características o criterios son atomicidad, coherencia, aislamiento y durabilidad.
 
@@ -447,6 +448,8 @@ Se puede ver que ya el CursoID 10, 11 y 21 fueron eliminados, pues son los que c
 ![Imgur](https://i.imgur.com/rZZ77DV.png)
 
 ![Imgur](https://i.imgur.com/DuBWstQ.png)
+
+Al tener esto claro, se puede ejecutar el _query_ mostrado para poder ver el efecto en los requisitos de cada curso. SE puede ver que la leiminación se hizo por dos métodos, por nombre y por sigla, que se probarán igual de útiles.
 ```
 -- Eliminar requisitos específicos
 DELETE FROM Requisitos
