@@ -297,7 +297,7 @@ ON c.CursoID = d.CursoID;
 ```
 ![Imgur](https://i.imgur.com/bYkdITx.png)
 
-Luego de esto, se le realiza una consulta a la base de datos donde se quiere retornar los requisitos para un curso específico. Para este caso, se corren dos pruebas para corroborar el funcionamiento adecuado. El primer ejemplo será para el curso inventado "Diseño Lógico Avanzado" y luego para "Ciencia de datos para la est. y pron. de eventos". Para esta prueba se deseaba que el retorno fuera en una única fila y no en una fila por requisito, por lo que se acudió a usar la directiva GROUP_CONCAT para obtener correctamente los requsiitos por sigla y concatenarlos separados por una coma. Para esta consulta se debe volver a usar un JOIN pero doble esta vez, pues se necesita extraer de Requisitos el CursoID y el RequisitoID pero se hace JOIN con entre esta y Cursos para obtener nombre y sigla correspondientes. A continuación se muestran los dos ejemplos en un solo pedazo de _query_. Como se solicita d eun solo curso específico, el pedazo de _query_ empleado es el mostrado, mas podrían obtenerse de diversos cursos a la vez usando una directiva OR en la sentencia WHERE, declarando diversas condiciones.
+Luego de esto, se le realiza una consulta a la base de datos donde se quiere retornar los requisitos para un curso específico. Para este caso, se corren dos pruebas para corroborar el funcionamiento adecuado. El primer ejemplo será para el curso inventado "Diseño Lógico Avanzado" y luego para "Ciencia de datos para la est. y pron. de eventos". Para esta prueba se deseaba que el retorno fuera en una única fila y no en una fila por requisito, por lo que se acudió a usar la directiva GROUP_CONCAT para obtener correctamente los requsiitos por sigla y concatenarlos separados por una coma. Para esta consulta se debe volver a usar un JOIN pero doble esta vez, pues se necesita extraer de Requisitos el CursoID y el RequisitoID pero se hace JOIN con entre esta y Cursos para obtener nombre y sigla correspondientes. A continuación se muestran los dos ejemplos en un solo pedazo de _query_.
 
 ```
 -- Consultar requisitos de los cursos
@@ -421,3 +421,23 @@ SELECT * FROM Descripciones ORDER BY CursoID;
  ![Imgur](https://i.imgur.com/iWLJuNN.png)
 
 ### Eliminaciones
+
+En esta última sección, se manejará la directiva DELETE, pues deseamos eliminar registros específicos de dos tablas distitnas. Primero, lo que se hará será eliminar tres cursos de la tabla Cursos, uno de los inventados y dos del plan de licenciatura. El _query_ usado para esto es sencillo, pues es el mostrado a continuación. Al correr esto, se deben ir a verificar tanto la tabla Cursos para corroborar que ya no esté el curso como la tabla Descripciones para corroborar que al eliminar el curso se elimina también su descripción asociada. Esto se verá que funciona dado el ON DELETE CASCADE definido en las FOREIGN KEYS, lo que hace que al eliminar el registro padre, se eliminen los reegistros hijos referenciados.
+
+```
+-- Eliminar un curso inventado y dos del plan
+DELETE FROM Cursos 
+WHERE Nombre = 'Electrónica industrial';
+
+DELETE FROM Cursos 
+WHERE Nombre = 'Administración de sistemas';
+
+DELETE FROM Cursos 
+WHERE Nombre = 'Sistemas Embebidos';
+
+-- Verificar 
+SELECT * FROM Cursos;
+SELECT * FROM Descripciones ORDER BY CursoID;
+```
+![Imgur](https://i.imgur.com/7Rwdg2t.png)
+![Imgur](https://i.imgur.com/A8QnzvE.png)
