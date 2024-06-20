@@ -444,7 +444,8 @@ SELECT * FROM Descripciones ORDER BY CursoID;
 
 ![Imgur](https://i.imgur.com/A8QnzvE.png)
 
-Se puede ver que ya el CursoID 10, 11 y 21 fueron eliminados, pues son los que coinciden con los cursos seleccionados para eliminar; por lo que se obtuvo lo deseado. Luego, la segunda eliminación de registros, es quitar un requisito específico a dos cursos cualesquiera. En este caso, se le quitará Microelectrónica a Diseño Lógico Avanzado y Máquinas Eléctricas I a Electrónica Industrial. Para tener claro, se muestran a continuación los requisitos de estos inicialmente.
+Se puede ver que ya el CursoID 10, 12 y 21 fueron eliminados, pues son los que coinciden con los cursos seleccionados para eliminar; por lo que se obtuvo lo deseado. Luego, la segunda eliminación de registros, es quitar un requisito específico a dos cursos cualesquiera. En este caso, se le quitará Microelectrónica a Diseño Lógico Avanzado y Máquinas Eléctricas I a Electrónica Industrial. Para tener claro, se muestran a continuación los requisitos de estos inicialmente.
+
 ![Imgur](https://i.imgur.com/rZZ77DV.png)
 
 ![Imgur](https://i.imgur.com/DuBWstQ.png)
