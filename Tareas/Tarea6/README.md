@@ -103,19 +103,177 @@ SELECT * FROM Descripciones;
 ### Inserción de datos
 Cursos
 ```
+-- Insertar el plan de estudios con optativas y requisitos
+INSERT INTO Cursos (Sigla, Nombre, Semestre, Creditos) VALUES
+-- Requisitos del plan													
+('IE-0479', 'Ingeniería Económica', 'I-II', 3),														
+('IE-0413', 'Electrónica II', 'I-II', 3),																
+('IE-0315', 'Máquinas Eléctricas I', 'I-II', 4), 														
+('IE-0499', 'Proyecto Eléctrico', 'I-II', 3), 														
+('IE-0405', 'Modelos Probabilísticos de Señales y Sistemas', 'I-II', 3), 								 
+('IE-0501', 'Responsabilidades en el Ejercicio Profesional de la Ingeniería Eléctrica', 'I-II', 1), 
+-- Requisitos de los cursos inventados
+('IE-0217', 'Estructuras Abstractas de Datos y Algoritmos', 'I-II', 3), 								
+('IE-0411', 'Microelectrónica: Sistemas en Silicio', 'II', 3), 								
+('IE-0523', 'Circuitos Digitales II', 'I-II', 3), 	
+-- Plan de estudios
+('IE-0579', 'Administración de sistemas', 'I', 4), 												
+('IE-0613', 'Electrónica industrial', 'I', 4), 													
+('IE-0679', 'Ciencia de datos para la est. y pron. de eventos', 'II', 3), 							
+('IE-0541', 'Seguridad Ocupacional', 'II', 3), 														
+('IE-0599', 'Anteproyecto de TFG', 'I', 4), 														
+('IE-mmmm', 'Optativa I', '-', 0), 																		
+('IE-xxxx', 'Optativa II', '-', 0), 																	
+('IE-yyyy', 'Optativa III', '-', 0), 																	
+('IE-zzzz', 'Optativa IV', '-', 0),
+('', 'Trabajo final de graduación', 'I-II', 4), 																	
+-- Cursos inventados
+('IE-0628', 'Diseño Lógico Avanzado', 'I-II', 4), 						
+('IE-0475', 'Sistemas Embebidos', 'I-II', 4);
 
+-- Verificar la correcta insercion
+SELECT * FROM Cursos;
 ```
-
+![Imgur](https://i.imgur.com/vXmdV0M.png)
 Requisitos
 
 ```
+-- Insertar los requisitos de los cursos del plan
+INSERT INTO Requisitos (CursoID, RequisitoCursoID) VALUES(
+	(SELECT CursoID FROM Cursos WHERE Nombre = 'Administración de sistemas'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Ingeniería Económica')),
+    
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Electrónica industrial'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Electrónica II')),
+    
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Electrónica industrial'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Máquinas Eléctricas I')),
+    
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Ciencia de datos para la est. y pron. de eventos'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Modelos Probabilísticos de Señales y Sistemas')),
+    
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Ciencia de datos para la est. y pron. de eventos'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Administración de sistemas')),
+    
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Seguridad Ocupacional'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Responsabilidades en el Ejercicio Profesional de la Ingeniería Eléctrica')),
+    
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Anteproyecto de TFG'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Proyecto Eléctrico')),
+    
+    ((SELECT CursoID FROM Cursos WHERE Nombre = 'Trabajo final de graduación'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Anteproyecto de TFG')),
+    
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Diseño Lógico Avanzado'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Circuitos Digitales II')),
+    
+    ((SELECT CursoID FROM Cursos WHERE Nombre = 'Diseño Lógico Avanzado'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Microelectrónica: Sistemas en Silicio')),
+    
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Sistemas Embebidos'), 
+    (SELECT CursoID FROM Cursos WHERE Nombre = 'Estructuras Abstractas de Datos y Algoritmos')
+);
 
+-- Verificar la correcta insercion
+SELECT * FROM Requisitos;
 ```
-
+![Imgur](https://i.imgur.com/lz8GPu9.png)
 Descripciones
 
 ```
+-- Insertar las descripciones
+INSERT INTO Descripciones (CursoID, Descripcion, Dificultad) VALUES(
+	(SELECT CursoID FROM Cursos WHERE Nombre = 'Estructuras Abstractas de Datos y Algoritmos'), 
+	"POO en C++, bases de datos relacionales y no relacionales, debugging y paralelismo.", 
+    'Media'),
+
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Circuitos Digitales II'), 
+    "Diseño conductual en Verilog.", 
+    'Media'),
+    
+    ((SELECT CursoID FROM Cursos WHERE Nombre = 'Microelectrónica: Sistemas en Silicio'), 
+    "Estudio fisico avanzado de circuitos integrados.", 
+    'Dificil'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Ingeniería Económica'), 
+    "Principios de finanzas y microeconomia.", 
+    'Facil'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Electrónica II'), 
+    "Electronica anlogica enfocada en amplificadores operacionales.", 
+    'Media'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Máquinas Eléctricas I'), 
+    "Circuitos magneticos, motores, transformadores. Principios para potencia.", 
+    'Dificil'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Proyecto Eléctrico'), 
+    "Proyecto final con profesor tutor.", 
+    'Dificil'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Modelos Probabilísticos de Señales y Sistemas'), 
+    "Principios de probabilidad y estadistica. Proyectos programados aplicando la teoria.", 
+    'Facil'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Responsabilidades en el Ejercicio Profesional de la Ingeniería Eléctrica'), 
+    "Filosofia sobre la moral y la etica.", 
+    'Facil'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Administración de sistemas'), 
+    "Analisis de una organizacion o empresa.", 
+    'Media'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Electrónica Industrial'), 
+    "Principios y fundamentos de la electronica de potencia.", 
+    'Dificil'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Ciencia de datos para la est. y pron. de eventos'), 
+    "Analisis de eventos usando conceptos de cursos anteriores.", 
+    'Media'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Seguridad Ocupacional'), 
+    "Principios de la seguridad en el dia a dia laboral.", 
+    'Facil'),
+	
+	((SELECT CursoID FROM Cursos WHERE Nombre = 'Anteproyecto de TFG'), 
+    "Desarrollo de habilidades necesarias para elaborar su propuesta de investigación de tesis.", 
+    'Media'),
+    
+    ((SELECT CursoID FROM Cursos WHERE Nombre = 'Trabajo final de graduación'), 
+    "Se puede elegir entre: Tesis, proyecto de graduación, seminario y práctica dirigida.", 
+    'Dificil'),
+    
+    ((SELECT CursoID FROM Cursos WHERE Nombre = 'Optativa I'), 
+    "Primer curso optativo.", 
+    '-'),
+    
+    ((SELECT CursoID FROM Cursos WHERE Nombre = 'Optativa II'), 
+    "Segundo curso optativo.", 
+    '-'),
+    
+    ((SELECT CursoID FROM Cursos WHERE Nombre = 'Optativa III'), 
+    "Tercer curso optativo.", 
+    '-'),
+    
+    ((SELECT CursoID FROM Cursos WHERE Nombre = 'Optativa IV'), 
+    "Cuarto curso optativo.", 
+    '-'),
+    
+    ((SELECT CursoID FROM Cursos WHERE Nombre = 'Diseño Lógico Avanzado'), 
+    "Programacion de RTLs y el diseno fisico de los mismos basado en los fundamentos de tecnologia CMOS para ICs.", 
+    'Dificil'),
+    
+    ((SELECT CursoID FROM Cursos WHERE Nombre = 'Sistemas Embebidos'), 
+    "Fundamentos teoricos de sistemas empotrados y aplicacion practica del mismo conocimiento.", 
+    'Dificil'
+);
+
+-- Verificar la correcta insercion
+SELECT * FROM Descripciones ORDER BY CursoID;
 ```
+
+![Imgur](https://i.imgur.com/8kBh1tF.png)
+
 ### Consultas
 
 
