@@ -284,6 +284,42 @@ SELECT * FROM Descripciones ORDER BY CursoID;
 
 ### Consultas
 
+La sección de consultas estará principalmente ubicada hacia el uso correcto y amplio de la directiva SELECT y sus distintas variaciones. Para esto, se realizarán distintas consultas a la base de datos y se buscará hacer uso de la mejor forma de SELECT para obtener los resultados. Estas pruebas se exponen a continuación.
+
+Primero, se tiene una prueba donde se quiere mostrar sigla, nombre, semestre, créditos, descripción y dificultad de un curso. Para esto se hizo uso de un JOIN entre información de las tablas Cursos y Descripciones, extrayendo las columnas con la información solicitada. También se debe destacar que se hace el JOIN de las columnas bajo una condición en que los CursoID coincidan, para evitar cambios de información entre un curso y otro. Para lograr esto, se empleó el trozo de _query_ mostrado a continuación; obteniendo el resultado mostrado en la imagen. 
+
+```
+-- Consultar completos los cursos
+SELECT c.Sigla, c.Nombre, c.Semestre, c.Creditos, d.Descripcion, d.Dificultad
+FROM Cursos c
+JOIN Descripciones d
+ON c.CursoID = d.CursoID;
+```
+![Imgur](https://i.imgur.com/bYkdITx.png)
+
+Luego de esto, se le realiza una consulta a la base de datos donde se quiere retornar los requisitos para un curso específico. Para este caso, se corren dos pruebas para corroborar el funcionamiento adecuado. El primer ejemplo será para el curso inventado "Diseño Lógico Avanzado" y luego para "Ciencia de datos para la est. y pron. de eventos". Para esta prueba se deseaba que el retorno fuera en una única fila y no en una fila por requisito, por lo que se acudió a usar la directiva GROUP_CONCAT para obtener correctamente los requsiitos por sigla y concatenarlos separados por una coma. Para esta consulta se debe volver a usar un JOIN pero doble esta vez, pues se necesita extraer de Requisitos el CursoID y el RequisitoID pero se hace JOIN con entre esta y Cursos para obtener nombre y sigla correspondientes. A continuación se muestran los dos ejemplos en un solo pedazo de _query_. Como se solicita d eun solo curso específico, el pedazo de _query_ empleado es el mostrado, mas podrían obtenerse de diversos cursos a la vez usando una directiva OR en la sentencia WHERE, declarando diversas condiciones.
+
+```
+-- Consultar requisitos de los cursos
+SELECT c.CursoID, c.Sigla, c.Nombre, GROUP_CONCAT(c1.Sigla SEPARATOR ', ') AS Requisitos
+FROM Cursos c
+JOIN Requisitos r
+ON c.CursoID = r.CursoID
+JOIN Cursos c1
+ON r.RequisitoCursoID = c1.CursoID
+WHERE c.Nombre = 'Diseño Lógico Avanzado';
+
+-- Consultar requisito de un segundo curso
+SELECT c.CursoID, c.Sigla, c.Nombre, GROUP_CONCAT(c1.Sigla SEPARATOR ', ') AS Requisitos
+FROM Cursos c
+JOIN Requisitos r
+ON c.CursoID = r.CursoID
+JOIN Cursos c1
+ON r.RequisitoCursoID = c1.CursoID
+WHERE c.Nombre = 'Ciencia de datos para la est. y pron. de eventos';
+```
+![Imgur](https://i.imgur.com/rZZ77DV.png)
+![Imgur](https://i.imgur.com/ENlKfMY.png)
 
 ### Actualizaciones
 
