@@ -319,7 +319,35 @@ ON r.RequisitoCursoID = c1.CursoID
 WHERE c.Nombre = 'Ciencia de datos para la est. y pron. de eventos';
 ```
 ![Imgur](https://i.imgur.com/rZZ77DV.png)
+
 ![Imgur](https://i.imgur.com/ENlKfMY.png)
+
+A continuación, se tiene una prueba considerablemente más sencilla que la anterior, pues requiere menos agrupamiento de comandos. Esta es donde se desea obtener todos los cursos
+que no sean optativos. Para esto se debe usar una sentencia WHERE en el SELECT para condicionar que el curso no se llame "Optativa X", siendo X cualquier número del 1 al 4. Para esto, se usó el siguiente _query_ y se obtuvieorn los resultados de la imagen, como se esperaba.
+```
+-- Consultar los cursos no optativos
+SELECT *
+FROM Cursos
+WHERE Nombre NOT LIKE 'Optativa%';
+```
+![Imgur](https://i.imgur.com/TRwakJq.png)
+
+A continuación, se tiene la consulta para cursos fitrando dependiendo de en cuál semestre son impartidos. Ahora bien, para esto hay dos posibles enfoques, pues se puede entender que se necesitan los que se imparten en el I semestre en general, o bien, si se desea obtener los que se imparten exclusivamente el I semestre. Cabe destacar que se habla del I semestre para la demostración, pero aplica igual para el II semestre. Sin embargo, el _output_ para cada caso es expuesto en el orden respectivo que se muestra en el _query_.
+
+```
+-- Consultar cursos por semestre exlusivo
+SELECT *
+FROM Cursos
+WHERE Semestre = 'I';
+
+-- Consultar cursos por semestre
+SELECT *
+FROM Cursos
+WHERE Semestre = 'I' OR Semestre = 'I-II';
+```
+![Imgur](https://i.imgur.com/fafBrZq.png)
+
+![Imgur](https://i.imgur.com/RHJv1KO.png)
 
 ### Actualizaciones
 
