@@ -350,6 +350,39 @@ WHERE Semestre = 'I' OR Semestre = 'I-II';
 ![Imgur](https://i.imgur.com/RHJv1KO.png)
 
 ### Actualizaciones
+Para esta sección, lo que se busca es modificar registros ya existentes dentro de la base de datos, para lo que se usa la directiva UPDATE. En este caso, se cambiarán tres registros de la tabla Cursos, correspondiento a los cursos optativos I, II y III. Para esto, se escogieron tres cursos del plan de estudios general de Ingeniería Eléctrica, no solo de la lista de optativas disponibles para licenciatura. El cambio de dichas optativas es hecho a través del siguiente _query_, donde al final se hace uso del SELECT * para verificar que la actualización haya sido exitosa, al igual que la imagen de lo retornado por dicho comando SELECT. Cabe destacar que se cambian todos los _fields_ de los registros, a excepción del CursoID, pues es la llave primaria de ese curso y no cambia si es una optativa per sé o un curso normal. 
+```
+-- Actualizar 3 optativas
+UPDATE Cursos
+SET 
+	Sigla = 'IE-0621', 
+    Nombre = 'Verificación funcional del diseño de circuitos integrados', 
+    Semestre = 'I', 
+    Creditos = 3 
+WHERE 
+	Nombre = 'Optativa I';
 
+UPDATE Cursos
+SET 
+	Sigla = 'IE-0724', 
+    Nombre = 'Laboratorio de programación y microcomputadoras', 
+    Semestre = 'I', 
+    Creditos = 3
+WHERE 
+	Nombre = 'Optativa II';
+
+UPDATE Cursos
+SET 
+	Sigla = 'IE-0623', 
+    Nombre = 'Microprocesadores', 
+    Semestre = 'II', 
+    Creditos = 3
+WHERE 
+	Nombre = 'Optativa III';
+	
+-- Verificar la actualización
+SELECT * FROM Cursos;
+```
+![Imgur](https://i.imgur.com/wHa3SSm.png)
 
 ### Eliminaciones
