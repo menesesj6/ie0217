@@ -385,4 +385,39 @@ SELECT * FROM Cursos;
 ```
 ![Imgur](https://i.imgur.com/wHa3SSm.png)
 
+Luego, se solicita actualizar la descripción y dificultad de tres cursos. Para esto, se actualizarán dichos _fields_ de las optativas que se acaban de modificar. Sin embargo, para tener una correcta percepción del cambio, se muesta a continuación el estado de la tabla Descripciones.
+
+![Imgur](https://i.imgur.com/8UximYP.png)
+
+ Ahora, teniendo esto presente, se procede a realizar el UPDATE de los registros para CursoID 15-17.
+ 
+ ```
+ -- Actualizar 3 descripciones y dificultades
+UPDATE Descripciones
+SET 
+	Descripcion = 'Estudio del microprocesador 9S12 a fondo. Practica y teoria.', 
+    Dificultad = 'Dificil'
+WHERE 
+	CursoID = (SELECT CursoID FROM Cursos WHERE Nombre = 'Microprocesadores');
+
+UPDATE Descripciones
+SET 
+	Descripcion = 'Proyectos de software de mediana complejidad para mejorar habilidades..', 
+    Dificultad = 'Dificil'
+WHERE 
+	CursoID = (SELECT CursoID FROM Cursos WHERE Nombre = 'Laboratorio de programación y microcomputadoras');
+
+UPDATE Descripciones
+SET 
+	Descripcion = 'Introducción a los conceptos básicos sobre verificación funcional de circuitos digitales descritos en HDL', 
+    Dificultad = 'Dificil'
+WHERE 
+	CursoID = (SELECT CursoID FROM Cursos WHERE Nombre = 'Verificación funcional del diseño de circuitos integrados');
+	
+-- Verificar la correcta actualización
+SELECT * FROM Descripciones ORDER BY CursoID;
+ ```
+ 
+ ![Imgur](https://i.imgur.com/iWLJuNN.png)
+
 ### Eliminaciones
