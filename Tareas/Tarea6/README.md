@@ -1,4 +1,4 @@
-# Tarea 5
+# Tarea 6
 ## IE-0217: Estructuras Abstractas de Datos y Algoritmos para Ingeniería
 ## Parte teórica
 1. Las bases de datos relacionales son aquellas que usan tablas para la organización de la información. Las tablas de este tipo de bases de datos incluyen _fields_ (columnas) y _registers_ (filas). Las tablas se interrelacionan por medio de _Foreign Keys_ y en cada tabla, existe una _Primary Key_ que permite identificar cada registro. Sus principales características o criterios son atomicidad, coherencia, aislamiento y durabilidad.
@@ -101,10 +101,13 @@ SELECT * FROM Descripciones;
 
 
 ### Inserción de datos
-Cursos
+Para esta sección, se debe hacer uso de las directivas INSERT INTO seguida de VALUES para poder ingresar registros nuevos a las tablas con las que se está trabajando. Se podrá ver que el proceso es repetitivo, dado que solo se necesitan ingresar los valores de cada columna para cada registro que se debe crear. Los únicos que no se escriben en estas sentencias son los PRIMARY KEY de naturaleza AUTO_INCREMENT, pues esos se manejan por sí solos. También, posterior a cada sentencia INSERT INTO, se usa una directiva SELECT * para observar las tablas resultantes después de ingresar todos los datos deseados. También, se debe destacar el hecho que para pasar un valor al CursoID en las tablas Requisitos y Descripciones, se usó una sentencia SELECT para poder extraer el CursoID basado en el nombre del curso y no sea necesario saber el CursoID de lo que se desea ingresar al registo. 
+
+Primero, se tienen los cambios en la tabla de Cursos.
 ```
 -- Insertar el plan de estudios con optativas y requisitos
 INSERT INTO Cursos (Sigla, Nombre, Semestre, Creditos) VALUES
+
 -- Requisitos del plan													
 ('IE-0479', 'Ingeniería Económica', 'I-II', 3),														
 ('IE-0413', 'Electrónica II', 'I-II', 3),																
@@ -112,10 +115,12 @@ INSERT INTO Cursos (Sigla, Nombre, Semestre, Creditos) VALUES
 ('IE-0499', 'Proyecto Eléctrico', 'I-II', 3), 														
 ('IE-0405', 'Modelos Probabilísticos de Señales y Sistemas', 'I-II', 3), 								 
 ('IE-0501', 'Responsabilidades en el Ejercicio Profesional de la Ingeniería Eléctrica', 'I-II', 1), 
+
 -- Requisitos de los cursos inventados
 ('IE-0217', 'Estructuras Abstractas de Datos y Algoritmos', 'I-II', 3), 								
 ('IE-0411', 'Microelectrónica: Sistemas en Silicio', 'II', 3), 								
-('IE-0523', 'Circuitos Digitales II', 'I-II', 3), 	
+('IE-0523', 'Circuitos Digitales II', 'I-II', 3), 
+
 -- Plan de estudios
 ('IE-0579', 'Administración de sistemas', 'I', 4), 												
 ('IE-0613', 'Electrónica industrial', 'I', 4), 													
@@ -126,7 +131,8 @@ INSERT INTO Cursos (Sigla, Nombre, Semestre, Creditos) VALUES
 ('IE-xxxx', 'Optativa II', '-', 0), 																	
 ('IE-yyyy', 'Optativa III', '-', 0), 																	
 ('IE-zzzz', 'Optativa IV', '-', 0),
-('', 'Trabajo final de graduación', 'I-II', 4), 																	
+('', 'Trabajo final de graduación', 'I-II', 4), 		
+
 -- Cursos inventados
 ('IE-0628', 'Diseño Lógico Avanzado', 'I-II', 4), 						
 ('IE-0475', 'Sistemas Embebidos', 'I-II', 4);
@@ -135,7 +141,8 @@ INSERT INTO Cursos (Sigla, Nombre, Semestre, Creditos) VALUES
 SELECT * FROM Cursos;
 ```
 ![Imgur](https://i.imgur.com/vXmdV0M.png)
-Requisitos
+
+Luego, se tienen las inserciones de registros para la tabla de Requisitos, lo cual es mostrado según la fracción de _query_ mostrada a continuación.
 
 ```
 -- Insertar los requisitos de los cursos del plan
@@ -178,7 +185,8 @@ INSERT INTO Requisitos (CursoID, RequisitoCursoID) VALUES(
 SELECT * FROM Requisitos;
 ```
 ![Imgur](https://i.imgur.com/lz8GPu9.png)
-Descripciones
+
+Por último, se tienen las inserciones de registros a la tabla de Descripciones, hecho con la siguiente sección del _query_.
 
 ```
 -- Insertar las descripciones
