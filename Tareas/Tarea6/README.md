@@ -440,4 +440,25 @@ SELECT * FROM Cursos;
 SELECT * FROM Descripciones ORDER BY CursoID;
 ```
 ![Imgur](https://i.imgur.com/7Rwdg2t.png)
+
 ![Imgur](https://i.imgur.com/A8QnzvE.png)
+
+Se puede ver que ya el CursoID 10, 11 y 21 fueron eliminados, pues son los que coinciden con los cursos seleccionados para eliminar; por lo que se obtuvo lo deseado. Luego, la segunda eliminación de registros, es quitar un requisito específico a dos cursos cualesquiera. En este caso, se le quitará Microelectrónica a Diseño Lógico Avanzado y Máquinas Eléctricas I a Electrónica Industrial. Para tener claro, se muestran a continuación los requisitos de estos inicialmente.
+![Imgur](https://i.imgur.com/rZZ77DV.png)
+
+![Imgur](https://i.imgur.com/DuBWstQ.png)
+```
+-- Eliminar requisitos específicos
+DELETE FROM Requisitos
+WHERE 
+	CursoID = (SELECT CursoID FROM Cursos WHERE Nombre = 'Diseño Lógico Avanzado') 
+    AND RequisitoID = (SELECT CursoID FROM Cursos WHERE Nombre = 'Microelectrónica: Sistemas en Silicio');
+
+DELETE FROM Requisitos
+WHERE 
+	CursoID = (SELECT CursoID FROM Cursos WHERE Nombre = 'Electrónica Industrial') 
+    AND RequisitoID = (SELECT CursoID FROM Cursos WHERE Sigla = 'IE-0315') ;
+```
+![Imgur](https://i.imgur.com/D7A7RoF.png)
+
+![Imgur](https://i.imgur.com/932WUOC.png)
